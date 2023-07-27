@@ -28,7 +28,8 @@
     "dev:jd": "npm run build:jd -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "test": "jest",
-    "prepare": "panda codegen"
+    "prepare": "panda codegen",
+    "open": "weapp open -p dist"
   },
   "browserslist": [
     "last 3 versions",

@@ -23,6 +23,9 @@ dependencies:
   '@pandacss/config':
     specifier: ^0.8.0
     version: 0.8.0
+  '@weapp-core/escape':
+    specifier: ^1.0.0
+    version: 1.0.0
   postcss-selector-parser:
     specifier: ^6.0.13
     version: 6.0.13
@@ -1321,6 +1324,10 @@ packages:
       loupe: 2.3.6
       pretty-format: 29.6.1
     dev: true
+
+  /@weapp-core/escape@1.0.0:
+    resolution: {integrity: sha512-r/D9iyJlgZ6mG67j1ccgXzts8EgABETNWVu9cXCy4tpXnXXTMWV7RGPqD+uQutgcaUmDwN8sHlt/nPJODEJOlQ==}
+    dev: false
 
   /JSONStream@1.3.5:
     resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}

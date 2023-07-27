@@ -67,6 +67,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "only-allow": "^1.1.1",
+    "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "rollup": "^3.26.3",
     "rollup-plugin-visualizer": "^5.9.2",
@@ -77,8 +78,7 @@
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
     "typescript-transform-paths": "^3.4.6",
-    "vitest": "^0.33.0",
-    "postcss": "^8.4.27"
+    "vitest": "^0.33.0"
   },
   "dependencies": {
     "@babel/generator": "^7.22.9",
@@ -87,6 +87,7 @@
     "@babel/types": "^7.22.5",
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@pandacss/config": "^0.8.0",
+    "@weapp-core/escape": "^1.0.0",
     "postcss-selector-parser": "^6.0.13",
     "semver": "^7.5.4"
   },

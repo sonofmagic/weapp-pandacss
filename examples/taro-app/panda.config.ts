@@ -1,8 +1,12 @@
 import { defineConfig } from "@pandacss/dev"
+
+
 // *:not(#\#)
 export default defineConfig({
   // Whether to use css reset
-  preflight: true,
+  // 小程序没有必要使用
+  // https://taro-docs.jd.com/docs/envs#processenvtaro_env
+  preflight: process.env.TARO_ENV === 'h5',
 
   // Where to look for your css declarations
   include: ["./src/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
