@@ -1,12 +1,7 @@
-import { foo, wait } from '@/index'
+import { foo } from '@/index'
 
 describe('[Default]', () => {
   test('foo should be bar', () => {
     expect(foo).toBe('bar')
-  })
-
-  test('wait 100ms', async () => {
-    const flag = await wait(100)
-    expect(flag).toBe(true)
   })
 })
