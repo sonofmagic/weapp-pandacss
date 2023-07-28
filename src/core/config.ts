@@ -1,7 +1,16 @@
 import { loadConfigFile } from '@pandacss/config'
+import { defu } from 'defu'
+import { PandacssConfigFileOptions } from '@/types'
 
 export function getPandacssConfig(
-  options: Parameters<typeof loadConfigFile>[0]
+  options?: Partial<PandacssConfigFileOptions>
 ) {
-  return loadConfigFile(options)
+  const opt = defu<PandacssConfigFileOptions, PandacssConfigFileOptions[]>(
+    options,
+    {
+      cwd: process.cwd()
+    }
+  )
+
+  return loadConfigFile(opt)
 }

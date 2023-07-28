@@ -23,23 +23,23 @@ describe('patch', () => {
   })
 
   it('inject again', async () => {
-    const content = await fs.readFile(
-      path.resolve(appRoot, 'styled-system/helpers.injected.mjs'),
-      'utf8'
-    )
+    const src = path.resolve(appRoot, 'styled-system/helpers.injected.mjs')
+    const content = await fs.readFile(src, 'utf8')
     const { code } = inject(content)
     const target = path.resolve(appRoot, 'styled-system/helpers.injected0.mjs')
     await fs.writeFile(target, code, 'utf8')
 
     expect(fss.existsSync(target)).toBe(true)
+    expect(content).toEqual(await fs.readFile(target, 'utf8'))
   })
 
   it('patch again', async () => {
+    const src = path.resolve(appRoot, 'styled-system/helpers.patched.mjs')
     const dest = path.resolve(appRoot, 'styled-system/helpers.patched0.mjs')
-    await patch(
-      path.resolve(appRoot, 'styled-system/helpers.patched.mjs'),
-      dest
-    )
+    await patch(src, dest)
     expect(fss.existsSync(dest)).toBe(true)
+    expect(await fs.readFile(src, 'utf8')).toEqual(
+      await fs.readFile(dest, 'utf8')
+    )
   })
 })

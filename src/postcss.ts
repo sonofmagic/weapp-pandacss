@@ -1,12 +1,11 @@
 import type { PluginCreator } from 'postcss'
 
-const plugin: PluginCreator<any> = () => {
+const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
   return {
-    postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
-    Rule(rule, helper) {}
+    postcssPlugin: 'postcss-weapp-pandacss-escape-plugin'
   }
 }
 
-plugin.postcss = true
+postcssWeappPandacssEscapePlugin.postcss = true
 
-export default plugin
+export default postcssWeappPandacssEscapePlugin

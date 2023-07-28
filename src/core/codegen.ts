@@ -15,7 +15,7 @@ export function getWeappCoreEscapeDir() {
   return path.dirname(require.resolve('@weapp-core/escape'))
 }
 // dirName: string = 'weapp-panda'
-export async function codegen(destDir: string) {
+export async function copyEscape(destDir: string) {
   const result: string[] = []
   const srcDir = getWeappCoreEscapeDir()
   const filesnames = await fs.readdir(srcDir)
