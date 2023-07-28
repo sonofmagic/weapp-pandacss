@@ -1,9 +1,16 @@
-import type { ICreateContextOptions } from '@/types'
+import type { ICreateContextOptions, IPostcssPluginOptions } from '@/types'
 
-export function getDefaults(): ICreateContextOptions {
+export function getCreateContextDefaults(): Required<ICreateContextOptions> {
   return {
     pandaConfig: {
       cwd: process.cwd()
     }
+  }
+}
+
+export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
+  return {
+    cascadeLayersSelectorReplacement: 'n',
+    universalSelectorReplacement: 'view'
   }
 }

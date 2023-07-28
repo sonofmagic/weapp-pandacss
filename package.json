@@ -108,7 +108,8 @@
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
     "typescript-transform-paths": "^3.4.6",
-    "vitest": "^0.33.0"
+    "vitest": "^0.33.0",
+    "semver": "^7.5.4"
   },
   "dependencies": {
     "@babel/generator": "^7.22.9",
@@ -118,8 +119,8 @@
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@pandacss/config": "^0.8.0",
     "@weapp-core/escape": "^1.0.0",
-    "postcss-selector-parser": "^6.0.13",
-    "semver": "^7.5.4"
+    "cac": "^6.7.14",
+    "postcss-selector-parser": "^6.0.13"
   },
   "peerDependencies": {
     "postcss": "^8.4"

@@ -2,16 +2,29 @@ import type { PluginCreator, Plugin } from 'postcss'
 import selectorParser, { tag } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
 import creator from '@csstools/postcss-cascade-layers'
+import { defu } from 'defu'
+import type { IPostcssPluginOptions } from './types'
+import { getPostcssPluginDefaults } from './defaults'
 
-const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
+// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
+// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
+// ':not(#\\#)' raw: :not(#\\\\#)
+const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
+  options
+) => {
+  const { cascadeLayersSelectorReplacement, universalSelectorReplacement } =
+    defu<Required<IPostcssPluginOptions>, IPostcssPluginOptions[]>(
+      options,
+      getPostcssPluginDefaults()
+    )
+
   const utilitiesTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
       if (selector.type === 'universal') {
-        // TODO configable
-        selector.value = 'view'
+        selector.value = universalSelectorReplacement
       }
 
       if (
@@ -36,7 +49,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
           ) {
             x.nodes = [
               tag({
-                value: 'n'
+                value: cascadeLayersSelectorReplacement
               })
             ]
           }
@@ -46,7 +59,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
   })
 
   const plugin = creator() as Plugin
-  // plugin.OnceExit
+
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
     Declaration(decl) {
@@ -58,11 +71,6 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
         updateSelector: true
       })
     },
-    // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
-    // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
-    // ':not(#\\#)'
-    // if(selector.type === 'selector' && selector.parent?.type === 'pseudo' && selector.parent.value === ':not')
-    // :not(#\\\\#)
     OnceExit(root, helper) {
       plugin.OnceExit?.(root, helper)
       root.walkRules(/:not\(#\\#\)/, (rule) => {

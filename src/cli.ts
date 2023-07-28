@@ -1,12 +1,28 @@
+import { cac } from 'cac'
 import { createContext } from './core/context'
-const args = process.argv.slice(2)
 
-async function main() {
-  const ctx = await createContext()
-  if (args[0] === 'codegen') {
-    // copy @weapp-core/escape and patch create css
-    ctx.codegen()
+let ctx: Awaited<ReturnType<typeof createContext>>
+
+async function initCtx() {
+  if (ctx) {
+    return ctx
   }
+  ctx = await createContext()
+  return ctx
 }
 
-main()
+const cli = cac()
+
+cli.command('codegen', 'code generate').action(async () => {
+  await initCtx()
+  await ctx.codegen()
+})
+
+cli.command('rollback', 'rollback inject').action(async () => {
+  await initCtx()
+  await ctx.rollback()
+})
+
+cli.help()
+
+cli.parse()
