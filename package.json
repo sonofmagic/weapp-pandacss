@@ -41,7 +41,8 @@
     "ls:pack": "npm pack --dry-run",
     "prepare": "ts-patch install -s",
     "preinstall": "npx only-allow pnpm",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "sync": "cnpm sync weapp-pandacss"
   },
   "packageManager": "pnpm@8.6.9",
   "repository": {
