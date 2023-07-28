@@ -76,7 +76,8 @@ export function inject(content: string) {
   return generate(root)
 }
 
-export async function patch(src: string) {
+export async function patch(src: string, dest?: string) {
   const content = await fs.readFile(src, 'utf8')
-  return inject(content)
+  const { code } = inject(content)
+  await fs.writeFile(dest ?? src, code, 'utf8')
 }
