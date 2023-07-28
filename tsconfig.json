@@ -6,9 +6,11 @@
       "src",
       "test"
     ],
+    "target": "ES6",
     "declaration": false,
     "preserveSymlinks": true,
     "allowSyntheticDefaultImports": true,
+    "noEmitHelpers": false,
     "resolveJsonModule": true,
     "moduleResolution": "Node",
     "module": "ESNext",

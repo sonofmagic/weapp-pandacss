@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run prepare",
+      "name": "[taro-app] prepare",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceRoot}/examples/taro-app"
+    },
+    {
       "command": "npm run dev:weapp",
       "name": "[taro-app] dev:weapp",
       "request": "launch",
