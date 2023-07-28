@@ -28,7 +28,7 @@
     "dev:jd": "npm run build:jd -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "test": "jest",
-    "prepare": "panda codegen & weapp-panda codegen",
+    "prepare": "panda codegen && weapp-panda codegen",
     "open": "weapp open -p dist"
   },
   "browserslist": [

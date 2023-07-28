@@ -5,6 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run dev:weapp",
+      "name": "[taro-app] dev:weapp",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceRoot}/examples/taro-app"
+    },
+    {
+      "command": "npm run dev:mp-weixin",
+      "name": "[uni-app] dev:mp-weixin",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceRoot}/examples/taro-app"
+    },
+    {
       "command": "npm run test:dev",
       "name": "Run test:dev",
       "request": "launch",

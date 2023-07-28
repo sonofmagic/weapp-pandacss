@@ -37,7 +37,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
-    "prepare": "panda codegen & weapp-panda codegen",
+    "prepare": "panda codegen && weapp-panda codegen",
     "open": "weapp open -p dist"
   },
   "dependencies": {

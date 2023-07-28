@@ -3,7 +3,7 @@ import selectorParser, { tag } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
 
 const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
-  const transformer = selectorParser((selectors) => {
+  const utilitiesTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
@@ -12,7 +12,11 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
         // TODO configable
         selector.value = 'view'
       }
+    })
+  })
 
+  const atLayerTransformer = selectorParser((selectors) => {
+    selectors.walk((selector) => {
       if (selector.type === 'pseudo' && selector.value === ':not') {
         for (const x of selector.nodes) {
           if (
@@ -25,28 +29,30 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
                 value: 'n'
               })
             ]
-            // x.nodes = [
-            //   id({
-            //     value: 'n'
-            //   })
-            // ]
-            // x.nodes[0].value = 'n'
           }
         }
       }
-      // if (selector.type === 'id' && selector.value === '#') {
-      //   selector.value = 'n'
-      // }
-      // if(selector.type === 'selector' && selector.parent?.type === 'pseudo' && selector.parent.value === ':not')
-      // :not(#\\\\#)
     })
   })
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
     Rule(rule) {
-      transformer.transformSync(rule, {
+      utilitiesTransformer.transformSync(rule, {
         lossless: false,
         updateSelector: true
+      })
+    },
+    // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
+    // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
+    // ':not(#\\#)'
+    // if(selector.type === 'selector' && selector.parent?.type === 'pseudo' && selector.parent.value === ':not')
+    // :not(#\\\\#)
+    OnceExit(root) {
+      root.walkRules(/:not\(#\\#\)/, (rule) => {
+        atLayerTransformer.transformSync(rule, {
+          lossless: false,
+          updateSelector: true
+        })
       })
     }
   }

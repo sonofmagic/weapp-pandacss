@@ -29,13 +29,31 @@ const config: RollupOptions = {
       format: 'cjs',
       entryFileNames: '[name].cjs',
       chunkFileNames: '[name]-[hash].cjs',
-      interop: 'compat'
+      interop: 'compat',
+      sourcemap: isDev,
+      plugins: [
+        isProd
+          ? visualizer({
+              // emitFile: true,
+              filename: `stats/cjs.html`
+            })
+          : undefined
+      ]
     },
     {
       dir: 'dist',
       format: 'esm',
       entryFileNames: '[name].mjs',
-      chunkFileNames: '[name]-[hash].mjs'
+      chunkFileNames: '[name]-[hash].mjs',
+      sourcemap: isDev,
+      plugins: [
+        isProd
+          ? visualizer({
+              // emitFile: true,
+              filename: `stats/esm.html`
+            })
+          : undefined
+      ]
     }
   ],
   plugins: [
