@@ -10,6 +10,7 @@
   - [跨平台注意事项](#跨平台注意事项)
   - [配置项](#配置项)
   - [参考项目](#参考项目)
+  - [Bugs \& Issues](#bugs--issues)
 
 ## 介绍
 
@@ -81,3 +82,9 @@ module.exports = {
 [Taro-app](./examples/taro-app)
 
 [Uni-app vue3 vite](./examples/uni-app-vue3/)
+
+## Bugs & Issues
+
+目前这个插件正在快速的开发中，如果遇到 `Bug` 或者想提出 `Issue`
+
+[欢迎提交到此处](https://github.com/sonofmagic/weapp-pandacss/issues)

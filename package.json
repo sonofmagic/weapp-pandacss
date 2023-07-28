@@ -1,7 +1,7 @@
 {
   "name": "weapp-pandacss",
   "version": "0.0.0",
-  "description": "weapp-pandacss (WIP)",
+  "description": "to use pandacss in weapp, 在小程序里使用 pandacss",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "types/index.d.ts",
@@ -57,7 +57,21 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "keywords": [],
+  "keywords": [
+    "panda",
+    "pandacss",
+    "css in js",
+    "weapp",
+    "wechat",
+    "mini",
+    "miniprogram",
+    "mini app",
+    "taro",
+    "uni-app",
+    "小程序",
+    "vite",
+    "postcss"
+  ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "MIT",
   "bugs": {
