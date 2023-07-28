@@ -28,7 +28,8 @@ const config: RollupOptions = {
       dir: 'dist',
       format: 'cjs',
       entryFileNames: '[name].cjs',
-      chunkFileNames: '[name]-[hash].cjs'
+      chunkFileNames: '[name]-[hash].cjs',
+      interop: 'compat'
     },
     {
       dir: 'dist',

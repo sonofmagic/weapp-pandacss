@@ -14,5 +14,8 @@
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@pandacss/dev": "^0.8.0",
     "weapp-ide-cli": "^1.0.1"
+  },
+  "dependencies": {
+    "weapp-pandacss": "link:d:/github/weapp-pandacss"
   }
 }

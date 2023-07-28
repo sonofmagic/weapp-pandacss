@@ -43,7 +43,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
   })
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
-    Rule(rule, helper) {
+    Rule(rule) {
       transformer.transformSync(rule, {
         lossless: false,
         updateSelector: true
