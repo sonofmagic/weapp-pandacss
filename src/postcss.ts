@@ -12,6 +12,15 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
         // TODO configable
         selector.value = 'view'
       }
+
+      if (
+        selector.type === 'pseudo' &&
+        selector.value === ':where' &&
+        selector.parent &&
+        selector.parent.parent
+      ) {
+        selector.parent.parent.nodes = selector.nodes // .map((x) => x.nodes[0])
+      }
     })
   })
 
@@ -36,6 +45,9 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
   })
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
+    Declaration(decl) {
+      decl.prop = escape(decl.prop)
+    },
     Rule(rule) {
       utilitiesTransformer.transformSync(rule, {
         lossless: false,

@@ -68,7 +68,7 @@ exports[`postcss > default 1`] = `
   }
 }
 @layer tokens {
-  :where(:root,:host) {
+  :root,:host {
     --borders-none: none;
     --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
     --easings-linear: linear;
@@ -419,10 +419,10 @@ exports[`postcss > default 1`] = `
     --spacing-72: 18rem;
     --spacing-80: 20rem;
     --spacing-96: 24rem;
-    --spacing-0\\\\.5: 0.125rem;
-    --spacing-1\\\\.5: 0.375rem;
-    --spacing-2\\\\.5: 0.625rem;
-    --spacing-3\\\\.5: 0.875rem;
+    --spacing-0wd5: 0.125rem;
+    --spacing-1wd5: 0.375rem;
+    --spacing-2wd5: 0.625rem;
+    --spacing-3wd5: 0.875rem;
     --sizes-0: 0rem;
     --sizes-1: 0.25rem;
     --sizes-2: 0.5rem;
@@ -453,10 +453,10 @@ exports[`postcss > default 1`] = `
     --sizes-72: 18rem;
     --sizes-80: 20rem;
     --sizes-96: 24rem;
-    --sizes-0\\\\.5: 0.125rem;
-    --sizes-1\\\\.5: 0.375rem;
-    --sizes-2\\\\.5: 0.625rem;
-    --sizes-3\\\\.5: 0.875rem;
+    --sizes-0wd5: 0.125rem;
+    --sizes-1wd5: 0.375rem;
+    --sizes-2wd5: 0.625rem;
+    --sizes-3wd5: 0.875rem;
     --sizes-xs: 20rem;
     --sizes-sm: 24rem;
     --sizes-md: 28rem;
@@ -665,7 +665,7 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
   --scale-x: 1;
   --scale-y: 1;
 }
-:where(:root,:host):not(n):not(n) {
+:root,:host {
   --borders-none: none;
   --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
   --easings-linear: linear;
@@ -1016,10 +1016,10 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
   --spacing-72: 18rem;
   --spacing-80: 20rem;
   --spacing-96: 24rem;
-  --spacing-0\\\\.5: 0.125rem;
-  --spacing-1\\\\.5: 0.375rem;
-  --spacing-2\\\\.5: 0.625rem;
-  --spacing-3\\\\.5: 0.875rem;
+  --spacing-0wd5: 0.125rem;
+  --spacing-1wd5: 0.375rem;
+  --spacing-2wd5: 0.625rem;
+  --spacing-3wd5: 0.875rem;
   --sizes-0: 0rem;
   --sizes-1: 0.25rem;
   --sizes-2: 0.5rem;
@@ -1050,10 +1050,10 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
   --sizes-72: 18rem;
   --sizes-80: 20rem;
   --sizes-96: 24rem;
-  --sizes-0\\\\.5: 0.125rem;
-  --sizes-1\\\\.5: 0.375rem;
-  --sizes-2\\\\.5: 0.625rem;
-  --sizes-3\\\\.5: 0.875rem;
+  --sizes-0wd5: 0.125rem;
+  --sizes-1wd5: 0.375rem;
+  --sizes-2wd5: 0.625rem;
+  --sizes-3wd5: 0.875rem;
   --sizes-xs: 20rem;
   --sizes-sm: 24rem;
   --sizes-md: 28rem;
