@@ -1,15 +1,21 @@
 <template>
   <view class="content">
-   
+
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <view :class="aaa">aaa</view>
   </view>
 </template>
 
 <script setup lang="ts">
+import { css } from '@/styled-system/css'
 import { ref } from 'vue'
 const title = ref('Hello')
+const aaa = css({
+  color: 'red.300',
+  bg: 'blue.300'
+})
 </script>
 
 <style>
