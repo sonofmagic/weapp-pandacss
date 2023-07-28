@@ -3,6 +3,8 @@ import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { appRoot } from './util'
 import { createContext } from '@/core/context'
+import { ensureDir } from '@/core/codegen'
+
 describe('context', () => {
   it('no config', async () => {
     // expect(ctx).toBeDefined()
@@ -21,12 +23,10 @@ describe('context', () => {
     expect(ctx.codegen).toBeDefined()
     expect(ctx.pandaConfig).toBeDefined()
     expect(ctx.rollback).toBeDefined()
-    await copyFile(
-      resolve(appRoot, 'styled-system/helpers.mjs'),
-      resolve(appRoot, 'src/styled-system/helpers.mjs')
-    )
-    await ctx.codegen()
     const src = resolve(appRoot, 'src/styled-system/helpers.mjs')
+    await ensureDir(src)
+    await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
+    await ctx.codegen()
     const backup = resolve(appRoot, 'src/styled-system/_helpers.backup.mjs')
     existsSync(src)
     existsSync(backup)
