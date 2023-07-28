@@ -1,6 +1,6 @@
 import { copyFile, readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { appRoot } from './util'
 import { createContext } from '@/core/context'
 import { ensureDir } from '@/core/codegen'
@@ -24,7 +24,7 @@ describe('context', () => {
     expect(ctx.pandaConfig).toBeDefined()
     expect(ctx.rollback).toBeDefined()
     const src = resolve(appRoot, 'src/styled-system/helpers.mjs')
-    await ensureDir(src)
+    await ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
     const backup = resolve(appRoot, 'src/styled-system/_helpers.backup.mjs')
