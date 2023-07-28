@@ -18,55 +18,25 @@ const isDev = process.env.NODE_ENV === 'development'
 const dependencies = pkg.dependencies as Record<string, string> | undefined
 
 const config: RollupOptions = {
-  input: 'src/index.ts',
-  // { index: 'src/index.ts', cli: 'src/cli.ts' },
+  input: {
+    index: 'src/index.ts',
+    cli: 'src/cli.ts',
+    postcss: 'src/postcss.ts'
+  },
   output: [
     {
-      file: pkg.main,
+      dir: 'dist',
       format: 'cjs',
-      sourcemap: isDev,
-      exports: 'auto',
-      plugins: [
-        isProd
-          ? visualizer({
-              filename: 'stats/cjs.html'
-            })
-          : undefined
-      ],
-      esModule: true,
-      generatedCode: {
-        reservedNamesAsProps: false
-      },
-      interop: 'compat',
-      systemNullSetters: false
+      entryFileNames: '[name].cjs',
+      chunkFileNames: '[name]-[hash].cjs'
     },
     {
+      dir: 'dist',
       format: 'esm',
-      file: pkg.module,
-      sourcemap: isDev,
-      plugins: [
-        isProd
-          ? visualizer({
-              filename: 'stats/esm.html'
-            })
-          : undefined
-      ],
-      esModule: true,
-      generatedCode: {
-        reservedNamesAsProps: false
-      },
-      interop: 'compat',
-      systemNullSetters: false
+      entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs'
     }
-    // {
-    //   dir: 'dist',
-    //   format: 'cjs',
-    //   sourcemap: isDev,
-    //   exports: 'auto'
-    // },
   ],
-  makeAbsoluteExternalsRelative: true,
-  preserveEntrySignatures: 'strict',
   plugins: [
     json(),
     nodeResolve({

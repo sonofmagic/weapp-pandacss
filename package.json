@@ -2,9 +2,31 @@
   "name": "weapp-pandacss",
   "version": "0.0.0",
   "description": "weapp-pandacss (WIP)",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./postcss": {
+      "types": "./dist/postcss.d.ts",
+      "require": "./dist/postcss.cjs",
+      "import": "./dist/postcss.mjs"
+    },
+    "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "sideEffects": false,
   "scripts": {
     "dev": "pnpm clean && pnpm dts && cross-env NODE_ENV=development rollup --config rollup.config.ts --configPlugin typescript -w",
     "build": "pnpm clean && pnpm dts && cross-env NODE_ENV=production rollup --config rollup.config.ts --configPlugin typescript",

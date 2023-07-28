@@ -1,7 +1,9 @@
-import { foo } from '@/index'
+import { createContext, postcssPlugin } from '@/index'
 
 describe('[Default]', () => {
-  test('foo should be bar', () => {
-    expect(foo).toBe('bar')
+  test('export default', () => {
+    for (const x of [createContext, postcssPlugin]) {
+      expect(x).toBeDefined()
+    }
   })
 })
