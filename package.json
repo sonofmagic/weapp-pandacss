@@ -43,6 +43,8 @@
   },
   "homepage": "https://github.com/sonofmagic/weapp-pandacss#readme",
   "devDependencies": {
+    "@csstools/postcss-cascade-layers": "^4.0.0",
+    "@pandacss/dev": "^0.8.0",
     "@rollup/plugin-alias": "^5.0.0",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-json": "^6.0.0",
@@ -51,6 +53,8 @@
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.2",
     "@tsconfig/recommended": "^1.0.2",
+    "@types/babel__generator": "^7.6.4",
+    "@types/babel__traverse": "^7.20.1",
     "@types/klaw": "^3.0.3",
     "@types/lodash": "^4.14.196",
     "@types/lodash-es": "^4.17.8",
@@ -79,8 +83,7 @@
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
     "typescript-transform-paths": "^3.4.6",
-    "vitest": "^0.33.0",
-    "@csstools/postcss-cascade-layers": "^4.0.0"
+    "vitest": "^0.33.0"
   },
   "dependencies": {
     "@babel/generator": "^7.22.9",
@@ -93,8 +96,8 @@
     "semver": "^7.5.4"
   },
   "peerDependencies": {
-    "postcss": "^8.4",
-    "@csstools/postcss-cascade-layers": "^4.0.0"
+    "@csstools/postcss-cascade-layers": "^4.0.0",
+    "postcss": "^8.4"
   },
   "bin": {
     "weapp-pandacss": "bin/weapp-pandacss.js",
