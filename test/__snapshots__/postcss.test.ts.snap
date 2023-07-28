@@ -1,12 +1,70 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`postcss > default 1`] = `
-"@layer reset, base, tokens, recipes, utilities;
-@layer base {
-  :root {
+"
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(1turn);
+      transform: rotate(1turn);
+    }
+  }
+  @keyframes ping {
+    100%,75% {
+      opacity: 0;
+      -webkit-transform: scale(2);
+      transform: scale(2);
+    }
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+  @keyframes bounce {
+    0%,100% {
+      -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      -webkit-transform: translateY(-25%);
+      transform: translateY(-25%);
+    }
+    50% {
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      -webkit-transform: none;
+      transform: none;
+    }
+  }:root:not(n) {
     --made-with-panda: \\"🐼\\";
-  }
-  ::-webkit-backdrop {
+  }:not(n)::-webkit-backdrop {
+    --blur: ;
+    --brightness: ;
+    --contrast: ;
+    --grayscale: ;
+    --hue-rotate: ;
+    --invert: ;
+    --saturate: ;
+    --sepia: ;
+    --drop-shadow: ;
+    --backdrop-blur: ;
+    --backdrop-brightness: ;
+    --backdrop-contrast: ;
+    --backdrop-grayscale: ;
+    --backdrop-hue-rotate: ;
+    --backdrop-invert: ;
+    --backdrop-opacity: ;
+    --backdrop-saturate: ;
+    --backdrop-sepia: ;
+    --scroll-snap-strictness: proximity;
+    --border-spacing-x: 0;
+    --border-spacing-y: 0;
+    --translate-x: 0;
+    --translate-y: 0;
+    --rotate: 0;
+    --skew-x: 0;
+    --skew-y: 0;
+    --scale-x: 1;
+    --scale-y: 1;
+  }view:not(n),view:not(n)::after,view:not(n)::before,:not(n)::backdrop {
     --blur: ;
     --brightness: ;
     --contrast: ;
@@ -36,39 +94,7 @@ exports[`postcss > default 1`] = `
     --scale-x: 1;
     --scale-y: 1;
   }
-  view,view::after,view::before,::backdrop {
-    --blur: ;
-    --brightness: ;
-    --contrast: ;
-    --grayscale: ;
-    --hue-rotate: ;
-    --invert: ;
-    --saturate: ;
-    --sepia: ;
-    --drop-shadow: ;
-    --backdrop-blur: ;
-    --backdrop-brightness: ;
-    --backdrop-contrast: ;
-    --backdrop-grayscale: ;
-    --backdrop-hue-rotate: ;
-    --backdrop-invert: ;
-    --backdrop-opacity: ;
-    --backdrop-saturate: ;
-    --backdrop-sepia: ;
-    --scroll-snap-strictness: proximity;
-    --border-spacing-x: 0;
-    --border-spacing-y: 0;
-    --translate-x: 0;
-    --translate-y: 0;
-    --rotate: 0;
-    --skew-x: 0;
-    --skew-y: 0;
-    --scale-x: 1;
-    --scale-y: 1;
-  }
-}
-@layer tokens {
-  :root,:host {
+:root:not(n):not(n),:host:not(n):not(n) {
     --borders-none: none;
     --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
     --easings-linear: linear;
@@ -489,79 +515,44 @@ exports[`postcss > default 1`] = `
     --breakpoints-xl: 1280rpx;
     --breakpoints-2xl: 1536rpx;
   }
-  @-webkit-keyframes spin {
-    to {
+@-webkit-keyframes spin {
+    to:not(n):not(n) {
       -webkit-transform: rotate(1turn);
       transform: rotate(1turn);
     }
   }
-  @keyframes spin {
-    to {
-      -webkit-transform: rotate(1turn);
-      transform: rotate(1turn);
-    }
-  }
-  @-webkit-keyframes ping {
-    100%,75% {
+@-webkit-keyframes ping {
+    100%:not(n):not(n),75%:not(n):not(n) {
       opacity: 0;
       -webkit-transform: scale(2);
       transform: scale(2);
     }
   }
-  @keyframes ping {
-    100%,75% {
-      opacity: 0;
-      -webkit-transform: scale(2);
-      transform: scale(2);
-    }
-  }
-  @-webkit-keyframes pulse {
-    50% {
+@-webkit-keyframes pulse {
+    50%:not(n):not(n) {
       opacity: 0.5;
     }
   }
-  @keyframes pulse {
-    50% {
-      opacity: 0.5;
-    }
-  }
-  @-webkit-keyframes bounce {
-    0%,100% {
+@-webkit-keyframes bounce {
+    0%:not(n):not(n),100%:not(n):not(n) {
       -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
       -webkit-transform: translateY(-25%);
       transform: translateY(-25%);
     }
-    50% {
+    50%:not(n):not(n) {
       -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
       -webkit-transform: none;
       transform: none;
     }
   }
-  @keyframes bounce {
-    0%,100% {
-      -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-      -webkit-transform: translateY(-25%);
-      transform: translateY(-25%);
-    }
-    50% {
-      -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-}
-@layer utilities {
-  .text_redd400 {
+.text_redd400:not(n):not(n):not(n):not(n) {
     color: var(--colors-red-400);
   }
-  .bg_amberd800 {
+.bg_amberd800:not(n):not(n):not(n):not(n) {
     background: var(--colors-amber-800);
   }
-}
 "
 `;
 

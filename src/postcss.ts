@@ -1,6 +1,7 @@
-import type { PluginCreator } from 'postcss'
+import type { PluginCreator, Plugin } from 'postcss'
 import selectorParser, { tag } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
+import creator from '@csstools/postcss-cascade-layers'
 
 const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
   const utilitiesTransformer = selectorParser((selectors) => {
@@ -43,6 +44,9 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
       }
     })
   })
+
+  const plugin = creator() as Plugin
+  // plugin.OnceExit
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
     Declaration(decl) {
@@ -59,7 +63,8 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<any> = () => {
     // ':not(#\\#)'
     // if(selector.type === 'selector' && selector.parent?.type === 'pseudo' && selector.parent.value === ':not')
     // :not(#\\\\#)
-    OnceExit(root) {
+    OnceExit(root, helper) {
+      plugin.OnceExit?.(root, helper)
       root.walkRules(/:not\(#\\#\)/, (rule) => {
         atLayerTransformer.transformSync(rule, {
           lossless: false,
