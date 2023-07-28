@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
 import postcss from 'postcss'
-import parser from 'postcss-selector-parser'
+// import parser from 'postcss-selector-parser'
 import { cssRoot } from './util'
 import postcssPlugin from '@/postcss'
 describe('postcss', () => {
