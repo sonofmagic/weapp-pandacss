@@ -20,6 +20,9 @@ dependencies:
   '@csstools/postcss-cascade-layers':
     specifier: ^4.0.0
     version: 4.0.0(postcss@8.4.27)
+  '@csstools/postcss-is-pseudo-class':
+    specifier: ^4.0.0
+    version: 4.0.0(postcss@8.4.27)
   '@pandacss/config':
     specifier: ^0.9.0
     version: 0.9.0
@@ -586,6 +589,17 @@ packages:
 
   /@csstools/postcss-cascade-layers@4.0.0(postcss@8.4.27):
     resolution: {integrity: sha512-dVPVVqQG0FixjM9CG/+8eHTsCAxRKqmNh6H69IpruolPlnEF1611f2AoLK8TijTSAsqBSclKd4WHs1KUb/LdJw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
+      postcss: 8.4.27
+      postcss-selector-parser: 6.0.13
+    dev: false
+
+  /@csstools/postcss-is-pseudo-class@4.0.0(postcss@8.4.27):
+    resolution: {integrity: sha512-0I6siRcDymG3RrkNTSvHDMxTQ6mDyYE8awkcaHNgtYacd43msl+4ZWDfQ1yZQ/viczVWjqJkLmPiRHSgxn5nZA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4

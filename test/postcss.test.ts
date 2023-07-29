@@ -41,6 +41,13 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('is pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      `.hovercbg_yellowd400:is(:hover,[data-hover]){}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {

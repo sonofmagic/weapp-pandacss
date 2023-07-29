@@ -6,7 +6,8 @@ import selectorParser, {
   Selector
 } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
-import creator from '@csstools/postcss-cascade-layers'
+import _cascadeLayersPlugin from '@csstools/postcss-cascade-layers'
+import _isPseudoPlugin from '@csstools/postcss-is-pseudo-class'
 import { defu } from 'defu'
 import type { IPostcssPluginOptions } from './types'
 import { getPostcssPluginDefaults } from './defaults'
@@ -115,27 +116,34 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
     })
   })
 
-  const plugin = creator() as Plugin
+  const cascadeLayersPlugin = _cascadeLayersPlugin() as Plugin
+  const isPseudoPlugin = _isPseudoPlugin() as Plugin
 
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
-    Declaration(decl) {
-      decl.prop = escape(decl.prop)
-    },
-    Rule(rule) {
-      utilitiesTransformer.transformSync(rule, {
-        lossless: false,
-        updateSelector: true
-      })
-    },
-    OnceExit(root, helper) {
-      plugin.OnceExit?.(root, helper)
-      root.walkRules(/:not\(#\\#\)/, (rule) => {
-        atLayerTransformer.transformSync(rule, {
-          lossless: false,
-          updateSelector: true
-        })
-      })
+    prepare(result) {
+      const isPseudoRule = isPseudoPlugin.prepare?.(result).Rule
+      return {
+        Declaration(decl) {
+          decl.prop = escape(decl.prop)
+        },
+        Rule(rule, helper) {
+          isPseudoRule?.(rule, helper)
+          utilitiesTransformer.transformSync(rule, {
+            lossless: false,
+            updateSelector: true
+          })
+        },
+        OnceExit(root, helper) {
+          cascadeLayersPlugin.OnceExit?.(root, helper)
+          root.walkRules(/:not\(#\\#\)/, (rule) => {
+            atLayerTransformer.transformSync(rule, {
+              lossless: false,
+              updateSelector: true
+            })
+          })
+        }
+      }
     }
   }
 }

@@ -1121,6 +1121,8 @@ page {
 "
 `;
 
+exports[`postcss > is pseudo 1`] = `".hovercbg_yellowd400:hover,.hovercbg_yellowd400[data-hover]{}"`;
+
 exports[`postcss > only :root pseudo 1`] = `"page{}"`;
 
 exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
