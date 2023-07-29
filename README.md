@@ -8,6 +8,7 @@
     - [panda css 安装和配置](#panda-css-安装和配置)
     - [weapp-pandacss 配置](#weapp-pandacss-配置)
   - [跨平台注意事项](#跨平台注意事项)
+  - [小程序预览事项](#小程序预览事项)
   - [配置项](#配置项)
   - [参考项目](#参考项目)
   - [Bugs \& Issues](#bugs--issues)
@@ -72,6 +73,12 @@ module.exports = {
 同时你也可以执行 `weapp-panda rollback` 把 `css` 方法进行回滚到最原始的状态。
 
 当然你恢复到小程序版本也只需要 `weapp-panda codegen`
+
+## 小程序预览事项
+
+当小程序预览时会出现 `Error: 非法的文件，错误信息：invalid file: pages/index/index.js, 565:24, SyntaxError: Unexpected token . if (variants[key]?.[value])` 错误。
+
+这是因为 `panda` 生成的文件 `cva.mjs` 使用了 [`Optional chaining (?.)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)语法，这个语法小程序原生不支持，这时候可以开启勾选 `将JS编译成ES5` 功能再进行预览，或者使用 `babel` 预先进行转义再上传预览。
 
 ## 配置项
 
