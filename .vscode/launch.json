@@ -23,7 +23,7 @@
       "name": "[uni-app] dev:mp-weixin",
       "request": "launch",
       "type": "node-terminal",
-      "cwd": "${workspaceRoot}/examples/taro-app"
+      "cwd": "${workspaceRoot}/examples/uni-app-vue3"
     },
     {
       "command": "npm run test:dev",

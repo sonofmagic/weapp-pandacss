@@ -2,9 +2,17 @@
   <view class="content">
 
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <text class="title" :class="css({
+        bg: 'red.400',
+        '&:hover': {
+          bg: 'orange.400'
+        }
+      })">{{ title }}</text>
     </view>
-    <view :class="aaa">aaa</view>
+    <view :class="[style0, aaa]">aaa</view>
+    <div :class="styles">
+      <p>Hello World</p>
+    </div>
   </view>
 </template>
 
@@ -14,8 +22,21 @@ import { ref } from 'vue'
 const title = ref('Hello')
 const aaa = css({
   color: 'red.300',
-  bg: 'blue.300'
+  bg: 'blue.800'
 })
+
+const styles = css({
+  backgroundColor: 'gainsboro',
+  borderRadius: '9999px',
+  fontSize: '13px',
+  padding: '10px 15px'
+})
+
+const style0 = css({
+  fontSize: '13px',
+  paddingTop: '10px'
+})
+
 </script>
 
 <style>
