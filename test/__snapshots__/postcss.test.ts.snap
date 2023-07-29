@@ -64,7 +64,7 @@ exports[`postcss > default 1`] = `
     --skew-y: 0;
     --scale-x: 1;
     --scale-y: 1;
-  }view:not(n),text:not(n),view:not(n),text:not(n)::after,view:not(n),text:not(n)::before,:not(n)::backdrop {
+  }view:not(n),text:not(n),view:not(n)::after,text:not(n)::after,view:not(n)::before,text:not(n)::before,:not(n)::backdrop {
     --blur: ;
     --brightness: ;
     --contrast: ;
@@ -626,7 +626,7 @@ exports[`postcss > default without layer 1`] = `
   --scale-x: 1;
   --scale-y: 1;
 }
-view,text:not(n),view,text:not(n)::before,view,text:not(n)::after,:not(n)::backdrop {
+view:not(n),text:not(n),view:not(n)::before,text:not(n)::before,view:not(n)::after,text:not(n)::after,:not(n)::backdrop {
   --blur:   ;
   --brightness:   ;
   --contrast:   ;
@@ -1118,3 +1118,7 @@ page {
 }
 "
 `;
+
+exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
+
+exports[`postcss > universal selector 1`] = `" view,text,view::before,text::before,view::after,text::after,::backdrop{}"`;

@@ -13,7 +13,7 @@ export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
     selectorReplacement: {
       cascadeLayers: 'n',
       root: 'page',
-      universal: 'view,text'
+      universal: ['view', 'text'] // 'view,text'
     }
   }
 }

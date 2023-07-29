@@ -20,6 +20,17 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('simple universal selector', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`*{}`)
+    expect(css).toMatchSnapshot()
+  })
+  it('universal selector', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      ` *, *::before, *::after, ::backdrop{}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {

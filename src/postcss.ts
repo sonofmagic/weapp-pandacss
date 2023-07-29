@@ -1,11 +1,22 @@
 import type { PluginCreator, Plugin } from 'postcss'
-import selectorParser, { tag } from 'postcss-selector-parser'
+import selectorParser, {
+  tag,
+  selector as slt,
+  Root,
+  Selector
+} from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
 import creator from '@csstools/postcss-cascade-layers'
 import { defu } from 'defu'
 import type { IPostcssPluginOptions } from './types'
 import { getPostcssPluginDefaults } from './defaults'
 
+function normalizeString(strs: string | string[]) {
+  if (Array.isArray(strs)) {
+    return strs.join(',')
+  }
+  return strs
+}
 // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
 // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
 // ':not(#\\#)' raw: :not(#\\\\#)
@@ -24,8 +35,41 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
-      if (selector.type === 'universal') {
-        selector.value = sr.universal
+      if (
+        selector.type === 'universal' &&
+        selector.parent?.type === 'selector'
+      ) {
+        if (Array.isArray(sr.universal)) {
+          const parent = selector.parent as Selector
+          const idx = parent.nodes.indexOf(selector)
+          if (idx > -1) {
+            const rests = parent.nodes.slice(idx + 1)
+            // root
+            const root = parent.parent as Root | undefined
+            if (root) {
+              const pidx = root.nodes.indexOf(parent)
+              if (pidx > -1) {
+                root.nodes.splice(
+                  pidx,
+                  1,
+                  ...sr.universal.map((x) => {
+                    return slt({
+                      nodes: [
+                        tag({
+                          value: x
+                        }),
+                        ...rests
+                      ],
+                      value: ''
+                    })
+                  })
+                )
+              }
+            }
+          }
+        } else {
+          selector.value = sr.universal
+        }
       }
 
       if (
@@ -39,7 +83,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
         vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
           ? (selector.parent.parent.nodes = [
               tag({
-                value: sr.root
+                value: normalizeString(sr.root)
               })
             ])
           : (selector.parent.parent.nodes = selector.nodes)
