@@ -12,19 +12,20 @@ import { getPostcssPluginDefaults } from './defaults'
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { cascadeLayersSelectorReplacement, universalSelectorReplacement } =
-    defu<Required<IPostcssPluginOptions>, IPostcssPluginOptions[]>(
-      options,
-      getPostcssPluginDefaults()
-    )
-
+  const { selectorReplacement } = defu<
+    Required<IPostcssPluginOptions>,
+    Required<IPostcssPluginOptions>[]
+  >(options, getPostcssPluginDefaults())
+  const sr = selectorReplacement as Required<
+    Required<IPostcssPluginOptions>['selectorReplacement']
+  >
   const utilitiesTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
       if (selector.type === 'universal') {
-        selector.value = universalSelectorReplacement
+        selector.value = sr.universal
       }
 
       if (
@@ -33,7 +34,15 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
         selector.parent &&
         selector.parent.parent
       ) {
-        selector.parent.parent.nodes = selector.nodes // .map((x) => x.nodes[0])
+        // :root,:host
+        const vals = selector.nodes.map((x) => x.toString())
+        vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
+          ? (selector.parent.parent.nodes = [
+              tag({
+                value: sr.root
+              })
+            ])
+          : (selector.parent.parent.nodes = selector.nodes)
       }
     })
   })
@@ -49,7 +58,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
           ) {
             x.nodes = [
               tag({
-                value: cascadeLayersSelectorReplacement
+                value: sr.cascadeLayers
               })
             ]
           }

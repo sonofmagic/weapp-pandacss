@@ -64,7 +64,7 @@ exports[`postcss > default 1`] = `
     --skew-y: 0;
     --scale-x: 1;
     --scale-y: 1;
-  }view:not(n),view:not(n)::after,view:not(n)::before,:not(n)::backdrop {
+  }view:not(n),text:not(n),view:not(n),text:not(n)::after,view:not(n),text:not(n)::before,:not(n)::backdrop {
     --blur: ;
     --brightness: ;
     --contrast: ;
@@ -94,7 +94,7 @@ exports[`postcss > default 1`] = `
     --scale-x: 1;
     --scale-y: 1;
   }
-:root:not(n):not(n),:host:not(n):not(n) {
+page:not(n):not(n) {
     --borders-none: none;
     --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
     --easings-linear: linear;
@@ -626,7 +626,7 @@ exports[`postcss > default without layer 1`] = `
   --scale-x: 1;
   --scale-y: 1;
 }
-view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
+view,text:not(n),view,text:not(n)::before,view,text:not(n)::after,:not(n)::backdrop {
   --blur:   ;
   --brightness:   ;
   --contrast:   ;
@@ -656,7 +656,7 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
   --scale-x: 1;
   --scale-y: 1;
 }
-:root,:host {
+page {
   --borders-none: none;
   --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
   --easings-linear: linear;

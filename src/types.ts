@@ -7,6 +7,9 @@ export interface ICreateContextOptions {
 }
 
 export interface IPostcssPluginOptions {
-  cascadeLayersSelectorReplacement?: string
-  universalSelectorReplacement?: string
+  selectorReplacement?: {
+    cascadeLayers?: string
+    universal?: string
+    root?: string
+  }
 }

@@ -10,7 +10,10 @@ export function getCreateContextDefaults(): Required<ICreateContextOptions> {
 
 export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
   return {
-    cascadeLayersSelectorReplacement: 'n',
-    universalSelectorReplacement: 'view'
+    selectorReplacement: {
+      cascadeLayers: 'n',
+      root: 'page',
+      universal: 'view,text'
+    }
   }
 }
