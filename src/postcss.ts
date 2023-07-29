@@ -36,6 +36,9 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
+      if (selector.type === 'combinator') {
+        selector.value = '+'
+      }
       if (
         selector.type === 'universal' &&
         selector.parent?.type === 'selector'

@@ -48,6 +48,14 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('_peerHover case ', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      `.peer:hover:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500,
+      .peer[data-hover]:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500 {}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {

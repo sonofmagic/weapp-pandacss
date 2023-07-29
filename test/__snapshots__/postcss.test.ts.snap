@@ -2,6 +2,8 @@
 
 exports[`postcss > :root and :host pseudo 1`] = `"page,page{}"`;
 
+exports[`postcss > _peerHover case  1`] = `".peer:hover:not(n):not(n):not(n):not(n)+.peerHovercbg_redd500,.peer[data-hover]:not(n):not(n):not(n):not(n)+.peerHovercbg_redd500 {}"`;
+
 exports[`postcss > default 1`] = `
 "
   @keyframes spin {
