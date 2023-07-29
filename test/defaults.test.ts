@@ -10,9 +10,10 @@ describe('defaults', () => {
   })
 
   it('getPostcssPluginDefaults', () => {
-    const { cascadeLayersSelectorReplacement, universalSelectorReplacement } =
-      getPostcssPluginDefaults()
-    expect(cascadeLayersSelectorReplacement).toBeDefined()
-    expect(universalSelectorReplacement).toBeDefined()
+    const { selectorReplacement } = getPostcssPluginDefaults()
+    expect(selectorReplacement).toBeDefined()
+    expect(selectorReplacement.cascadeLayers).toBeDefined()
+    expect(selectorReplacement.root).toBeDefined()
+    expect(selectorReplacement.universal).toBeDefined()
   })
 })

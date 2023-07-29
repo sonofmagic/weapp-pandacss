@@ -1,39 +1,100 @@
 import type { PluginCreator, Plugin } from 'postcss'
-import selectorParser, { tag } from 'postcss-selector-parser'
+import selectorParser, {
+  tag,
+  selector as slt,
+  Root,
+  Selector
+} from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
-import creator from '@csstools/postcss-cascade-layers'
+import _cascadeLayersPlugin from '@csstools/postcss-cascade-layers'
+import _isPseudoPlugin from '@csstools/postcss-is-pseudo-class'
 import { defu } from 'defu'
 import type { IPostcssPluginOptions } from './types'
 import { getPostcssPluginDefaults } from './defaults'
 
+function normalizeString(strs: string | string[]) {
+  if (Array.isArray(strs)) {
+    return strs.join(',')
+  }
+  return strs
+}
 // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
 // https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
 // ':not(#\\#)' raw: :not(#\\\\#)
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { cascadeLayersSelectorReplacement, universalSelectorReplacement } =
-    defu<Required<IPostcssPluginOptions>, IPostcssPluginOptions[]>(
-      options,
-      getPostcssPluginDefaults()
-    )
-
+  const { selectorReplacement } = defu<
+    Required<IPostcssPluginOptions>,
+    Required<IPostcssPluginOptions>[]
+  >(options, getPostcssPluginDefaults())
+  const sr = selectorReplacement as Required<
+    Required<IPostcssPluginOptions>['selectorReplacement']
+  >
   const utilitiesTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
-      if (selector.type === 'universal') {
-        selector.value = universalSelectorReplacement
+      if (selector.type === 'combinator') {
+        selector.value = '+'
+      }
+      if (
+        selector.type === 'universal' &&
+        selector.parent?.type === 'selector'
+      ) {
+        if (Array.isArray(sr.universal)) {
+          const parent = selector.parent as Selector
+          const idx = parent.nodes.indexOf(selector)
+          if (idx > -1) {
+            const rests = parent.nodes.slice(idx + 1)
+            // root
+            const root = parent.parent as Root | undefined
+            if (root) {
+              const pidx = root.nodes.indexOf(parent)
+              if (pidx > -1) {
+                root.nodes.splice(
+                  pidx,
+                  1,
+                  ...sr.universal.map((x) => {
+                    return slt({
+                      nodes: [
+                        tag({
+                          value: x
+                        }),
+                        ...rests
+                      ],
+                      value: ''
+                    })
+                  })
+                )
+              }
+            }
+          }
+        } else {
+          selector.value = sr.universal
+        }
       }
 
-      if (
-        selector.type === 'pseudo' &&
-        selector.value === ':where' &&
-        selector.parent &&
-        selector.parent.parent
-      ) {
-        selector.parent.parent.nodes = selector.nodes // .map((x) => x.nodes[0])
+      if (selector.type === 'pseudo' && selector.parent) {
+        // where case
+        if (selector.value === ':where' && selector.parent.parent) {
+          // :root,:host
+          const vals = selector.nodes.map((x) => x.toString())
+          vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
+            ? (selector.parent.parent.nodes = [
+                tag({
+                  value: normalizeString(sr.root)
+                })
+              ])
+            : (selector.parent.parent.nodes = selector.nodes)
+        } else if (selector.value === ':root' || selector.value === ':host') {
+          selector.parent.nodes = [
+            tag({
+              value: normalizeString(sr.root)
+            })
+          ]
+        }
       }
     })
   })
@@ -49,7 +110,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
           ) {
             x.nodes = [
               tag({
-                value: cascadeLayersSelectorReplacement
+                value: sr.cascadeLayers
               })
             ]
           }
@@ -58,27 +119,34 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
     })
   })
 
-  const plugin = creator() as Plugin
+  const cascadeLayersPlugin = _cascadeLayersPlugin() as Plugin
+  const isPseudoPlugin = _isPseudoPlugin() as Plugin
 
   return {
     postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
-    Declaration(decl) {
-      decl.prop = escape(decl.prop)
-    },
-    Rule(rule) {
-      utilitiesTransformer.transformSync(rule, {
-        lossless: false,
-        updateSelector: true
-      })
-    },
-    OnceExit(root, helper) {
-      plugin.OnceExit?.(root, helper)
-      root.walkRules(/:not\(#\\#\)/, (rule) => {
-        atLayerTransformer.transformSync(rule, {
-          lossless: false,
-          updateSelector: true
-        })
-      })
+    prepare(result) {
+      const isPseudoRule = isPseudoPlugin.prepare?.(result).Rule
+      return {
+        Declaration(decl) {
+          decl.prop = escape(decl.prop)
+        },
+        Rule(rule, helper) {
+          isPseudoRule?.(rule, helper)
+          utilitiesTransformer.transformSync(rule, {
+            lossless: false,
+            updateSelector: true
+          })
+        },
+        OnceExit(root, helper) {
+          cascadeLayersPlugin.OnceExit?.(root, helper)
+          root.walkRules(/:not\(#\\#\)/, (rule) => {
+            atLayerTransformer.transformSync(rule, {
+              lossless: false,
+              updateSelector: true
+            })
+          })
+        }
+      }
     }
   }
 }

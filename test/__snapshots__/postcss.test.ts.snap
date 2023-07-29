@@ -1,5 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`postcss > :root and :host pseudo 1`] = `"page,page{}"`;
+
+exports[`postcss > _peerHover case  1`] = `".peer:hover:not(n):not(n):not(n):not(n)+.peerHovercbg_redd500,.peer[data-hover]:not(n):not(n):not(n):not(n)+.peerHovercbg_redd500 {}"`;
+
 exports[`postcss > default 1`] = `
 "
   @keyframes spin {
@@ -33,7 +37,7 @@ exports[`postcss > default 1`] = `
       -webkit-transform: none;
       transform: none;
     }
-  }:root:not(n) {
+  }page:not(n) {
     --made-with-panda: \\"🐼\\";
   }:not(n)::-webkit-backdrop {
     --blur: ;
@@ -64,7 +68,7 @@ exports[`postcss > default 1`] = `
     --skew-y: 0;
     --scale-x: 1;
     --scale-y: 1;
-  }view:not(n),view:not(n)::after,view:not(n)::before,:not(n)::backdrop {
+  }view:not(n),text:not(n),view:not(n)::after,text:not(n)::after,view:not(n)::before,text:not(n)::before,:not(n)::backdrop {
     --blur: ;
     --brightness: ;
     --contrast: ;
@@ -94,7 +98,7 @@ exports[`postcss > default 1`] = `
     --scale-x: 1;
     --scale-y: 1;
   }
-:root:not(n):not(n),:host:not(n):not(n) {
+page:not(n):not(n) {
     --borders-none: none;
     --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
     --easings-linear: linear;
@@ -593,7 +597,7 @@ exports[`postcss > default without layer 1`] = `
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-:root:not(n) {
+page {
   --made-with-panda: \\"🐼\\";
 }
 :not(n)::-webkit-backdrop {
@@ -626,7 +630,7 @@ exports[`postcss > default without layer 1`] = `
   --scale-x: 1;
   --scale-y: 1;
 }
-view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
+view:not(n),text:not(n),view:not(n)::before,text:not(n)::before,view:not(n)::after,text:not(n)::after,:not(n)::backdrop {
   --blur:   ;
   --brightness:   ;
   --contrast:   ;
@@ -656,7 +660,7 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
   --scale-x: 1;
   --scale-y: 1;
 }
-:root,:host {
+page {
   --borders-none: none;
   --easings-default: cubic-bezier(0.4, 0, 0.2, 1);
   --easings-linear: linear;
@@ -1118,3 +1122,11 @@ view:not(n),view:not(n)::before,view:not(n)::after,:not(n)::backdrop {
 }
 "
 `;
+
+exports[`postcss > is pseudo 1`] = `".hovercbg_yellowd400:hover,.hovercbg_yellowd400[data-hover]{}"`;
+
+exports[`postcss > only :root pseudo 1`] = `"page{}"`;
+
+exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
+
+exports[`postcss > universal selector 1`] = `" view,text,view::before,text::before,view::after,text::after,::backdrop{}"`;

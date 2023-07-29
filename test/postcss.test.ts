@@ -20,6 +20,42 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('simple universal selector', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`*{}`)
+    expect(css).toMatchSnapshot()
+  })
+  it('universal selector', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      ` *, *::before, *::after, ::backdrop{}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
+  it(':root and :host pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`:root,:host{}`)
+    expect(css).toMatchSnapshot()
+  })
+
+  it('only :root pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`:root{}`)
+    expect(css).toMatchSnapshot()
+  })
+
+  it('is pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      `.hovercbg_yellowd400:is(:hover,[data-hover]){}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
+  it('_peerHover case ', async () => {
+    const { css } = await postcss([postcssPlugin]).process(
+      `.peer:hover:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500,
+      .peer[data-hover]:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500 {}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {
