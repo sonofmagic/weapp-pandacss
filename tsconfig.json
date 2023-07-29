@@ -8,9 +8,7 @@
     ],
     "target": "ES6",
     "declaration": false,
-    "preserveSymlinks": true,
     "allowSyntheticDefaultImports": true,
-    "noEmitHelpers": false,
     "resolveJsonModule": true,
     "moduleResolution": "Node",
     "module": "ESNext",
@@ -28,8 +26,7 @@
       }
     ],
     "types": [
-      "vitest/globals",
-      "node"
+      "vitest/globals"
     ]
   },
   "exclude": [
