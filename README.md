@@ -10,7 +10,7 @@
   - [跨平台注意事项](#跨平台注意事项)
   - [小程序预览事项](#小程序预览事项)
   - [配置项](#配置项)
-  - [参考项目](#参考项目)
+  - [参考示例](#参考示例)
   - [Bugs \& Issues](#bugs--issues)
 
 ## 介绍
@@ -30,7 +30,7 @@ npm install -D @pandacss/dev weapp-pandacss # 或者 yarn / pnpm
 npx panda init
 ```
 
-接着你按照 `panda css` 的安装教程，按照你不同的框架走一遍: <https://panda-css.com/docs/installation/postcss>
+接着你按照 `panda css` 的安装教程，按照你不同的框架注册方式走一遍: <https://panda-css.com/docs/installation/postcss>
 
 配置好了之后，此时 `h5` 平台已经生效了，接下来进入 `weapp-pandacss` 的插件配置，不用担心，也非常简单。
 
@@ -60,7 +60,13 @@ module.exports = {
 
 > 注意这里必须用 `&&` 而不能用 `&`，`&` 任务执行会并行不会等待，而 `&&` 会等待前一个执行完成再执行后一条命令
 
-然后，你再手动执行一下 `npm run prepare`, 重新生成 `styled-system`，`panda css` 就兼容小程序平台啦，是不是很简单?
+然后，你再手动执行一下
+
+```bash
+npm run prepare
+```
+
+重新生成 `styled-system`，这样 `weapp-pandacss` 相关的转义代码就被注入进去了，此时 `panda css` 生成的类就兼容小程序平台啦，是不是很简单?
 
 ## 跨平台注意事项
 
@@ -82,9 +88,9 @@ module.exports = {
 
 ## 配置项
 
-详见 [types](./src//types.ts)
+详见 [types](./src/types.ts)
 
-## 参考项目
+## 参考示例
 
 [Taro-app](./examples/taro-app)
 
