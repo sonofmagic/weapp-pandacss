@@ -72,21 +72,25 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
         }
       }
 
-      if (
-        selector.type === 'pseudo' &&
-        selector.value === ':where' &&
-        selector.parent &&
-        selector.parent.parent
-      ) {
-        // :root,:host
-        const vals = selector.nodes.map((x) => x.toString())
-        vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
-          ? (selector.parent.parent.nodes = [
-              tag({
-                value: normalizeString(sr.root)
-              })
-            ])
-          : (selector.parent.parent.nodes = selector.nodes)
+      if (selector.type === 'pseudo' && selector.parent) {
+        // where case
+        if (selector.value === ':where' && selector.parent.parent) {
+          // :root,:host
+          const vals = selector.nodes.map((x) => x.toString())
+          vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
+            ? (selector.parent.parent.nodes = [
+                tag({
+                  value: normalizeString(sr.root)
+                })
+              ])
+            : (selector.parent.parent.nodes = selector.nodes)
+        } else if (selector.value === ':root' || selector.value === ':host') {
+          selector.parent.nodes = [
+            tag({
+              value: normalizeString(sr.root)
+            })
+          ]
+        }
       }
     })
   })

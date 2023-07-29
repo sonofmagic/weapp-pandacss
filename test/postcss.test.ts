@@ -31,6 +31,16 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it(':root and :host pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`:root,:host{}`)
+    expect(css).toMatchSnapshot()
+  })
+
+  it('only :root pseudo', async () => {
+    const { css } = await postcss([postcssPlugin]).process(`:root{}`)
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {

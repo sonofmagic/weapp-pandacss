@@ -1,5 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`postcss > :root and :host pseudo 1`] = `"page,page{}"`;
+
 exports[`postcss > default 1`] = `
 "
   @keyframes spin {
@@ -33,7 +35,7 @@ exports[`postcss > default 1`] = `
       -webkit-transform: none;
       transform: none;
     }
-  }:root:not(n) {
+  }page:not(n) {
     --made-with-panda: \\"🐼\\";
   }:not(n)::-webkit-backdrop {
     --blur: ;
@@ -593,7 +595,7 @@ exports[`postcss > default without layer 1`] = `
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-:root:not(n) {
+page {
   --made-with-panda: \\"🐼\\";
 }
 :not(n)::-webkit-backdrop {
@@ -1118,6 +1120,8 @@ page {
 }
 "
 `;
+
+exports[`postcss > only :root pseudo 1`] = `"page{}"`;
 
 exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
 
