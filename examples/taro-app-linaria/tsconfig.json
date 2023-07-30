@@ -22,19 +22,9 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "styled-system/*": [
-        "styled-system/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "./src",
-    "./types",
-    "./config",
-    "styled-system"
-  ],
+  "include": ["./src", "./types", "./config"],
   "compileOnSave": false
 }

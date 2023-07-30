@@ -9,6 +9,7 @@ export default defineConfig({
         replacement: path.resolve(__dirname, './src')
       }
     ],
+    include: ['test/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
     globals: true,
     coverage: {
       enabled: true,

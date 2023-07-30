@@ -74,6 +74,7 @@ import { defineConfig } from "@pandacss/dev"
 export default defineConfig({
   // 小程序不需要
   preflight: process.env.TARO_ENV === 'h5',
+  // ⚠️这里，假如你使用 vue，记得把 vue 文件格式包括进来！！！
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
   exclude: [],
   theme: {
@@ -95,7 +96,7 @@ export default defineConfig({
 }
 ```
 
-这样我们每次重新 `npm i / yarn /pnpm i` 的时候，都会执行这个方法，重新生成 `styled-system`，当然你也可以直接通过 `npm run prepare` 直接执行这个脚本。
+这样我们每次重新 `npm i/yarn/pnpm i` 的时候，都会执行这个方法，重新生成 `styled-system`，当然你也可以直接通过 `npm run prepare` 直接执行这个脚本。
 
 #### 4. 全局 css 注册 pandacss
 

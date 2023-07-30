@@ -1,9 +1,14 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { deleteAsync } from 'del'
-import { appRoot } from './util'
+import { readWantedLockfile } from '@pnpm/lockfile-file'
+import { appRoot, root } from './util'
 import { getPandacssConfig } from '@/core/config'
-import { getWeappCoreEscapeDir, copyEscape } from '@/core/codegen'
+import {
+  getWeappCoreEscapeDir,
+  copyEscape,
+  getPandaVersion
+} from '@/core/codegen'
 describe('codegen', () => {
   it('has install WeappCoreEscape', () => {
     const dir = getWeappCoreEscapeDir()
@@ -23,5 +28,18 @@ describe('codegen', () => {
     for (const filename of res) {
       expect(fs.existsSync(filename)).toBe(true)
     }
+  })
+
+  it('getPandaVersion', async () => {
+    const lock = await readWantedLockfile(root, {
+      ignoreIncompatible: true
+    })
+    expect(lock).toBeDefined()
+    const versionString =
+      lock?.importers['.'].devDependencies?.['@pandacss/dev']
+
+    expect(versionString).toBeDefined()
+    const idx = versionString?.indexOf('(')
+    expect(getPandaVersion()).toBe(versionString?.slice(0, idx))
   })
 })

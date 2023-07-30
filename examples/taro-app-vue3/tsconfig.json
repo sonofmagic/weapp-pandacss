@@ -15,16 +15,13 @@
     "sourceMap": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
       "styled-system/*": [
         "styled-system/*"
       ]
@@ -33,7 +30,7 @@
   "include": [
     "./src",
     "./types",
-    "./config",
+    "components.d.ts",
     "styled-system"
   ],
   "compileOnSave": false
