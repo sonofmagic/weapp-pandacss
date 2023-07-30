@@ -1,7 +1,9 @@
+import { Button as NButton, Cell } from '@nutui/nutui-react-taro'
 import { View, Text, Button, Input } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-import { css, cx } from '@styled-system/css'
+import { css, cx } from 'styled-system/css'
 import './index.scss'
+
 
 const cardStyles = css({
   borderWidth: '1px',
@@ -36,7 +38,20 @@ export default function Index() {
   const items = [1, 2, 3, 4, 5, 6]
 
   return (
+    // nutui 样式错乱？
     <View>
+      <Cell title='我是标题' description='我是描述' extra='描述文字' />
+      <View>
+        <NButton openType='share'>分享给好友</NButton>
+        <NButton openType='openSetting'>打开授权设置页</NButton>
+        <NButton type='primary'>主要按钮</NButton>
+        <NButton type='info'>信息按钮</NButton>
+        <NButton type='default'>默认按钮</NButton>
+        <NButton type='danger'>危险按钮</NButton>
+        <NButton type='warning'>警告按钮</NButton>
+        <NButton type='success'>成功按钮</NButton>
+      </View>
+
       <View
         className={css({
           color: 'red.400',

@@ -25,15 +25,16 @@
       "@/*": [
         "src/*"
       ],
-      "@styled-system/*": [
-        "src/styled-system/*"
+      "styled-system/*": [
+        "styled-system/*"
       ]
     }
   },
   "include": [
     "./src",
     "./types",
-    "./config"
+    "./config",
+    "styled-system"
   ],
   "compileOnSave": false
 }
