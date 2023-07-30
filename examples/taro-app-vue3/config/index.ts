@@ -1,6 +1,6 @@
+import path from 'node:path'
 import Components from 'unplugin-vue-components/webpack'
 import NutUIResolver from '@nutui/nutui-taro/dist/resolver'
-
 const config = {
   projectName: 'taro-app-vue3',
   date: '2023-7-30',
@@ -23,6 +23,9 @@ const config = {
   copy: {
     patterns: [],
     options: {}
+  },
+  alias: {
+    'styled-system': path.resolve(__dirname, '..', 'styled-system')
   },
   framework: 'vue3',
   compiler: {

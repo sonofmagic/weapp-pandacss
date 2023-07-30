@@ -28,7 +28,7 @@
     "dev:jd": "npm run build:jd -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "open": "weapp open -p dist",
-    "prepare": ""
+    "prepare": "panda codegen && weapp-panda codegen"
   },
   "browserslist": [
     "last 3 versions",

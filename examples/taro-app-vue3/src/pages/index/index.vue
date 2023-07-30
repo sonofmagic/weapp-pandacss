@@ -3,23 +3,34 @@
     <view>
       <img src="" alt="">
     </view>
-    {{ msg }} <Dongdong />
+    <view :class="styles"> {{ msg }}</view>
+
+    <Dongdong />
     <view class="btn">
       <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
     </view>
-    <nut-toast :msg="msg2" v-model:visible="show" :type="type" :cover="cover"/>
+    <nut-toast :msg="msg2" v-model:visible="show" :type="type" :cover="cover" />
   </view>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue';
 import { Dongdong } from '@nutui/icons-vue-taro';
+import { css } from 'styled-system/css'
 export default {
   name: 'Index',
   components: {
     Dongdong
   },
   setup() {
+
+    const styles = css({
+      bg: "yellow.200",
+      rounded: "9999px",
+      fontSize: "90px",
+      p: "10px 15px",
+      color: "pink.500",
+    });
     const state = reactive({
       msg: '欢迎使用 NutUI4.0 开发小程序',
       msg2: '你成功了～',
@@ -37,7 +48,8 @@ export default {
 
     return {
       ...toRefs(state),
-      handleClick
+      handleClick,
+      styles
     }
   }
 }
