@@ -14,6 +14,6 @@ describe('config', () => {
       cwd: taroAppRoot
     })
     expect(config).toBeDefined()
-    expect(config.config.outdir === 'src/styled-system').toBe(true)
+    expect(config.config.outdir === 'styled-system').toBe(true)
   })
 })

@@ -14,6 +14,11 @@ export async function ensureDir(p: string) {
 export function getWeappCoreEscapeDir() {
   return path.dirname(require.resolve('@weapp-core/escape'))
 }
+
+export function getPandaVersion() {
+  return require(require.resolve('@pandacss/dev/package.json')).version
+}
+
 // dirName: string = 'weapp-panda'
 export async function copyEscape(destDir: string) {
   const result: string[] = []
