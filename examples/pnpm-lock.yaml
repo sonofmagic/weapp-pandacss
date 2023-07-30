@@ -15,6 +15,9 @@ importers:
       '@pandacss/dev':
         specifier: ^0.9.0
         version: 0.9.0(@internationalized/date@3.3.0)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.9.6)(typescript@5.1.6)
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       weapp-ide-cli:
         specifier: ^1.0.1
         version: 1.0.1
@@ -223,6 +226,9 @@ importers:
       '@tarojs/taro':
         specifier: 3.6.11
         version: 3.6.11(@types/react@18.2.17)(postcss@8.4.27)(vue@3.3.4)
+      polished:
+        specifier: ^4.2.2
+        version: 4.2.2
       react:
         specifier: ^18.0.0
         version: 18.2.0
@@ -16425,6 +16431,13 @@ packages:
   /pngjs@3.4.0:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
+    dev: false
+
+  /polished@4.2.2:
+    resolution: {integrity: sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/runtime': 7.22.6
     dev: false
 
   /postcss-calc@8.2.4(postcss@8.4.27):

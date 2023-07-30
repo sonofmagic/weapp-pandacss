@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@pandacss/dev": "^0.9.0",
+    "cross-env": "^7.0.3",
     "weapp-ide-cli": "^1.0.1"
   },
   "dependencies": {
