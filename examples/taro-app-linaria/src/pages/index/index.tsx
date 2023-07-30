@@ -1,16 +1,34 @@
-import { View, Text } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
+import { styled } from '@linaria/react'
+import { css } from '@linaria/core'
+import { View, ViewProps } from '@tarojs/components'
+
+import React from 'react'
 import './index.scss'
 
-export default function Index() {
+declare type Component<TProps> =
+  | ((props: TProps) => any)
+  | {
+      new (props: TProps): any
+    }
 
-  useLoad(() => {
-    console.log('Page loaded.')
-  })
+type VPS = ViewProps & { style?: React.CSSProperties }
+type TP = VPS & { color: string }
+const Title = styled<TP, VPS, Component<TP>>(View)`
+  color: ${(props) => props.color};
+`
 
+const style = css`
+  color: yellow;
+  background: blue;
+`
+
+const Index: React.FC = () => {
   return (
-    <View className='index'>
-      <Text>Hello world!</Text>
-    </View>
+    <>
+      <Title color='red'>Hello World!</Title>
+      <View className={style}>style</View>
+    </>
   )
 }
+
+export default Index

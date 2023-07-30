@@ -55,6 +55,13 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
+        chain.module
+          .rule('script')
+          .use('linariaLoader')
+          .loader('@linaria/webpack-loader')
+          .options({
+            sourceMap: process.env.NODE_ENV !== 'production',
+          })
       }
     },
     h5: {
@@ -84,6 +91,14 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
+
+        chain.module
+          .rule('script')
+          .use('linariaLoader')
+          .loader('@linaria/webpack-loader')
+          .options({
+            sourceMap: process.env.NODE_ENV !== 'production',
+          })
       }
     },
     rn: {

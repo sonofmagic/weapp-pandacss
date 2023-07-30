@@ -38,6 +38,10 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
+    "@linaria/babel-preset": "^4.5.4",
+    "@linaria/core": "^4.5.4",
+    "@linaria/react": "^4.5.4",
+    "@linaria/webpack-loader": "^4.5.4",
     "@tarojs/components": "3.6.11",
     "@tarojs/helper": "3.6.11",
     "@tarojs/plugin-framework-react": "3.6.11",
