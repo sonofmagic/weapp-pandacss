@@ -2246,6 +2246,10 @@ exports[`postcss > is pseudo 1`] = `".hovercbg_yellowd400:hover,.hovercbg_yellow
 
 exports[`postcss > only :root pseudo 1`] = `"page{}"`;
 
+exports[`postcss > should not remove custom :not 1`] = `".peer:not(.aa):not(n){}"`;
+
+exports[`postcss > should not remove custom :not removeNegationPseudoClass true 1`] = `".peer:not(.aa){}"`;
+
 exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
 
 exports[`postcss > simple universal selector removeNegationPseudoClass true 1`] = `"view,text{}"`;

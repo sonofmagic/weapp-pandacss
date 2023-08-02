@@ -104,6 +104,22 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('should not remove custom :not', async () => {
+    const { css } = await postcss([
+      postcssPlugin({
+        removeNegationPseudoClass: false
+      })
+    ]).process(`.peer:not(.aa):not(#\\#){}`)
+    expect(css).toMatchSnapshot()
+  })
+
+  it('should not remove custom :not removeNegationPseudoClass true', async () => {
+    const { css } = await postcss([postcssPlugin()]).process(
+      `.peer:not(.aa):not(#\\#){}`
+    )
+    expect(css).toMatchSnapshot()
+  })
+
   // it('... :where', () => {
   //   const t = parser((selectors) => {
   //     selectors.walk((selector) => {

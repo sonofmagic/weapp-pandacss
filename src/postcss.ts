@@ -102,21 +102,21 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   const atLayerTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'pseudo' && selector.value === ':not') {
-        if (removeNegationPseudoClass) {
-          selector.remove()
-          return
-        }
         for (const x of selector.nodes) {
           if (
             x.nodes.length === 1 &&
             x.nodes[0].type === 'id' &&
             x.nodes[0].value === '#'
           ) {
-            x.nodes = [
-              tag({
-                value: sr.cascadeLayers
-              })
-            ]
+            if (removeNegationPseudoClass) {
+              selector.remove()
+            } else {
+              x.nodes = [
+                tag({
+                  value: sr.cascadeLayers
+                })
+              ]
+            }
           }
         }
       }
