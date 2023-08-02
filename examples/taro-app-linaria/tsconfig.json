@@ -6,6 +6,7 @@
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "outDir": "lib",
@@ -22,9 +23,15 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["./src", "./types", "./config"],
+  "include": [
+    "./src",
+    "./types",
+    "./config"
+  ],
   "compileOnSave": false
 }

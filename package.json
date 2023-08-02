@@ -42,9 +42,11 @@
     "prepare": "ts-patch install -s",
     "preinstall": "npx only-allow pnpm",
     "semantic-release": "semantic-release",
-    "sync": "cnpm sync weapp-pandacss"
+    "sync": "cnpm sync weapp-pandacss",
+    "gen:opt": "typedoc --out docs src/types.ts",
+    "preview": "vite preview docs --outDir ."
   },
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.11",
   "repository": {
     "type": "git",
     "url": "https://github.com/sonofmagic/weapp-pandacss.git"
@@ -61,7 +63,7 @@
   "keywords": [
     "panda",
     "pandacss",
-    "css in js",
+    "css-in-js",
     "weapp",
     "wechat",
     "mini",
@@ -78,7 +80,7 @@
   "bugs": {
     "url": "https://github.com/sonofmagic/weapp-pandacss/issues"
   },
-  "homepage": "https://github.com/sonofmagic/weapp-pandacss#readme",
+  "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
   "devDependencies": {
     "@pandacss/dev": "^0.9.0",
     "@pnpm/lockfile-file": "^8.1.2",
@@ -97,10 +99,10 @@
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.5",
     "@types/semantic-release": "^20.0.1",
-    "@vitest/coverage-v8": "^0.33.0",
+    "@vitest/coverage-v8": "^0.34.1",
     "colorette": "^2.0.20",
     "cross-env": "^7.0.3",
-    "dedent": "^1.3.0",
+    "dedent": "^1.5.1",
     "defu": "^6.1.2",
     "del": "^7.0.0",
     "eslint": "8.46.0",
@@ -123,9 +125,11 @@
     "ts-patch": "^3.0.2",
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.6.1",
+    "typedoc": "^0.24.8",
     "typescript": "^5.1.6",
     "typescript-transform-paths": "^3.4.6",
-    "vitest": "^0.33.0"
+    "vite": "^4.4.8",
+    "vitest": "^0.34.1"
   },
   "dependencies": {
     "@babel/generator": "^7.22.9",

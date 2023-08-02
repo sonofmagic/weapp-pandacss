@@ -18,6 +18,9 @@ export default defineConfig(async (merge, { command, mode }) => {
     sourceRoot: 'src',
     outputRoot: 'dist',
     plugins: [],
+    terser: {
+      enable: false
+    },
     defineConstants: {
     },
     copy: {

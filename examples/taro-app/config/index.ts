@@ -40,7 +40,7 @@ export default defineConfig(async (merge, { command, mode }) => {
     compiler: {
       type: 'webpack5',
       prebundle: {
-        enable: false
+        enable: process.env.TARO_ENV === 'h5'
       }
     },
     cache: {

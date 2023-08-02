@@ -2,8 +2,10 @@ import { Button as NButton, Cell } from '@nutui/nutui-react-taro'
 import { View, Text, Button, Input } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import { css, cx } from 'styled-system/css'
+import { styled } from 'styled-system/jsx'
 import './index.scss'
 
+const StyledView = styled(View)
 
 const cardStyles = css({
   borderWidth: '1px',
@@ -40,6 +42,7 @@ export default function Index() {
   return (
     // nutui 样式错乱？
     <View>
+      <StyledView bg='blue.500'>StyledView</StyledView>
       <Cell title='我是标题' description='我是描述' extra='描述文字' />
       <View>
         <NButton openType='share'>分享给好友</NButton>
@@ -123,12 +126,12 @@ export default function Index() {
         大大说
       </View>
 
-      <View
+      {/* <View
         className={css({
           '&[data-state=closed]': { color: 'red.300' },
           '& > *': { margin: '2' }
         })}
-      />
+      /> */}
 
       <View
         className={css({

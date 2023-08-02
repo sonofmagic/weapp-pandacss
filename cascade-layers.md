@@ -1,3 +1,4 @@
+# 辅助文档
 
 ## 为什么需要 `@csstools/postcss-cascade-layers`
 
@@ -22,3 +23,9 @@
 ```
 
 > 具体原因详见 `postcss-load-config` 的加载顺序章节： <https://github.com/postcss/postcss-load-config#ordering>
+
+另外 `@csstools/postcss-cascade-layers` 默认会把 `@layer` 指令按照优先级添加 `:not(#\#)` 选择器来提升优先级。
+
+详见 `https://www.npmjs.com/package/@csstools/postcss-cascade-layers`
+
+这里由于 `:not(#\#)` 有小程序不兼容的字符，所以插件本身把它转换成了 `:not(n)`

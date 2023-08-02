@@ -24,7 +24,7 @@ function normalizeString(strs: string | string[]) {
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { selectorReplacement } = defu<
+  const { selectorReplacement, removeNegationPseudoClass } = defu<
     Required<IPostcssPluginOptions>,
     Required<IPostcssPluginOptions>[]
   >(options, getPostcssPluginDefaults())
@@ -108,11 +108,15 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
             x.nodes[0].type === 'id' &&
             x.nodes[0].value === '#'
           ) {
-            x.nodes = [
-              tag({
-                value: sr.cascadeLayers
-              })
-            ]
+            if (removeNegationPseudoClass) {
+              selector.remove()
+            } else {
+              x.nodes = [
+                tag({
+                  value: sr.cascadeLayers
+                })
+              ]
+            }
           }
         }
       }
