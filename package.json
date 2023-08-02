@@ -80,7 +80,7 @@
   "bugs": {
     "url": "https://github.com/sonofmagic/weapp-pandacss/issues"
   },
-  "homepage": "https://github.com/sonofmagic/weapp-pandacss#readme",
+  "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
   "devDependencies": {
     "@pandacss/dev": "^0.9.0",
     "@pnpm/lockfile-file": "^8.1.2",

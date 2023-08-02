@@ -245,7 +245,7 @@ npm run prepare
 
 ## 配置项
 
-详见 [types](./src/types.ts)
+详见 <https://sonofmagic.github.io/weapp-pandacss/>
 
 ## 参考示例
 
