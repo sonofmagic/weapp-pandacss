@@ -42,7 +42,8 @@
     "prepare": "ts-patch install -s",
     "preinstall": "npx only-allow pnpm",
     "semantic-release": "semantic-release",
-    "sync": "cnpm sync weapp-pandacss"
+    "sync": "cnpm sync weapp-pandacss",
+    "gen:opt": "typedoc --plugin typedoc-plugin-markdown --out docs src/types.ts"
   },
   "packageManager": "pnpm@8.6.11",
   "repository": {
@@ -123,6 +124,8 @@
     "ts-patch": "^3.0.2",
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.6.1",
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "^5.1.6",
     "typescript-transform-paths": "^3.4.6",
     "vitest": "^0.34.1"

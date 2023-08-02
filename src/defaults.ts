@@ -14,6 +14,7 @@ export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
       cascadeLayers: 'n',
       root: 'page',
       universal: ['view', 'text'] // 'view,text'
-    }
+    },
+    removeNegationPseudoClass: true
   }
 }

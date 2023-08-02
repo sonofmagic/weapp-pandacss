@@ -12,4 +12,5 @@ export interface IPostcssPluginOptions {
     universal?: string | string[]
     root?: string | string[]
   }
+  removeNegationPseudoClass?: boolean
 }

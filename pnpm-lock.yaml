@@ -166,6 +166,12 @@ devDependencies:
   tslib:
     specifier: ^2.6.1
     version: 2.6.1
+  typedoc:
+    specifier: ^0.24.8
+    version: 0.24.8(typescript@5.1.6)
+  typedoc-plugin-markdown:
+    specifier: ^3.15.4
+    version: 3.15.4(typedoc@0.24.8)
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
@@ -1880,7 +1886,7 @@ packages:
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 4.0.1
-      execa: 7.1.1
+      execa: 7.2.0
       fs-extra: 11.1.1
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
@@ -4134,7 +4140,7 @@ packages:
     resolution: {integrity: sha512-Im2yEWeF4b2RAMAaWvGioXk6m0UNaIjD8hj28j2ij5ldnIFrDQT0+pzDvpbRkcjurhXhf/AsBKv8P2rtmGi9Aw==}
     engines: {node: ^16.14 || >=18}
     dependencies:
-      execa: 7.1.1
+      execa: 7.2.0
       java-properties: 1.0.2
     dev: true
 
@@ -6020,6 +6026,10 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /lunr@2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    dev: true
+
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -6079,6 +6089,12 @@ packages:
       marked: 5.1.1
       node-emoji: 1.11.0
       supports-hyperlinks: 2.3.0
+    dev: true
+
+  /marked@4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /marked@5.1.1:
@@ -6555,6 +6571,13 @@ packages:
   /minimatch@7.4.6:
     resolution: {integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==}
     engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
+  /minimatch@9.0.3:
+    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
+    engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
     dev: true
@@ -8541,6 +8564,29 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.12
+    dev: true
+
+  /typedoc-plugin-markdown@3.15.4(typedoc@0.24.8):
+    resolution: {integrity: sha512-KpjFL/NDrQAbY147oIoOgob2vAdEchsMcTVd6+e6H2lC1l5xhi48bhP/fMJI7qYQ8th5nubervgqw51z7gY66A==}
+    peerDependencies:
+      typedoc: '>=0.24.0'
+    dependencies:
+      handlebars: 4.7.7
+      typedoc: 0.24.8(typescript@5.1.6)
+    dev: true
+
+  /typedoc@0.24.8(typescript@5.1.6):
+    resolution: {integrity: sha512-ahJ6Cpcvxwaxfu4KtjA8qZNqS43wYt6JL27wYiIgl1vd38WW/KWX11YuAeZhuz9v+ttrutSsgK+XO1CjL1kA3w==}
+    engines: {node: '>= 14.14'}
+    hasBin: true
+    peerDependencies:
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x
+    dependencies:
+      lunr: 2.3.9
+      marked: 4.3.0
+      minimatch: 9.0.3
+      shiki: 0.14.3
+      typescript: 5.1.6
     dev: true
 
   /typescript-transform-paths@3.4.6(typescript@5.1.6):

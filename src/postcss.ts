@@ -24,7 +24,7 @@ function normalizeString(strs: string | string[]) {
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { selectorReplacement } = defu<
+  const { selectorReplacement, removeNegationPseudoClass } = defu<
     Required<IPostcssPluginOptions>,
     Required<IPostcssPluginOptions>[]
   >(options, getPostcssPluginDefaults())
@@ -102,6 +102,10 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   const atLayerTransformer = selectorParser((selectors) => {
     selectors.walk((selector) => {
       if (selector.type === 'pseudo' && selector.value === ':not') {
+        if (removeNegationPseudoClass) {
+          selector.remove()
+          return
+        }
         for (const x of selector.nodes) {
           if (
             x.nodes.length === 1 &&
