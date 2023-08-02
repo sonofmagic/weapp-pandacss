@@ -44,7 +44,7 @@
     "semantic-release": "semantic-release",
     "sync": "cnpm sync weapp-pandacss"
   },
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.11",
   "repository": {
     "type": "git",
     "url": "https://github.com/sonofmagic/weapp-pandacss.git"
@@ -61,7 +61,7 @@
   "keywords": [
     "panda",
     "pandacss",
-    "css in js",
+    "css-in-js",
     "weapp",
     "wechat",
     "mini",
