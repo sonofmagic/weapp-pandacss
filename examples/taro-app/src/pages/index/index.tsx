@@ -1,4 +1,5 @@
 import { Button as NButton, Cell } from '@nutui/nutui-react-taro'
+import IceButton from '@/components/Button'
 import { View, Text, Button, Input } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import { css, cx } from 'styled-system/css'
@@ -42,6 +43,16 @@ export default function Index() {
   return (
     // nutui 样式错乱？
     <View>
+      <IceButton>11</IceButton>
+      <IceButton
+        size='lg'
+        visual='outline'
+        className={css({
+          color: 'pink.500'
+        })}
+      >
+        11
+      </IceButton>
       <StyledView bg='blue.500'>StyledView</StyledView>
       <Cell title='我是标题' description='我是描述' extra='描述文字' />
       <View>
