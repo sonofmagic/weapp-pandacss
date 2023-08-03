@@ -1,7 +1,7 @@
 <template>
   <view class="content">
 
-    <view class="text-area">
+    <view class="text-area pb-2">
       <text class="title" :class="css({
         bg: 'red.400',
         '&:hover': {
@@ -13,11 +13,13 @@
     <div :class="styles">
       <p>Hello World</p>
     </div>
+    <IceButton>asdfg</IceButton>
   </view>
 </template>
 
 <script setup lang="ts">
-import { css } from '@/styled-system/css'
+import IceButton from '@/components/Button.vue'
+import { css } from 'styled-system/css'
 import { ref } from 'vue'
 const title = ref('Hello')
 const aaa = css({

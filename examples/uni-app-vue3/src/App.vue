@@ -11,5 +11,13 @@ onHide(() => {
 });
 </script>
 <style lang="scss">
-@layer reset, base, tokens, recipes, utilities;
+@layer reset,
+base,
+tokens,
+recipes,
+utilities;
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
 </style>
