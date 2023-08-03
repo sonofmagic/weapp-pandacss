@@ -13,12 +13,17 @@
     <div :class="styles">
       <p>Hello World</p>
     </div>
-    <IceButton>asdfg</IceButton>
+    <view class="flex justify-around w-full">
+      <IceButtonTw>asdfg</IceButtonTw>
+      <IceButtonPanda>zxcvb</IceButtonPanda>
+    </view>
+
   </view>
 </template>
 
 <script setup lang="ts">
-import IceButton from '@/components/Button.vue'
+import IceButtonTw from '@/components/ButtonTw.vue'
+import IceButtonPanda from '@/components/ButtonPanda.vue'
 import { css } from 'styled-system/css'
 import { ref } from 'vue'
 const title = ref('Hello')

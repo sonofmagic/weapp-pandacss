@@ -1,7 +1,7 @@
 <template>
-  <button :class="className">
+  <view :class="className">
     <slot></slot>
-  </button>
+  </view>
 </template>
 
 <script lang="ts">
