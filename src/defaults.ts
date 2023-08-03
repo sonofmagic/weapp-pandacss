@@ -4,7 +4,8 @@ export function getCreateContextDefaults(): Required<ICreateContextOptions> {
   return {
     pandaConfig: {
       cwd: process.cwd()
-    }
+    },
+    log: false
   }
 }
 

@@ -7,7 +7,9 @@ async function initCtx() {
   if (ctx) {
     return ctx
   }
-  ctx = await createContext()
+  ctx = await createContext({
+    log: true
+  })
   return ctx
 }
 
