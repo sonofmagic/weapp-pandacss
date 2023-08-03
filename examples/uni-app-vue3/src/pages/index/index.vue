@@ -1,7 +1,7 @@
 <template>
   <view class="content">
 
-    <view class="text-area">
+    <view class="text-area pb-2">
       <text class="title" :class="css({
         bg: 'red.400',
         '&:hover': {
@@ -13,11 +13,18 @@
     <div :class="styles">
       <p>Hello World</p>
     </div>
+    <view class="flex justify-around w-full">
+      <IceButtonTw>asdfg</IceButtonTw>
+      <IceButtonPanda>zxcvb</IceButtonPanda>
+    </view>
+
   </view>
 </template>
 
 <script setup lang="ts">
-import { css } from '@/styled-system/css'
+import IceButtonTw from '@/components/ButtonTw.vue'
+import IceButtonPanda from '@/components/ButtonPanda.vue'
+import { css } from 'styled-system/css'
 import { ref } from 'vue'
 const title = ref('Hello')
 const aaa = css({

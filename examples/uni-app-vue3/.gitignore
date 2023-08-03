@@ -20,4 +20,4 @@ dist
 *.sln
 *.sw?
 
-src/styled-system
+styled-system

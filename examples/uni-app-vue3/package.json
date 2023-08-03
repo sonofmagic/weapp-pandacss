@@ -39,7 +39,8 @@
     "type-check": "vue-tsc --noEmit",
     "prepare": "panda codegen && weapp-panda codegen",
     "open:dev": "weapp open -p dist/dev/mp-weixin",
-    "open:build": "weapp open -p dist/build/mp-weixin"
+    "open:build": "weapp open -p dist/build/mp-weixin",
+    "postinstall": "weapp-tw patch"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-3080720230703001",
@@ -55,6 +56,8 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-3080720230703001",
     "@dcloudio/uni-mp-weixin": "3.0.0-3080720230703001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3080720230703001",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2"
   },

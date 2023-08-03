@@ -11,8 +11,15 @@ import { getCreateContextDefaults } from '@/defaults'
 
 export async function createContext(options?: ICreateContextOptions) {
   const opt = defu(options, getCreateContextDefaults())
+  let pandaConfig: Awaited<ReturnType<typeof getPandacssConfig>>
+  try {
+    pandaConfig = await getPandacssConfig(opt.pandaConfig)
+  } catch {
+    throw new Error(
+      'Cannot find config file: panda.config.ts or panda.config.js/cjs/mjs. Did you forget to run `panda init`?'
+    )
+  }
 
-  const pandaConfig = await getPandacssConfig(opt.pandaConfig)
   const outdir = pandaConfig.config.outdir
   const projectRoot = dirname(pandaConfig.path)
   async function codegen() {
@@ -37,7 +44,9 @@ export async function createContext(options?: ICreateContextOptions) {
       '/helpers.mjs'
     )}: inject escape function into helpers
     `)
-    console.log(words.filter(Boolean).join('\n'))
+    if (opt.log) {
+      console.log(words.filter(Boolean).join('\n'))
+    }
   }
 
   async function rollback() {
