@@ -1,13 +1,13 @@
 import { resolve, dirname } from 'node:path'
 import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { defu } from 'defu'
 import { getPandacssConfig } from './config'
 import { copyEscape, generateEscapeWrapper } from './codegen'
 import { patch } from './patch'
-import { tick, quote, dedent } from './logger'
+import { tick, quote } from './logger'
 import { ICreateContextOptions } from '@/types'
 import { getCreateContextDefaults } from '@/defaults'
+import { dedent, defu } from '@/utils'
 
 export async function createContext(
   options?: ICreateContextOptions & { configFile?: string }

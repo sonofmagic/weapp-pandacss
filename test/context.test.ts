@@ -4,7 +4,7 @@ import { dirname, resolve } from 'node:path'
 import { deleteAsync } from 'del'
 import { appRoot, fixturesRoot } from './util'
 import { createContext } from '@/core/context'
-import { ensureDir } from '@/core/codegen'
+import { ensureDir } from '@/utils'
 
 describe('context', () => {
   it('no config', async () => {

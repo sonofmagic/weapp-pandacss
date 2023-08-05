@@ -8,36 +8,10 @@ import selectorParser, {
 import { escape } from '@weapp-core/escape'
 import createCascadeLayersPlugin from '@csstools/postcss-cascade-layers'
 import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
-import merge from 'merge'
 import type { IPostcssPluginOptions } from '@/types'
-// import { getPostcssPluginDefaults } from './defaults'
 import { createContext, getUserConfig } from '@/core'
-
-const wrapperPostcssPlugin = 'postcss-weapp-pandacss-escape-wrapper-plugin'
-const escapePostcssPlugin = 'postcss-weapp-pandacss-escape-plugin'
-function normalizeString(strs: string | string[]) {
-  if (Array.isArray(strs)) {
-    return strs.join(',')
-  }
-  return strs
-}
-// https://github.com/vuejs/vue/blob/49b6bd4264c25ea41408f066a1835f38bf6fe9f1/src/v3/reactivity/computed.ts#L37
-function ref<T>(value: T) {
-  return {
-    value
-  }
-}
-
-type Ref<T> = ReturnType<typeof ref<T>>
-
-// 懒惰做法
-// function computed<T>(getter: (...args: any[]) => T) {
-//   return {
-//     get value() {
-//       return getter()
-//     }
-//   }
-// }
+import { Ref, normalizeString, ref, merge } from '@/utils'
+import { escapePostcssPlugin, wrapperPostcssPlugin } from '@/constants'
 
 export function useOptions(options?: IPostcssPluginOptions) {
   // 默认没有默认值了，默认值从异步插件中初始化

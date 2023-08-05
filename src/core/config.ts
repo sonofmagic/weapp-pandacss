@@ -1,7 +1,7 @@
 import { loadConfigFile } from '@pandacss/config'
-import { defu } from 'defu'
 import { loadConfig, UserInputConfig, createDefineConfig } from 'c12'
-import { getCreateContextDefaults, getPostcssPluginDefaults } from '../defaults'
+import { getCreateContextDefaults, getPostcssPluginDefaults } from '@/defaults'
+import { defu } from '@/utils'
 import { PandacssConfigFileOptions, UserConfig } from '@/types'
 export function getPandacssConfig(
   options?: Partial<PandacssConfigFileOptions>

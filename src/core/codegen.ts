@@ -1,16 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { dedent } from './logger'
 import { ICreateContextOptions } from '@/types'
-export async function ensureDir(p: string) {
-  try {
-    await fs.access(p)
-  } catch {
-    await fs.mkdir(p, {
-      recursive: true
-    })
-  }
-}
+import { ensureDir, dedent } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
   return path.dirname(require.resolve('@weapp-core/escape'))
