@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import postcss from 'postcss'
 // import parser from 'postcss-selector-parser'
 import { cssRoot } from './util'
-import postcssPlugin from '@/postcss'
+import postcssPlugin, { useOptions } from '@/postcss'
 describe('postcss', () => {
   it('default', async () => {
     const rawCss = await fs.readFile(resolve(cssRoot, 'default.css'), 'utf8')
@@ -139,6 +139,29 @@ describe('postcss', () => {
       `.peer:not(.aa):not(#\\#){}`
     )
     expect(css).toMatchSnapshot()
+  })
+
+  it('useOptions default', () => {
+    const { mergeOptions, optionsRef } = useOptions()
+    expect(optionsRef).toMatchSnapshot()
+    mergeOptions({
+      disabled: true,
+      cascadeLayersPluginOptions: {
+        onConditionalRulesChangingLayerOrder: false
+      },
+      isPseudoClassPluginOptions: {
+        onPseudoElement: 'warning'
+      }
+    })
+    expect(optionsRef.value.disabled).toBe(true)
+    expect(
+      optionsRef.value.cascadeLayersPluginOptions
+        .onConditionalRulesChangingLayerOrder
+    ).toBe(false)
+    expect(optionsRef.value.isPseudoClassPluginOptions.onPseudoElement).toBe(
+      'warning'
+    )
+    expect(optionsRef).toMatchSnapshot()
   })
 
   // it('... :where', () => {

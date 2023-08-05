@@ -8,44 +8,81 @@ import selectorParser, {
 import { escape } from '@weapp-core/escape'
 import createCascadeLayersPlugin from '@csstools/postcss-cascade-layers'
 import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
-import { defu } from 'defu'
+import merge from 'merge'
 import type { IPostcssPluginOptions } from './types'
-import { getPostcssPluginDefaults } from './defaults'
+// import { getPostcssPluginDefaults } from './defaults'
 import { createContext } from './core/context'
+import { getConfig } from './core/config'
 
-const postcssPlugin = 'postcss-weapp-pandacss-escape-wrapper-plugin'
-
+const wrapperPostcssPlugin = 'postcss-weapp-pandacss-escape-wrapper-plugin'
+const escapePostcssPlugin = 'postcss-weapp-pandacss-escape-plugin'
 function normalizeString(strs: string | string[]) {
   if (Array.isArray(strs)) {
     return strs.join(',')
   }
   return strs
 }
-// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
-// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
-// ':not(#\\#)' raw: :not(#\\\\#)
-const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
-  options
-) => {
-  const {
-    selectorReplacement,
-    removeNegationPseudoClass,
-    disabled,
-    cascadeLayersPluginOptions,
-    isPseudoClassPluginOptions
-  } = defu<Required<IPostcssPluginOptions>, Required<IPostcssPluginOptions>[]>(
-    options,
-    getPostcssPluginDefaults()
-  )
-  if (disabled) {
-    return {
-      postcssPlugin
-    }
+// https://github.com/vuejs/vue/blob/49b6bd4264c25ea41408f066a1835f38bf6fe9f1/src/v3/reactivity/computed.ts#L37
+function ref<T>(value: T) {
+  return {
+    value
   }
-  const sr = selectorReplacement as Required<
-    Required<IPostcssPluginOptions>['selectorReplacement']
-  >
+}
+
+type Ref<T> = ReturnType<typeof ref<T>>
+
+// 懒惰做法
+// function computed<T>(getter: (...args: any[]) => T) {
+//   return {
+//     get value() {
+//       return getter()
+//     }
+//   }
+// }
+
+export function useOptions(options?: IPostcssPluginOptions) {
+  // 默认没有默认值了，默认值从异步插件中初始化
+  const optionsRef = ref(
+    merge.recursive(
+      true, // getPostcssPluginDefaults(),
+      options
+    ) as Required<IPostcssPluginOptions>
+  )
+
+  // <Required<IPostcssPluginOptions>, Required<IPostcssPluginOptions>[]>
+  function mergeOptions(options?: IPostcssPluginOptions) {
+    // merge(optionsRef.value, options)
+    optionsRef.value = merge.recursive({}, options, optionsRef.value)
+  }
+
+  // const srRef = computed(() => {
+  //   return optionsRef.value.selectorReplacement
+  // })
+
+  // selectorReplacement as Required<
+  //   Required<IPostcssPluginOptions>['selectorReplacement']
+  // >
+  return {
+    optionsRef,
+    // srRef,
+    mergeOptions
+  }
+}
+
+export const innerPlugin: PluginCreator<
+  Ref<Required<IPostcssPluginOptions>>
+> = (optionsRef) => {
+  function getSelectorReplacement() {
+    return optionsRef?.value.selectorReplacement as Required<
+      Required<IPostcssPluginOptions>['selectorReplacement']
+    >
+  }
+  function getRemoveNegationPseudoClass() {
+    return optionsRef?.value.removeNegationPseudoClass
+  }
+
   const utilitiesTransformer = selectorParser((selectors) => {
+    const sr = getSelectorReplacement()
     selectors.walk((selector) => {
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
@@ -114,6 +151,8 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   })
 
   const atLayerTransformer = selectorParser((selectors) => {
+    const removeNegationPseudoClass = getRemoveNegationPseudoClass()
+    const sr = getSelectorReplacement()
     selectors.walk((selector) => {
       if (selector.type === 'pseudo' && selector.value === ':not') {
         for (const x of selector.nodes) {
@@ -137,38 +176,32 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
     })
   })
 
-  const cascadeLayersPlugin = createCascadeLayersPlugin(
-    cascadeLayersPluginOptions
-  ) as Plugin
-  const isPseudoClassPlugin = createIsPseudoClassPlugin(
-    isPseudoClassPluginOptions
-  ) as Plugin
-
   return {
-    postcssPlugin,
-    plugins: [
-      async function () {
-        try {
-          const ctx = await createContext()
-          await ctx.codegen()
-        } catch (error) {
-          console.log((<Error>error).message)
-        }
-      },
-      cascadeLayersPlugin,
-      isPseudoClassPlugin,
-      {
-        postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
+    postcssPlugin: escapePostcssPlugin,
+    prepare() {
+      if (optionsRef?.value.disabled) {
+        return {}
+      }
+      return {
         Declaration(decl) {
+          if (optionsRef?.value.disabled) {
+            return
+          }
           decl.prop = escape(decl.prop)
         },
         Rule(rule) {
+          if (optionsRef?.value.disabled) {
+            return
+          }
           utilitiesTransformer.transformSync(rule, {
             lossless: false,
             updateSelector: true
           })
         },
         OnceExit(root) {
+          if (optionsRef?.value.disabled) {
+            return
+          }
           root.walkRules(/:not\(#\\#\)/, (rule) => {
             atLayerTransformer.transformSync(rule, {
               lossless: false,
@@ -177,10 +210,44 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
           })
         }
       }
+    }
+  }
+}
+
+innerPlugin.postcss = true
+
+// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/index.ts
+// https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-cascade-layers/src/adjust-selector-specificity.ts
+// ':not(#\\#)' raw: :not(#\\\\#)
+// 就近原则 postcss options > weapp-pandans.config.ts
+const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
+  const { mergeOptions, optionsRef } = useOptions(options)
+  const cascadeLayersPlugin = createCascadeLayersPlugin(
+    optionsRef?.value.cascadeLayersPluginOptions
+  ) as Plugin
+  const isPseudoClassPlugin = createIsPseudoClassPlugin(
+    optionsRef?.value.isPseudoClassPluginOptions
+  ) as Plugin
+  return {
+    postcssPlugin: wrapperPostcssPlugin,
+    plugins: [
+      async function () {
+        try {
+          const { config } = await getConfig()
+          mergeOptions(config?.postcss)
+          const ctx = await createContext(config?.context)
+          await ctx.codegen()
+        } catch (error) {
+          console.log((<Error>error).message)
+        }
+      },
+      cascadeLayersPlugin,
+      isPseudoClassPlugin,
+      innerPlugin(optionsRef)
     ]
   }
 }
 
-postcssWeappPandacssEscapePlugin.postcss = true
+creator.postcss = true
 
-export default postcssWeappPandacssEscapePlugin
+export default creator
