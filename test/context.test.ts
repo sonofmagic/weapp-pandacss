@@ -1,6 +1,7 @@
 import { copyFile, readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
+import { deleteAsync } from 'del'
 import { appRoot, fixturesRoot } from './util'
 import { createContext } from '@/core/context'
 import { ensureDir } from '@/core/codegen'
@@ -63,5 +64,26 @@ describe('context', () => {
     await ctx.codegen()
     expect(existsSync(src)).toBe(true)
     expect(existsSync(resolve(dirname(src), 'weapp-panda'))).toBe(true)
+  })
+
+  it('init config', async () => {
+    const ctx = await createContext({
+      pandaConfig: {
+        cwd: appRoot
+      }
+    })
+    const userConfigPath = resolve(
+      dirname(ctx.pandaConfig.path),
+      'weapp-pandacss.config.ts'
+    )
+    if (existsSync(userConfigPath)) {
+      await deleteAsync([userConfigPath], {
+        onlyFiles: true
+      })
+    }
+
+    expect(existsSync(userConfigPath)).toBe(false)
+    await ctx.init()
+    expect(existsSync(userConfigPath)).toBe(true)
   })
 })

@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { appRoot, taroAppRoot, configRoot } from './util'
-import { getPandacssConfig, getConfig } from '@/core/config'
+import { getPandacssConfig, getUserConfig } from '@/core/config'
 describe('config', () => {
   it('get fixtures app config', async () => {
     const config = await getPandacssConfig({
@@ -19,13 +19,13 @@ describe('config', () => {
   })
 
   it('get default config', async () => {
-    const { config } = await getConfig()
+    const { config } = await getUserConfig()
 
     expect(config).toMatchSnapshot()
   })
 
   it('get default config from 0.default dir', async () => {
-    const { config, ...rest } = await getConfig({
+    const { config, ...rest } = await getUserConfig({
       cwd: path.resolve(configRoot, '0.default')
     })
     console.log(rest)

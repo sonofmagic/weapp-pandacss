@@ -9,7 +9,9 @@ import { tick, quote, dedent } from './logger'
 import { ICreateContextOptions } from '@/types'
 import { getCreateContextDefaults } from '@/defaults'
 
-export async function createContext(options?: ICreateContextOptions) {
+export async function createContext(
+  options?: ICreateContextOptions & { configFile?: string }
+) {
   const opt = defu(options, getCreateContextDefaults())
   let pandaConfig: Awaited<ReturnType<typeof getPandacssConfig>>
   try {
@@ -69,8 +71,8 @@ export async function createContext(options?: ICreateContextOptions) {
     }
   }
 
-  async function init() {
-    await fs.writeFile(
+  function init() {
+    return fs.writeFile(
       resolve(projectRoot, 'weapp-pandacss.config.ts'),
       dedent`
       import { defineConfig } from 'weapp-pandacss'
@@ -84,6 +86,7 @@ export default defineConfig({
     )
   }
   return {
+    configFile: options?.configFile,
     pandaConfig,
     codegen,
     rollback,

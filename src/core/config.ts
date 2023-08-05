@@ -16,7 +16,7 @@ export function getPandacssConfig(
   return loadConfigFile(opt)
 }
 
-export function getConfig(options?: Pick<UserInputConfig, 'cwd'>) {
+export function getUserConfig(options?: Pick<UserInputConfig, 'cwd'>) {
   return loadConfig<UserConfig>({
     name: 'weapp-pandacss', // `${name}.config` //
     rcFile: false,

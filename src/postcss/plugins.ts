@@ -11,7 +11,7 @@ import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
 import merge from 'merge'
 import type { IPostcssPluginOptions } from '@/types'
 // import { getPostcssPluginDefaults } from './defaults'
-import { createContext, getConfig } from '@/core'
+import { createContext, getUserConfig } from '@/core'
 
 const wrapperPostcssPlugin = 'postcss-weapp-pandacss-escape-wrapper-plugin'
 const escapePostcssPlugin = 'postcss-weapp-pandacss-escape-plugin'
@@ -232,9 +232,12 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
     plugins: [
       async function () {
         try {
-          const { config } = await getConfig()
+          const { config, configFile } = await getUserConfig()
           mergeOptions(config?.postcss)
-          const ctx = await createContext(config?.context)
+          const ctx = await createContext({
+            configFile,
+            ...config?.context
+          })
           await ctx.codegen()
         } catch (error) {
           console.log((<Error>error).message)
