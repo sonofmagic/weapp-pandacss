@@ -29,18 +29,19 @@ import { ref } from 'vue'
 const title = ref('Hello')
 const aaa = css({
   color: 'red.300',
-  bg: 'blue.800'
+  bg: 'blue.800',
+  fontWeight: 'semibold'
 })
 
 const styles = css({
   backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  fontSize: '13px',
+  fontSize: 'lg',
   padding: '10px 15px'
 })
 
 const style0 = css({
-  fontSize: '13px',
+  fontSize: '2xl',
   paddingTop: '10px'
 })
 

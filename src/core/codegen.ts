@@ -58,7 +58,7 @@ export async function generateEscapeWrapper(
   await fs.writeFile(
     path.resolve(destDir, 'index.d.ts'),
     dedent`
- declare function escape(selectors: string): string;`,
+    export declare function escape(selectors: string): string;`,
     'utf8'
   )
 }
