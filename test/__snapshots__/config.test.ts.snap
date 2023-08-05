@@ -24,3 +24,29 @@ exports[`config > get default config 1`] = `
   },
 }
 `;
+
+exports[`config > get default config from 0.default dir 1`] = `
+{
+  "context": {
+    "log": false,
+    "pandaConfig": {
+      "cwd": "/Users/icebreaker/Documents/GitHub/weapp-pandacss",
+    },
+  },
+  "escapePredicate": [Function],
+  "postcss": {
+    "cascadeLayersPluginOptions": {},
+    "disabled": true,
+    "isPseudoClassPluginOptions": {},
+    "removeNegationPseudoClass": true,
+    "selectorReplacement": {
+      "cascadeLayers": "n",
+      "root": [],
+      "universal": [
+        "view",
+        "text",
+      ],
+    },
+  },
+}
+`;

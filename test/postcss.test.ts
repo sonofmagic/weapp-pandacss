@@ -3,7 +3,8 @@ import { resolve } from 'node:path'
 import postcss from 'postcss'
 // import parser from 'postcss-selector-parser'
 import { cssRoot } from './util'
-import postcssPlugin, { useOptions } from '@/postcss'
+import postcssPlugin from '@/postcss'
+import { useOptions } from '@/postcss/plugins'
 describe('postcss', () => {
   it('default', async () => {
     const rawCss = await fs.readFile(resolve(cssRoot, 'default.css'), 'utf8')
