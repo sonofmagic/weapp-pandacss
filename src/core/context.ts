@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { defu } from 'defu'
 import { getPandacssConfig } from './config'
-import { copyEscape } from './codegen'
+import { copyEscape, generateEscapeWrapper } from './codegen'
 import { patch } from './patch'
 import { tick, quote, dedent } from './logger'
 import { ICreateContextOptions } from '@/types'
@@ -26,7 +26,13 @@ export async function createContext(options?: ICreateContextOptions) {
     const words: string[] = []
     const weappPandaDir = resolve(projectRoot, outdir, 'weapp-panda')
     const patchHelpersPath = resolve(projectRoot, outdir, 'helpers.mjs')
-    await copyEscape(weappPandaDir)
+    if (!existsSync(patchHelpersPath)) {
+      throw new Error(
+        `Cannot find runtime file: ${outdir}/helpers.mjs. Did you forget to run \`panda init\`?`
+      )
+    }
+    await copyEscape(resolve(weappPandaDir, 'lib'))
+    await generateEscapeWrapper(weappPandaDir, opt)
     words.push(dedent`
     ${tick} ${quote(outdir, '/weapp-panda')}: the core escape function for weapp
     `)

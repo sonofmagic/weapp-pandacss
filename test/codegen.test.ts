@@ -9,6 +9,7 @@ import {
   copyEscape,
   getPandaVersion
 } from '@/core/codegen'
+
 describe('codegen', () => {
   it('has install WeappCoreEscape', () => {
     const dir = getWeappCoreEscapeDir()

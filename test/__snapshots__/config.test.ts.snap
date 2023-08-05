@@ -3,6 +3,7 @@
 exports[`config > get default config 1`] = `
 {
   "context": {
+    "escapePredicate": "true",
     "log": false,
     "pandaConfig": {
       "cwd": "/Users/icebreaker/Documents/GitHub/weapp-pandacss",
@@ -28,6 +29,7 @@ exports[`config > get default config 1`] = `
 exports[`config > get default config from 0.default dir 1`] = `
 {
   "context": {
+    "escapePredicate": "true",
     "log": false,
     "pandaConfig": {
       "cwd": "/Users/icebreaker/Documents/GitHub/weapp-pandacss",

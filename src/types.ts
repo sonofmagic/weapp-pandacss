@@ -4,6 +4,10 @@ import type { pluginOptions as IsPseudoClassPluginOptions } from '@csstools/post
 export type PandacssConfigFileOptions = Parameters<typeof loadConfigFile>[0]
 
 export interface ICreateContextOptions {
+  /**
+   * @description 转义断言函数
+   */
+  escapePredicate?: string // ((className: string) => boolean) |
   pandaConfig?: Partial<PandacssConfigFileOptions>
   log?: boolean
 }
@@ -61,10 +65,6 @@ export interface IPostcssPluginOptions {
  * @description 用户在 `weapp-pandacss.config.ts` 文件里定义的配置
  */
 export interface UserConfig {
-  /**
-   * @description 转义断言函数
-   */
-  escapePredicate?: ((className: string) => boolean) | string
   /**
    * @description postcss 配置
    */

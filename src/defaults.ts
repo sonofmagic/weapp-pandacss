@@ -5,10 +5,11 @@ export function getCreateContextDefaults(): Required<ICreateContextOptions> {
     pandaConfig: {
       cwd: process.cwd()
     },
-    log: false
+    log: false,
+    escapePredicate: 'true'
   }
 }
-
+// 有数组的情况会合并
 export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
   return {
     selectorReplacement: {
