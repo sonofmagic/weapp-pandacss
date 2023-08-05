@@ -68,9 +68,25 @@ export async function createContext(options?: ICreateContextOptions) {
       )
     }
   }
+
+  async function init() {
+    await fs.writeFile(
+      resolve(projectRoot, 'weapp-pandacss.config.ts'),
+      dedent`
+      import { defineConfig } from 'weapp-pandacss'
+
+export default defineConfig({
+  
+})
+
+      `,
+      'utf8'
+    )
+  }
   return {
     pandaConfig,
     codegen,
-    rollback
+    rollback,
+    init
   }
 }

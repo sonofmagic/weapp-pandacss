@@ -71,7 +71,7 @@ export interface UserConfig {
   postcss?: IPostcssPluginOptions
 
   /**
-   * @description 上下文配置
+   * @description 代码生成器上下文配置
    */
   context?: ICreateContextOptions
 }

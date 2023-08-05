@@ -40,7 +40,7 @@ describe('context', () => {
   it('codegen with wrapper throw error', async () => {
     const ctx = await createContext({
       pandaConfig: {
-        cwd: resolve(fixturesRoot, 'app0')
+        cwd: resolve(fixturesRoot, 'app1')
       }
     })
     await expect(() => {
@@ -54,11 +54,14 @@ describe('context', () => {
     const ctx = await createContext({
       pandaConfig: {
         cwd: app0Root
-      }
+      },
+      log: true
     })
     const src = resolve(app0Root, ctx.pandaConfig.config.outdir, 'helpers.mjs')
     await ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
+    expect(existsSync(src)).toBe(true)
+    expect(existsSync(resolve(dirname(src), 'weapp-panda'))).toBe(true)
   })
 })

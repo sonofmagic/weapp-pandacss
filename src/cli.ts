@@ -1,5 +1,5 @@
 import { cac } from 'cac'
-import { createContext } from './core/context'
+import { getConfig, createContext } from './core'
 
 let ctx: Awaited<ReturnType<typeof createContext>>
 
@@ -7,8 +7,10 @@ async function initCtx() {
   if (ctx) {
     return ctx
   }
+  const { config } = await getConfig()
   ctx = await createContext({
-    log: true
+    log: true,
+    ...config?.context
   })
   return ctx
 }
@@ -23,6 +25,12 @@ cli.command('codegen', 'code generate').action(async () => {
 cli.command('rollback', 'rollback inject').action(async () => {
   await initCtx()
   await ctx.rollback()
+})
+
+cli.command('init', 'init config file').action(async () => {
+  await initCtx()
+  await ctx.init()
+  console.log('✨ weapp-pandacss config initialized!')
 })
 
 cli.help()
