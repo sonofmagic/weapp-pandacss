@@ -1,5 +1,6 @@
 import type { loadConfigFile } from '@pandacss/config'
-
+import type { pluginOptions as CascadeLayersPluginOptions } from '@csstools/postcss-cascade-layers'
+import type { pluginOptions as IsPseudoClassPluginOptions } from '@csstools/postcss-is-pseudo-class'
 export type PandacssConfigFileOptions = Parameters<typeof loadConfigFile>[0]
 
 export interface ICreateContextOptions {
@@ -44,4 +45,33 @@ export interface IPostcssPluginOptions {
    * @default true
    */
   removeNegationPseudoClass?: boolean
+
+  /**
+   * @description CascadeLayersPluginOptions
+   */
+  cascadeLayersPluginOptions?: CascadeLayersPluginOptions
+
+  /**
+   * @description IsPseudoClassPluginOptions
+   */
+  isPseudoClassPluginOptions?: IsPseudoClassPluginOptions
+}
+
+/**
+ * @description 用户在 `weapp-pandacss.config.ts` 文件里定义的配置
+ */
+export interface UserConfig {
+  /**
+   * @description 转义断言函数
+   */
+  escapePredicate?: ((className: string) => boolean) | string
+  /**
+   * @description postcss 配置
+   */
+  postcss?: IPostcssPluginOptions
+
+  /**
+   * @description 上下文配置
+   */
+  context?: ICreateContextOptions
 }

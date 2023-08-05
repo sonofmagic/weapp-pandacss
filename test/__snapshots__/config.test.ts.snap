@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`config > get default config 1`] = `
+{
+  "context": {
+    "log": false,
+    "pandaConfig": {
+      "cwd": "/Users/icebreaker/Documents/GitHub/weapp-pandacss",
+    },
+  },
+  "postcss": {
+    "cascadeLayersPluginOptions": {},
+    "disabled": false,
+    "isPseudoClassPluginOptions": {},
+    "removeNegationPseudoClass": true,
+    "selectorReplacement": {
+      "cascadeLayers": "n",
+      "root": "page",
+      "universal": [
+        "view",
+        "text",
+      ],
+    },
+  },
+}
+`;

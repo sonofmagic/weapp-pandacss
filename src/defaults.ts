@@ -17,6 +17,8 @@ export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
       universal: ['view', 'text'] // 'view,text'
     },
     removeNegationPseudoClass: true,
-    disabled: false
+    disabled: false,
+    cascadeLayersPluginOptions: {},
+    isPseudoClassPluginOptions: {}
   }
 }

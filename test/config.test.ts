@@ -1,5 +1,5 @@
 import { appRoot, taroAppRoot } from './util'
-import { getPandacssConfig } from '@/core/config'
+import { getPandacssConfig, getConfig } from '@/core/config'
 describe('config', () => {
   it('get fixtures app config', async () => {
     const config = await getPandacssConfig({
@@ -15,5 +15,11 @@ describe('config', () => {
     })
     expect(config).toBeDefined()
     expect(config.config.outdir === 'styled-system').toBe(true)
+  })
+
+  it('get default config', async () => {
+    const { config, ...rest } = await getConfig()
+    console.log(rest)
+    expect(config).toMatchSnapshot()
   })
 })

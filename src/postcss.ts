@@ -6,8 +6,8 @@ import selectorParser, {
   Selector
 } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
-import _cascadeLayersPlugin from '@csstools/postcss-cascade-layers'
-import _isPseudoPlugin from '@csstools/postcss-is-pseudo-class'
+import createCascadeLayersPlugin from '@csstools/postcss-cascade-layers'
+import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
 import { defu } from 'defu'
 import type { IPostcssPluginOptions } from './types'
 import { getPostcssPluginDefaults } from './defaults'
@@ -27,10 +27,16 @@ function normalizeString(strs: string | string[]) {
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { selectorReplacement, removeNegationPseudoClass, disabled } = defu<
-    Required<IPostcssPluginOptions>,
-    Required<IPostcssPluginOptions>[]
-  >(options, getPostcssPluginDefaults())
+  const {
+    selectorReplacement,
+    removeNegationPseudoClass,
+    disabled,
+    cascadeLayersPluginOptions,
+    isPseudoClassPluginOptions
+  } = defu<Required<IPostcssPluginOptions>, Required<IPostcssPluginOptions>[]>(
+    options,
+    getPostcssPluginDefaults()
+  )
   if (disabled) {
     return {
       postcssPlugin
@@ -131,8 +137,12 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
     })
   })
 
-  const cascadeLayersPlugin = _cascadeLayersPlugin() as Plugin
-  const isPseudoPlugin = _isPseudoPlugin() as Plugin
+  const cascadeLayersPlugin = createCascadeLayersPlugin(
+    cascadeLayersPluginOptions
+  ) as Plugin
+  const isPseudoClassPlugin = createIsPseudoClassPlugin(
+    isPseudoClassPluginOptions
+  ) as Plugin
 
   return {
     postcssPlugin,
@@ -146,7 +156,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
         }
       },
       cascadeLayersPlugin,
-      isPseudoPlugin,
+      isPseudoClassPlugin,
       {
         postcssPlugin: 'postcss-weapp-pandacss-escape-plugin',
         Declaration(decl) {
