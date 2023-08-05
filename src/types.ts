@@ -12,6 +12,11 @@ export interface ICreateContextOptions {
  */
 export interface IPostcssPluginOptions {
   /**
+   * @description 是否禁用
+   * @default false
+   */
+  disabled?: boolean
+  /**
    * @description 选择器转义替换字符
    */
   selectorReplacement?: {

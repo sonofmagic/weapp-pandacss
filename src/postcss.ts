@@ -13,6 +13,8 @@ import type { IPostcssPluginOptions } from './types'
 import { getPostcssPluginDefaults } from './defaults'
 import { createContext } from './core/context'
 
+const postcssPlugin = 'postcss-weapp-pandacss-escape-wrapper-plugin'
+
 function normalizeString(strs: string | string[]) {
   if (Array.isArray(strs)) {
     return strs.join(',')
@@ -25,10 +27,15 @@ function normalizeString(strs: string | string[]) {
 const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   options
 ) => {
-  const { selectorReplacement, removeNegationPseudoClass } = defu<
+  const { selectorReplacement, removeNegationPseudoClass, disabled } = defu<
     Required<IPostcssPluginOptions>,
     Required<IPostcssPluginOptions>[]
   >(options, getPostcssPluginDefaults())
+  if (disabled) {
+    return {
+      postcssPlugin
+    }
+  }
   const sr = selectorReplacement as Required<
     Required<IPostcssPluginOptions>['selectorReplacement']
   >
@@ -128,7 +135,7 @@ const postcssWeappPandacssEscapePlugin: PluginCreator<IPostcssPluginOptions> = (
   const isPseudoPlugin = _isPseudoPlugin() as Plugin
 
   return {
-    postcssPlugin: 'postcss-weapp-pandacss-escape-wrapper-plugin',
+    postcssPlugin,
     plugins: [
       async function () {
         try {

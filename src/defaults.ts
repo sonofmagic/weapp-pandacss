@@ -16,6 +16,7 @@ export function getPostcssPluginDefaults(): Required<IPostcssPluginOptions> {
       root: 'page',
       universal: ['view', 'text'] // 'view,text'
     },
-    removeNegationPseudoClass: true
+    removeNegationPseudoClass: true,
+    disabled: false
   }
 }

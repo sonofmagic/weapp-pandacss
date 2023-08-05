@@ -104,6 +104,17 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('_peerHover case disabled enable', async () => {
+    const testCase = `.peer:hover:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500,
+    .peer[data-hover]:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500 {}`
+    const { css } = await postcss([
+      postcssPlugin({
+        disabled: true
+      })
+    ]).process(testCase)
+    expect(css).toBe(testCase)
+  })
+
   it('should not remove custom :not', async () => {
     const { css } = await postcss([
       postcssPlugin({
@@ -111,6 +122,16 @@ describe('postcss', () => {
       })
     ]).process(`.peer:not(.aa):not(#\\#){}`)
     expect(css).toMatchSnapshot()
+  })
+
+  it('enable disabled', async () => {
+    const testCase = `.peer:not(.aa):not(#\\#){}`
+    const { css } = await postcss([
+      postcssPlugin({
+        disabled: true
+      })
+    ]).process(testCase)
+    expect(css).toBe(testCase)
   })
 
   it('should not remove custom :not removeNegationPseudoClass true', async () => {
