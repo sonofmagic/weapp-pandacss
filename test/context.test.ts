@@ -1,9 +1,10 @@
 import { copyFile, readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import { appRoot } from './util'
+import { deleteAsync } from 'del'
+import { appRoot, fixturesRoot } from './util'
 import { createContext } from '@/core/context'
-import { ensureDir } from '@/core/codegen'
+import { ensureDir } from '@/utils'
 
 describe('context', () => {
   it('no config', async () => {
@@ -35,5 +36,54 @@ describe('context', () => {
     )
     await ctx.rollback()
     expect(await readFile(src, 'utf8')).toEqual(await readFile(backup, 'utf8'))
+  })
+
+  it('codegen with wrapper throw error', async () => {
+    const ctx = await createContext({
+      pandaConfig: {
+        cwd: resolve(fixturesRoot, 'app1')
+      }
+    })
+    await expect(() => {
+      return ctx.codegen()
+    }).rejects.toThrowError()
+  })
+
+  it('codegen with wrapper', async () => {
+    const app0Root = resolve(fixturesRoot, 'app0')
+
+    const ctx = await createContext({
+      pandaConfig: {
+        cwd: app0Root
+      },
+      log: true
+    })
+    const src = resolve(app0Root, ctx.pandaConfig.config.outdir, 'helpers.mjs')
+    await ensureDir(dirname(src))
+    await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
+    await ctx.codegen()
+    expect(existsSync(src)).toBe(true)
+    expect(existsSync(resolve(dirname(src), 'weapp-panda'))).toBe(true)
+  })
+
+  it('init config', async () => {
+    const ctx = await createContext({
+      pandaConfig: {
+        cwd: appRoot
+      }
+    })
+    const userConfigPath = resolve(
+      dirname(ctx.pandaConfig.path),
+      'weapp-pandacss.config.ts'
+    )
+    if (existsSync(userConfigPath)) {
+      await deleteAsync([userConfigPath], {
+        onlyFiles: true
+      })
+    }
+
+    expect(existsSync(userConfigPath)).toBe(false)
+    await ctx.init()
+    expect(existsSync(userConfigPath)).toBe(true)
   })
 })

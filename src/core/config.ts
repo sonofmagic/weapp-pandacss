@@ -1,7 +1,8 @@
 import { loadConfigFile } from '@pandacss/config'
-import { defu } from 'defu'
-import { PandacssConfigFileOptions } from '@/types'
-
+import { loadConfig, UserInputConfig, createDefineConfig } from 'c12'
+import { getCreateContextDefaults, getPostcssPluginDefaults } from '@/defaults'
+import { defu } from '@/utils'
+import { PandacssConfigFileOptions, UserConfig } from '@/types'
 export function getPandacssConfig(
   options?: Partial<PandacssConfigFileOptions>
 ) {
@@ -14,3 +15,20 @@ export function getPandacssConfig(
 
   return loadConfigFile(opt)
 }
+
+export function getUserConfig(options?: Pick<UserInputConfig, 'cwd'>) {
+  return loadConfig<UserConfig>({
+    name: 'weapp-pandacss', // `${name}.config` //
+    rcFile: false,
+    globalRc: false,
+    cwd: options?.cwd,
+    defaults: {
+      context: getCreateContextDefaults(),
+      postcss: getPostcssPluginDefaults()
+    }
+  })
+}
+export const defineConfig = createDefineConfig<UserConfig>()
+// export function defineConfig(config: UserConfig) {
+//   return config
+// }

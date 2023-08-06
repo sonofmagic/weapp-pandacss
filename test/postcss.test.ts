@@ -4,6 +4,7 @@ import postcss from 'postcss'
 // import parser from 'postcss-selector-parser'
 import { cssRoot } from './util'
 import postcssPlugin from '@/postcss'
+import { useOptions } from '@/postcss/plugins'
 describe('postcss', () => {
   it('default', async () => {
     const rawCss = await fs.readFile(resolve(cssRoot, 'default.css'), 'utf8')
@@ -104,6 +105,17 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('_peerHover case disabled enable', async () => {
+    const testCase = `.peer:hover:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500,
+    .peer[data-hover]:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500 {}`
+    const { css } = await postcss([
+      postcssPlugin({
+        disabled: true
+      })
+    ]).process(testCase)
+    expect(css).toBe(testCase)
+  })
+
   it('should not remove custom :not', async () => {
     const { css } = await postcss([
       postcssPlugin({
@@ -113,11 +125,44 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('enable disabled', async () => {
+    const testCase = `.peer:not(.aa):not(#\\#){}`
+    const { css } = await postcss([
+      postcssPlugin({
+        disabled: true
+      })
+    ]).process(testCase)
+    expect(css).toBe(testCase)
+  })
+
   it('should not remove custom :not removeNegationPseudoClass true', async () => {
     const { css } = await postcss([postcssPlugin()]).process(
       `.peer:not(.aa):not(#\\#){}`
     )
     expect(css).toMatchSnapshot()
+  })
+
+  it('useOptions default', () => {
+    const { mergeOptions, optionsRef } = useOptions()
+    expect(optionsRef).toMatchSnapshot()
+    mergeOptions({
+      disabled: true,
+      cascadeLayersPluginOptions: {
+        onConditionalRulesChangingLayerOrder: false
+      },
+      isPseudoClassPluginOptions: {
+        onPseudoElement: 'warning'
+      }
+    })
+    expect(optionsRef.value.disabled).toBe(true)
+    expect(
+      optionsRef.value.cascadeLayersPluginOptions
+        .onConditionalRulesChangingLayerOrder
+    ).toBe(false)
+    expect(optionsRef.value.isPseudoClassPluginOptions.onPseudoElement).toBe(
+      'warning'
+    )
+    expect(optionsRef).toMatchSnapshot()
   })
 
   // it('... :where', () => {

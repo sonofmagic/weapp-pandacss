@@ -1,15 +1,17 @@
 import { resolve, dirname } from 'node:path'
 import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { defu } from 'defu'
 import { getPandacssConfig } from './config'
-import { copyEscape } from './codegen'
+import { copyEscape, generateEscapeWrapper } from './codegen'
 import { patch } from './patch'
-import { tick, quote, dedent } from './logger'
+import { tick, quote } from './logger'
 import { ICreateContextOptions } from '@/types'
 import { getCreateContextDefaults } from '@/defaults'
+import { dedent, defu } from '@/utils'
 
-export async function createContext(options?: ICreateContextOptions) {
+export async function createContext(
+  options?: ICreateContextOptions & { configFile?: string }
+) {
   const opt = defu(options, getCreateContextDefaults())
   let pandaConfig: Awaited<ReturnType<typeof getPandacssConfig>>
   try {
@@ -26,7 +28,13 @@ export async function createContext(options?: ICreateContextOptions) {
     const words: string[] = []
     const weappPandaDir = resolve(projectRoot, outdir, 'weapp-panda')
     const patchHelpersPath = resolve(projectRoot, outdir, 'helpers.mjs')
-    await copyEscape(weappPandaDir)
+    if (!existsSync(patchHelpersPath)) {
+      throw new Error(
+        `Cannot find runtime file: ${outdir}/helpers.mjs. Did you forget to run \`panda init\`?`
+      )
+    }
+    await copyEscape(resolve(weappPandaDir, 'lib'))
+    await generateEscapeWrapper(weappPandaDir, opt)
     words.push(dedent`
     ${tick} ${quote(outdir, '/weapp-panda')}: the core escape function for weapp
     `)
@@ -62,9 +70,26 @@ export async function createContext(options?: ICreateContextOptions) {
       )
     }
   }
+
+  function init() {
+    return fs.writeFile(
+      resolve(projectRoot, 'weapp-pandacss.config.ts'),
+      dedent`
+      import { defineConfig } from 'weapp-pandacss'
+
+export default defineConfig({
+  
+})
+
+      `,
+      'utf8'
+    )
+  }
   return {
+    configFile: options?.configFile,
     pandaConfig,
     codegen,
-    rollback
+    rollback,
+    init
   }
 }

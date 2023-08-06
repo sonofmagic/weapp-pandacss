@@ -3,12 +3,13 @@ import fs from 'node:fs'
 import { deleteAsync } from 'del'
 import { readWantedLockfile } from '@pnpm/lockfile-file'
 import { appRoot, root } from './util'
-import { getPandacssConfig } from '@/core/config'
+import { getPandacssConfig } from '@/core'
 import {
   getWeappCoreEscapeDir,
   copyEscape,
   getPandaVersion
 } from '@/core/codegen'
+
 describe('codegen', () => {
   it('has install WeappCoreEscape', () => {
     const dir = getWeappCoreEscapeDir()

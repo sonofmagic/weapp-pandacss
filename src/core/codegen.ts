@@ -1,15 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-
-export async function ensureDir(p: string) {
-  try {
-    await fs.access(p)
-  } catch {
-    await fs.mkdir(p, {
-      recursive: true
-    })
-  }
-}
+import { ICreateContextOptions } from '@/types'
+import { ensureDir, dedent } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
   return path.dirname(require.resolve('@weapp-core/escape'))
@@ -36,4 +28,36 @@ export async function copyEscape(destDir: string) {
     }
   }
   return result
+}
+
+export async function generateEscapeWrapper(
+  destDir: string,
+  options: ICreateContextOptions
+) {
+  await ensureDir(destDir)
+  const code = dedent`
+  import { escape as _escape } from './lib/index.mjs'
+
+  function predicate(className){
+    if(${options.escapePredicate}){
+      return true
+    }
+    return false
+  }
+
+  function escape(className) {
+    if(predicate(className)){
+      return _escape(className)
+    }
+    return className
+  }
+  export { escape }
+  `
+  await fs.writeFile(path.resolve(destDir, 'index.mjs'), code, 'utf8')
+  await fs.writeFile(
+    path.resolve(destDir, 'index.d.ts'),
+    dedent`
+    export declare function escape(selectors: string): string;`,
+    'utf8'
+  )
 }

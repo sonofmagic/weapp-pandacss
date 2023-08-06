@@ -3,6 +3,7 @@ import IceButton from '@/components/Button'
 import { View, Text, Button, Input } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import { css, cx } from 'styled-system/css'
+import { escape } from 'styled-system/weapp-panda'
 import { styled } from 'styled-system/jsx'
 import './index.scss'
 
@@ -39,10 +40,22 @@ export default function Index() {
   })
 
   const items = [1, 2, 3, 4, 5, 6]
+  const textContent =
+    '`1234567890-= ~!@#$%^&*()_+ qwertyuiop[]\\ QWERTYUIOP{}| asdfghjkl;\' ASDFGHJKL:" zxcvbnm,./ ZXCVBNM<>?'
 
+  const aaa = escape(textContent)
   return (
     // nutui 样式错乱？
     <View>
+      <View
+        className={css({
+          fontSize: 'xs',
+          fontWeight: 'semibold'
+        })}
+      >
+        {aaa}
+      </View>
+
       <IceButton>11</IceButton>
       <IceButton
         size='lg'

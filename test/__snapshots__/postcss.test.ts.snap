@@ -2255,3 +2255,23 @@ exports[`postcss > simple universal selector 1`] = `"view,text{}"`;
 exports[`postcss > simple universal selector removeNegationPseudoClass true 1`] = `"view,text{}"`;
 
 exports[`postcss > universal selector 1`] = `" view,text,view::before,text::before,view::after,text::after,::backdrop{}"`;
+
+exports[`postcss > useOptions default 1`] = `
+{
+  "value": {},
+}
+`;
+
+exports[`postcss > useOptions default 2`] = `
+{
+  "value": {
+    "cascadeLayersPluginOptions": {
+      "onConditionalRulesChangingLayerOrder": false,
+    },
+    "disabled": true,
+    "isPseudoClassPluginOptions": {
+      "onPseudoElement": "warning",
+    },
+  },
+}
+`;

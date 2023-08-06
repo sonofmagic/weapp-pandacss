@@ -38,7 +38,8 @@
 </li>
 <li><a href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">跨平台注意事项</a></li>
 <li><a href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A2%84%E8%A7%88%E4%BA%8B%E9%A1%B9">小程序预览事项</a></li>
-<li><a href="#%E9%85%8D%E7%BD%AE%E9%A1%B9">配置项</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">高级配置文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E5%88%97%E8%A1%A8">配置项列表</a></li>
 <li><a href="#%E5%8F%82%E8%80%83%E7%A4%BA%E4%BE%8B">参考示例</a></li>
 <li><a href="#bugs--issues">Bugs &amp; Issues</a></li>
 </ul>
@@ -109,10 +110,16 @@
 <p>当然你恢复到小程序版本也只需要执行 <code>weapp-panda codegen</code> 就会重新注入了。</p>
 <a id="md:小程序预览事项" class="tsd-anchor"></a><h2><a href="#md:小程序预览事项">小程序预览事项</a></h2><p>当小程序预览时会出现 <code>Error: 非法的文件，错误信息：invalid file: pages/index/index.js, 565:24, SyntaxError: Unexpected token . if (variants[key]?.[value])</code> 错误。</p>
 <p>这是因为 <code>panda</code> 生成的文件 <code>cva.mjs</code> 使用了 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining"><code>Optional chaining (?.)</code></a>语法，这个语法小程序原生不支持，这时候可以开启勾选 <code>将JS编译成ES5</code> 功能再进行预览，或者使用 <code>babel</code> 预先进行处理再上传预览。</p>
-<a id="md:配置项" class="tsd-anchor"></a><h2><a href="#md:配置项">配置项</a></h2><p>详见 <a href="https://sonofmagic.github.io/weapp-pandacss/">https://sonofmagic.github.io/weapp-pandacss/</a></p>
+<a id="md:高级配置文件" class="tsd-anchor"></a><h2><a href="#md:高级配置文件">高级配置文件</a></h2><p>你可以通过 <code>npx weapp-panda init</code> 命令在当前目录下创建一个 <code>weapp-pandacss.config.ts</code> 配置文件。</p>
+<p>这个配置文件可以用来控制转义代码的生成和一部分 <code>postcss</code> 插件的行为。</p>
+<pre><code class="language-ts"><span class="hl-8">import</span><span class="hl-1"> { </span><span class="hl-7">defineConfig</span><span class="hl-1"> } </span><span class="hl-8">from</span><span class="hl-1"> </span><span class="hl-2">&#39;weapp-pandacss&#39;</span><br/><br/><span class="hl-8">export</span><span class="hl-1"> </span><span class="hl-8">default</span><span class="hl-1"> </span><span class="hl-0">defineConfig</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-7">postcss:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">// 转义插件是否生效，这只能控制核心插件的生效情况,而核心插件只是一部分</span><br/><span class="hl-1">    </span><span class="hl-4">// 假如你想让整个插件真正不生效，请在 `postcss.config.cjs` 里进行动态加载判断</span><br/><span class="hl-1">    </span><span class="hl-7">disabled:</span><span class="hl-1"> </span><span class="hl-3">false</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">// 数组merge默认行为是直接concat 合并，所以传一个空数组是使用的默认数组</span><br/><span class="hl-1">    </span><span class="hl-4">// 转义替换对象</span><br/><span class="hl-1">    </span><span class="hl-7">selectorReplacement:</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-7">root:</span><span class="hl-1"> [],</span><br/><span class="hl-1">      </span><span class="hl-7">universal:</span><span class="hl-1"> [],</span><br/><span class="hl-1">      </span><span class="hl-7">cascadeLayers:</span><span class="hl-1"> </span><span class="hl-2">&#39;a&#39;</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-7">removeNegationPseudoClass:</span><span class="hl-1"> </span><span class="hl-3">true</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  </span><span class="hl-4">// 生成上下文</span><br/><span class="hl-1">  </span><span class="hl-7">context:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">// 转义注入判断条件，更改后需要重新生成代码</span><br/><span class="hl-1">    </span><span class="hl-7">escapePredicate:</span><span class="hl-1"> </span><span class="hl-2">`process.env.TARO_ENV !== &#39;h5&#39; &amp;&amp; process.env.TARO_ENV !== &#39;rn&#39;`</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">// 插件的 pandaConfig 寻找配置</span><br/><span class="hl-1">    </span><span class="hl-7">pandaConfig:</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-7">cwd:</span><span class="hl-1"> </span><span class="hl-7">process</span><span class="hl-1">.</span><span class="hl-0">cwd</span><span class="hl-1">(),</span><br/><span class="hl-1">      </span><span class="hl-7">file:</span><span class="hl-1"> </span><span class="hl-2">&#39;path/to/your-panda-config-file&#39;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">})</span>
+</code><button>Copy</button></pre>
+<p>当然，你更改相关的配置项之后，要重新执行一下 <code>npm run prepare</code> 来生成新的注入转义代码。</p>
+<a id="md:配置项列表" class="tsd-anchor"></a><h2><a href="#md:配置项列表">配置项列表</a></h2><p>详见 <a href="https://sonofmagic.github.io/weapp-pandacss/">https://sonofmagic.github.io/weapp-pandacss/</a></p>
 <a id="md:参考示例" class="tsd-anchor"></a><h2><a href="#md:参考示例">参考示例</a></h2><p><a href="https://github.com/sonofmagic/taro-react-pandacss-template">taro-react-pandacss-template</a></p>
-<p><a href="./examples/taro-app">Taro-app</a></p>
-<p><a href="./examples/uni-app-vue3/">Uni-app vue3 vite</a></p>
+<p><a href="./examples/taro-app">Taro-app react</a></p>
+<p><a href="./examples/taro-app-vue3">Taro-app vue3</a></p>
+<p><a href="./examples/uni-app-vue3">Uni-app vue3 vite</a></p>
 <a id="md:bugs-amp-issues" class="tsd-anchor"></a><h2><a href="#md:bugs-amp-issues">Bugs &amp; Issues</a></h2><p>目前这个插件正在快速的开发中，如果遇到 <code>Bug</code> 或者想提出 <code>Issue</code></p>
 <p><a href="https://github.com/sonofmagic/weapp-pandacss/issues">欢迎提交到此处</a></p>
 </div></div>
@@ -160,7 +167,8 @@
 <li><a href="#md:1-回到-packagejson-添加生成脚本"><span>1. 回到 package.json 添加生成脚本</span></a></li></ul></li></ul></li>
 <li><a href="#md:跨平台注意事项"><span>跨平台注意事项</span></a></li>
 <li><a href="#md:小程序预览事项"><span>小程序预览事项</span></a></li>
-<li><a href="#md:配置项"><span>配置项</span></a></li>
+<li><a href="#md:高级配置文件"><span>高级配置文件</span></a></li>
+<li><a href="#md:配置项列表"><span>配置项列表</span></a></li>
 <li><a href="#md:参考示例"><span>参考示例</span></a></li>
 <li><a href="#md:bugs-amp-issues"><span>Bugs &amp; <wbr/>Issues</span></a></li></ul></li></ul></li></ul></div></details></div>
 <div class="site-menu">
@@ -168,6 +176,7 @@
 <ul class="tsd-small-nested-navigation">
 <li><a href="interfaces/ICreateContextOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-256"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)"></path></g></svg><span>ICreate<wbr/>Context<wbr/>Options</span></a></li>
 <li><a href="interfaces/IPostcssPluginOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IPostcss<wbr/>Plugin<wbr/>Options</span></a></li>
+<li><a href="interfaces/UserConfig.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>User<wbr/>Config</span></a></li>
 <li><a href="types/PandacssConfigFileOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>Pandacss<wbr/>Config<wbr/>File<wbr/>Options</span></a></li></ul></nav></div></div></div>
 <div class="tsd-generator">
 <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
