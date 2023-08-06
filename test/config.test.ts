@@ -1,7 +1,7 @@
 import path from 'node:path'
+import { omit } from 'lodash-es'
 import { appRoot, taroAppRoot, configRoot } from './util'
 import { getPandacssConfig, getUserConfig } from '@/core/config'
-
 describe('config', () => {
   it('get fixtures app config', async () => {
     const config = await getPandacssConfig({
@@ -22,7 +22,7 @@ describe('config', () => {
   it('get default config', async () => {
     const { config } = await getUserConfig()
 
-    expect(config).toMatchSnapshot()
+    expect(omit(config, ['context.pandaConfig'])).toMatchSnapshot()
   })
 
   it('get default config from 0.default dir', async () => {

@@ -5,9 +5,6 @@ exports[`config > get default config 1`] = `
   "context": {
     "escapePredicate": "true",
     "log": false,
-    "pandaConfig": {
-      "cwd": "/Users/icebreaker/Documents/GitHub/weapp-pandacss",
-    },
   },
   "postcss": {
     "cascadeLayersPluginOptions": {},
