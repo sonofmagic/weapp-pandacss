@@ -76,5 +76,5 @@ export interface UserConfig {
   /**
    * @description 代码生成器上下文配置
    */
-  context?: ICreateContextOptions
+  context?: Pick<ICreateContextOptions, 'escapePredicate' | 'pandaConfig'>
 }

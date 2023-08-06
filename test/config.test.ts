@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { appRoot, taroAppRoot, configRoot } from './util'
 import { getPandacssConfig, getUserConfig } from '@/core/config'
+
 describe('config', () => {
   it('get fixtures app config', async () => {
     const config = await getPandacssConfig({
