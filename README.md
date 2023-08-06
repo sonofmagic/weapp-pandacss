@@ -20,7 +20,8 @@
       - [1. 回到 package.json 添加生成脚本](#1-回到-packagejson-添加生成脚本)
   - [跨平台注意事项](#跨平台注意事项)
   - [小程序预览事项](#小程序预览事项)
-  - [配置项](#配置项)
+  - [高级配置文件](#高级配置文件)
+  - [配置项列表](#配置项列表)
   - [参考示例](#参考示例)
   - [Bugs \& Issues](#bugs--issues)
 
@@ -243,7 +244,45 @@ npm run prepare
 
 这是因为 `panda` 生成的文件 `cva.mjs` 使用了 [`Optional chaining (?.)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)语法，这个语法小程序原生不支持，这时候可以开启勾选 `将JS编译成ES5` 功能再进行预览，或者使用 `babel` 预先进行处理再上传预览。
 
-## 配置项
+## 高级配置文件
+
+你可以通过 `npx weapp-panda init` 命令在当前目录下创建一个 `weapp-pandacss.config.ts` 配置文件。
+
+这个配置文件可以用来控制转义代码的生成和一部分 `postcss` 插件的行为。
+
+```ts
+import { defineConfig } from 'weapp-pandacss'
+
+export default defineConfig({
+  postcss: {
+    // 转义插件是否生效，这只能控制核心插件的生效情况,而核心插件只是一部分
+    // 假如你想让整个插件真正不生效，请在 `postcss.config.cjs` 里进行动态加载判断
+    disabled: false,
+    // 数组merge默认行为是直接concat 合并，所以传一个空数组是使用的默认数组
+    // 转义替换对象
+    selectorReplacement: {
+      root: [],
+      universal: [],
+      cascadeLayers: 'a'
+    },
+    removeNegationPseudoClass: true
+  },
+  // 生成上下文
+  context: {
+    // 转义注入判断条件，更改后需要重新生成代码
+    escapePredicate: `process.env.TARO_ENV !== 'h5' && process.env.TARO_ENV !== 'rn'`,
+    // 插件的 pandaConfig 寻找配置
+    pandaConfig: {
+      cwd: process.cwd(),
+      file: 'path/to/your-panda-config-file'
+    }
+  }
+})
+```
+
+当然，你更改相关的配置项之后，要重新执行一下 `npm run prepare` 来生成新的注入转义代码。
+
+## 配置项列表
 
 详见 <https://sonofmagic.github.io/weapp-pandacss/>
 
@@ -251,9 +290,11 @@ npm run prepare
 
 [taro-react-pandacss-template](https://github.com/sonofmagic/taro-react-pandacss-template)
 
-[Taro-app](./examples/taro-app)
+[Taro-app react](./examples/taro-app)
 
-[Uni-app vue3 vite](./examples/uni-app-vue3/)
+[Taro-app vue3](./examples/taro-app-vue3)
+
+[Uni-app vue3 vite](./examples/uni-app-vue3)
 
 ## Bugs & Issues
 
