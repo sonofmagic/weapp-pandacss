@@ -107,7 +107,7 @@
     "del": "^7.0.0",
     "eslint": "8.46.0",
     "eslint-config-icebreaker": "^1.2.2",
-    "eslint-config-prettier": "^8.9.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "klaw": "^4.1.0",
     "kleur": "^4.1.5",
