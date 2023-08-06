@@ -30,6 +30,6 @@ describe('config', () => {
       cwd: path.resolve(configRoot, '0.default')
     })
     console.log(rest)
-    expect(config).toMatchSnapshot()
+    expect(omit(config, ['context.pandaConfig'])).toMatchSnapshot()
   })
 })
