@@ -68,7 +68,10 @@ export interface UserConfig {
   /**
    * @description postcss 配置
    */
-  postcss?: IPostcssPluginOptions
+  postcss?: Pick<
+    IPostcssPluginOptions,
+    'selectorReplacement' | 'removeNegationPseudoClass' | 'disabled'
+  >
 
   /**
    * @description 代码生成器上下文配置

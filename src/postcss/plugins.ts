@@ -195,6 +195,7 @@ innerPlugin.postcss = true
 // 就近原则 postcss options > weapp-pandans.config.ts
 export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
   const { mergeOptions, optionsRef } = useOptions(options)
+  // cascadeLayersPluginOptions 和 isPseudoClassPluginOptions
   const cascadeLayersPlugin = createCascadeLayersPlugin(
     optionsRef?.value.cascadeLayersPluginOptions
   ) as Plugin

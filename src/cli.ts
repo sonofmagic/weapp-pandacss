@@ -9,9 +9,9 @@ async function initCtx() {
   }
   const { config, configFile } = await getUserConfig()
   ctx = await createContext({
-    log: true,
     configFile,
-    ...config?.context
+    ...config?.context,
+    log: true
   })
   return ctx
 }

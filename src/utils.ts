@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises'
 
-function normalizeString(strs: string | string[]) {
+function normalizeString(strs: string | string[], separator = ',') {
   if (Array.isArray(strs)) {
-    return strs.join(',')
+    return strs.join(separator)
   }
   return strs
 }

@@ -37,11 +37,19 @@ export async function generateEscapeWrapper(
   await ensureDir(destDir)
   const code = dedent`
   import { escape as _escape } from './lib/index.mjs'
-  function escape(selectors) {
+
+  function predicate(className){
     if(${options.escapePredicate}){
-      return _escape(selectors)
+      return true
     }
-    return selectors
+    return false
+  }
+
+  function escape(className) {
+    if(predicate(className)){
+      return _escape(className)
+    }
+    return className
   }
   export { escape }
   `
