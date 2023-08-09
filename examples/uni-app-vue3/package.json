@@ -69,7 +69,7 @@
     "@dcloudio/vite-plugin-uni": "3.0.0-3080720230703001",
     "@vue/tsconfig": "^0.4.0",
     "typescript": "^5.1.6",
-    "vite": "4.4.8",
+    "vite": "4.4.9",
     "vue-tsc": "^1.8.8"
   }
 }
