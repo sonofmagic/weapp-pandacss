@@ -3,5 +3,11 @@
   "compilerOptions": {
     "rootDir": "src"
   },
-  "include": ["src/**/*", "types/**/*"]
+  "include": [
+    "src/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "test"
+  ]
 }
