@@ -61,7 +61,30 @@ export const innerPlugin: PluginCreator<
         selector.value = escape(selector.value)
       }
       if (selector.type === 'combinator') {
-        selector.value = '+'
+        // Descendant combinator
+
+        // if (
+        //   selector.value === ' ' ||
+        //   selector.value === '+' ||
+        //   selector.value === '>' ||
+        //   selector.value === '~'
+        // ) {
+        //   return
+        // }
+        // has :not() and ~
+        // General sibling combinator
+        // eslint-disable-next-line unicorn/no-lonely-if
+        if (selector.value === '~' && selector.parent) {
+          // Adjacent sibling combinator
+          const idx = selector.parent.nodes.indexOf(selector)
+          if (idx && idx > -1) {
+            // const beforeNodes = selector.parent.nodes.slice(0, idx)
+            const beforeNode = selector.parent.nodes[idx - 1]
+            if (beforeNode.type !== 'class') {
+              selector.value = '+'
+            }
+          }
+        }
       }
       if (
         selector.type === 'universal' &&

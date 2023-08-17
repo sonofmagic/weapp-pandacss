@@ -105,6 +105,16 @@ describe('postcss', () => {
     expect(css).toMatchSnapshot()
   })
 
+  it('_peerHover no :not(n) case ', async () => {
+    const { css } = await postcss([
+      postcssPlugin({
+        removeNegationPseudoClass: false
+      })
+    ]).process(`.peer~.peerHovercbg_redd500{}`)
+    // 前面不能有伪元素和 [data-*]
+    expect(css).toBe(`.peer~.peerHovercbg_redd500{}`)
+  })
+
   it('_peerHover case disabled enable', async () => {
     const testCase = `.peer:hover:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500,
     .peer[data-hover]:not(n):not(n):not(n):not(n)~.peerHovercbg_redd500 {}`
@@ -140,6 +150,13 @@ describe('postcss', () => {
       `.peer:not(.aa):not(#\\#){}`
     )
     expect(css).toMatchSnapshot()
+  })
+
+  it('should not transform descendant combinator', async () => {
+    const { css } = await postcss([postcssPlugin()]).process(
+      `.custom-tabs .tabs__scroll { background: red; }`
+    )
+    expect(css).toBe('.custom-tabs .tabs__scroll { background: red; }')
   })
 
   it('useOptions default', () => {
