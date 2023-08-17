@@ -60,25 +60,15 @@ export const innerPlugin: PluginCreator<
       if (selector.type === 'class') {
         selector.value = escape(selector.value)
       }
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator
       if (selector.type === 'combinator') {
-        // Descendant combinator
-
-        // if (
-        //   selector.value === ' ' ||
-        //   selector.value === '+' ||
-        //   selector.value === '>' ||
-        //   selector.value === '~'
-        // ) {
-        //   return
-        // }
+        // ' ', + , > , ~
         // has :not() and ~
         // General sibling combinator
         // eslint-disable-next-line unicorn/no-lonely-if
         if (selector.value === '~' && selector.parent) {
-          // Adjacent sibling combinator
           const idx = selector.parent.nodes.indexOf(selector)
-          if (idx && idx > -1) {
-            // const beforeNodes = selector.parent.nodes.slice(0, idx)
+          if (idx > -1) {
             const beforeNode = selector.parent.nodes[idx - 1]
             if (beforeNode.type !== 'class') {
               selector.value = '+'

@@ -159,6 +159,18 @@ describe('postcss', () => {
     expect(css).toBe('.custom-tabs .tabs__scroll { background: red; }')
   })
 
+  it('universal selector string literal', async () => {
+    const { css } = await postcss([
+      postcssPlugin({
+        removeNegationPseudoClass: false,
+        selectorReplacement: {
+          universal: 'view'
+        }
+      })
+    ]).process(`*, *::before, *::after, ::backdrop{}`)
+    expect(css).toBe('view,view::before,view::after,::backdrop{}')
+  })
+
   it('useOptions default', () => {
     const { mergeOptions, optionsRef } = useOptions()
     expect(optionsRef).toMatchSnapshot()
@@ -182,13 +194,19 @@ describe('postcss', () => {
     expect(optionsRef).toMatchSnapshot()
   })
 
-  // it('... :where', () => {
-  //   const t = parser((selectors) => {
-  //     selectors.walk((selector) => {
-  //       console.log(selector)
-  //     })
-  //   })
+  it('... :where happy', async () => {
+    const { css } = await postcss([postcssPlugin()]).process(
+      `:where(:root, :host, :happy) {}`
+    )
+    expect(css).toBe('page,page,:happy {}')
+  })
 
-  //   t.processSync(':root,:host')
-  // })
+  it('optionsRef disabled option', async () => {
+    const { css } = await postcss([
+      postcssPlugin({
+        disabled: true
+      })
+    ]).process(`:where(:root, :host, :happy) {}`)
+    expect(css).toBe(`:where(:root, :host, :happy) {}`)
+  })
 })
