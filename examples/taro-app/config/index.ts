@@ -80,14 +80,14 @@ export default defineConfig(async (merge, { command, mode }) => {
               }
             ]
           },
-          // plugin: {
-          //   install: {
-          //     plugin: UnifiedWebpackPluginV5,
-          //     args: [{
-          //       appType: 'taro'
-          //     }]
-          //   }
-          // }
+          plugin: {
+            install: {
+              plugin: UnifiedWebpackPluginV5,
+              args: [{
+                appType: 'taro'
+              }]
+            }
+          }
         })
       }
     },
