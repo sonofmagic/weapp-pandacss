@@ -72,14 +72,22 @@ export default defineConfig(async (merge, { command, mode }) => {
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin);
         chain.merge({
-          plugin: {
-            install: {
-              plugin: UnifiedWebpackPluginV5,
-              args: [{
-                appType: 'taro'
-              }]
-            }
-          }
+          module: {
+            rule: [
+              {
+                test: /\.[cm]js$/i,
+                loader: 'babel-loader'
+              }
+            ]
+          },
+          // plugin: {
+          //   install: {
+          //     plugin: UnifiedWebpackPluginV5,
+          //     args: [{
+          //       appType: 'taro'
+          //     }]
+          //   }
+          // }
         })
       }
     },

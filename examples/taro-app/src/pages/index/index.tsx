@@ -42,8 +42,9 @@ export default function Index() {
   const items = [1, 2, 3, 4, 5, 6]
   const textContent =
     '`1234567890-= ~!@#$%^&*()_+ qwertyuiop[]\\ QWERTYUIOP{}| asdfghjkl;\' ASDFGHJKL:" zxcvbnm,./ ZXCVBNM<>?'
-
+  const a = { b: 1 }
   const aaa = escape(textContent)
+  console.log(a?.b)
   return (
     // nutui 样式错乱？
     <View>
@@ -251,7 +252,7 @@ export default function Index() {
         </Text>
       </View>
 
-      <View dir='ltr'>
+      {/* <View dir='ltr'>
         <View
           className={css({
             _ltr: { ml: '3' },
@@ -260,7 +261,7 @@ export default function Index() {
         >
           Hello
         </View>
-      </View>
+      </View> */}
 
       <View
         data-loading
@@ -271,7 +272,7 @@ export default function Index() {
         Hello
       </View>
 
-      <dViewiv
+      {/* <dViewiv
         data-orientation='horizontal'
         className={css({
           _horizontal: { bg: 'red.500' },
@@ -279,11 +280,9 @@ export default function Index() {
         })}
       >
         Hello
-      </dViewiv>
+      </dViewiv> */}
 
-      <View className='px-4 py-1 text-center bg-slate-400'>
-        TAILWIND
-      </View>
+      <View className='px-4 py-1 text-center bg-slate-400'>TAILWIND</View>
     </View>
   )
 }

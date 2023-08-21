@@ -1,5 +1,5 @@
 let plugins = {
-  tailwindcss: {},
+  // tailwindcss: {},
   '@pandacss/dev/postcss': {}
 }
 // https://taro-docs.jd.com/docs/envs#processenvtaro_env
@@ -9,7 +9,7 @@ if (process.env.TARO_ENV !== 'h5' && process.env.TARO_ENV !== 'rn') {
   plugins['weapp-pandacss/postcss'] = options
 }
 
-plugins['autoprefixer'] = {}
+// plugins['autoprefixer'] = {}
 
 module.exports = {
   plugins

@@ -242,7 +242,25 @@ npm run prepare
 
 当小程序预览时会出现 `Error: 非法的文件，错误信息：invalid file: pages/index/index.js, 565:24, SyntaxError: Unexpected token . if (variants[key]?.[value])` 错误。
 
-这是因为 `panda` 生成的文件 `cva.mjs` 使用了 [`Optional chaining (?.)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)语法，这个语法小程序原生不支持，这时候可以开启勾选 `将JS编译成ES5` 功能再进行预览，或者使用 `babel` 预先进行处理再上传预览。
+这是因为 `panda` 生成的文件 `cva.mjs` 使用了 [`Optional chaining (?.)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)语法，这个语法小程序原生不支持导致的，这种情况可以参考以下的配置：
+
+```ts
+// taro 应用中，默认只会处理 [jt]sx? 这类的文件，所以要添加 cjs/mjs 再交给 babel 处理一下
+// 假如你使用 pnpm 的话，你还要执行一下 `pnpm add -D babel-loader`, 把 `babel-loader` 提到最外面一层，不然会出现 require.resolve 找不到的问题
+// config/index.ts 文件中的 webpackChain 方法，你可以把 mini 和 h5 都加上
+chain.merge({
+  module: {
+    rule: [
+      {
+        test: /\.[cm]js$/i,
+        loader: 'babel-loader'
+      }
+    ]
+  },
+})
+```
+
+或者你可以开启 `将JS编译成ES5` 功能再进行预览。
 
 ## 高级配置文件
 
