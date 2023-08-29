@@ -140,7 +140,7 @@
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@csstools/postcss-is-pseudo-class": "^4.0.0",
     "@pandacss/config": "^0.13.1",
-    "@weapp-core/escape": "1.0.0",
+    "@weapp-core/escape": "1.1.0",
     "c12": "^1.4.2",
     "cac": "^6.7.14",
     "postcss-selector-parser": "^6.0.13"

@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.13.1
     version: 0.13.1
   '@weapp-core/escape':
-    specifier: 1.0.0
-    version: 1.0.0
+    specifier: 1.1.0
+    version: 1.1.0
   c12:
     specifier: ^1.4.2
     version: 1.4.2
@@ -247,6 +247,10 @@ packages:
     transitivePeerDependencies:
       - '@internationalized/date'
     dev: true
+
+  /@ast-core/escape@1.0.0:
+    resolution: {integrity: sha512-fK2+alQGwz8lgQ1V8hrV7Fe+z6BMptFPwEiJC2nF1tjetD6bK9+fLaKUn/Shft7cnKf3PefLBFKE1Qf7ZfL+5A==}
+    dev: false
 
   /@astrojs/compiler@1.8.2:
     resolution: {integrity: sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==}
@@ -2377,8 +2381,10 @@ packages:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
     dev: true
 
-  /@weapp-core/escape@1.0.0:
-    resolution: {integrity: sha512-r/D9iyJlgZ6mG67j1ccgXzts8EgABETNWVu9cXCy4tpXnXXTMWV7RGPqD+uQutgcaUmDwN8sHlt/nPJODEJOlQ==}
+  /@weapp-core/escape@1.1.0:
+    resolution: {integrity: sha512-LO7bVIVpO6J7G2ENZ81PHSk5msp1rhmU1NLSX1iWHJm9YOmpNd2Xiu8fvk5uKtJffshMxJI/Kpp7lYPekDA6Mw==}
+    dependencies:
+      '@ast-core/escape': 1.0.0
     dev: false
 
   /@zag-js/accordion@0.12.0:
