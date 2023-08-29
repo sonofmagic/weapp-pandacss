@@ -45,6 +45,16 @@ const config = {
           resolvers: [NutUIResolver({ taro: true })]
         })
       )
+      chain.merge({
+        module: {
+          rule: [
+            {
+              test: /\.[cm]js$/i,
+              loader: 'babel-loader'
+            }
+          ]
+        }
+      })
     },
     postcss: {
       pxtransform: {
