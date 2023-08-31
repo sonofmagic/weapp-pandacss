@@ -25,7 +25,7 @@ describe('codegen', () => {
     await deleteAsync([target])
     expect(fs.existsSync(target)).toBe(false)
     const res = await copyEscape(target)
-    expect(res.length).toBe(3)
+    expect(res.length).toBe(5)
     for (const filename of res) {
       expect(fs.existsSync(filename)).toBe(true)
     }
