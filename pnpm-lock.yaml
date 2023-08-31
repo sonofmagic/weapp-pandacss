@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.13.1
     version: 0.13.1
   '@weapp-core/escape':
-    specifier: 1.0.0
-    version: 1.0.0
+    specifier: 2.0.0
+    version: 2.0.0
   c12:
     specifier: ^1.4.2
     version: 1.4.2
@@ -2377,8 +2377,8 @@ packages:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
     dev: true
 
-  /@weapp-core/escape@1.0.0:
-    resolution: {integrity: sha512-r/D9iyJlgZ6mG67j1ccgXzts8EgABETNWVu9cXCy4tpXnXXTMWV7RGPqD+uQutgcaUmDwN8sHlt/nPJODEJOlQ==}
+  /@weapp-core/escape@2.0.0:
+    resolution: {integrity: sha512-AB34eFpoVfj/urfJPoZURwamSzLlMuDL6TNV+aXLW8aJsw3ud0/XkrEL/FkBsuaTgTD1rarip+y4NkQwrhQ91A==}
     dev: false
 
   /@zag-js/accordion@0.12.0:
