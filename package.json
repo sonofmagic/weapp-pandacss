@@ -120,7 +120,7 @@
     "prettier": "^3.0.3",
     "rollup": "^3.29.2",
     "rollup-plugin-visualizer": "^5.9.2",
-    "semantic-release": "^21.1.1",
+    "semantic-release": "^22.0.0",
     "semver": "^7.5.4",
     "ts-node": "^10.9.1",
     "ts-patch": "^3.0.2",
