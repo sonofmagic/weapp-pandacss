@@ -118,7 +118,7 @@
     "outdent": "^0.8.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
-    "rollup": "^3.29.4",
+    "rollup": "^4.0.0",
     "rollup-plugin-visualizer": "^5.9.2",
     "semantic-release": "^22.0.5",
     "semver": "^7.5.4",
