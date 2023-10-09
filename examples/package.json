@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "pnpm run -r --parallel prepare",
+    "build": "pnpm run -r --parallel build"
   },
   "keywords": [],
   "author": "",
