@@ -44,7 +44,10 @@
     "semantic-release": "semantic-release",
     "sync": "cnpm sync weapp-pandacss",
     "docs": "typedoc --out docs src/types.ts --tsconfig ./tsconfig.docs.json",
-    "preview": "vite preview docs --outDir ."
+    "preview": "vite preview docs --outDir .",
+    "e2e": "vitest run -c ./vitest.e2e.config.ts",
+    "e2e:dev": "vitest -c ./vitest.e2e.config.ts",
+    "e2e:u": "vitest run -u -c ./vitest.e2e.config.ts"
   },
   "packageManager": "pnpm@8.6.11",
   "repository": {
@@ -114,6 +117,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "merge": "^2.1.1",
+    "miniprogram-automator": "^0.12.0",
     "only-allow": "^1.2.0",
     "outdent": "^0.8.0",
     "postcss": "^8.4.31",

@@ -40,7 +40,8 @@
     "src/**/*",
     "types/**/*",
     "test/**/*",
-    "rollup.config.ts"
+    "rollup.config.ts",
+    "e2e/index.test.ts"
   ],
   "ts-node": {
     "compilerOptions": {
