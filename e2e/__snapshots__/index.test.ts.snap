@@ -36,7 +36,7 @@ exports[`e2e > 'taroReact' snapshot > wxss 1`] = `
     -webkit-transform: none;
     transform: none;
   }
-} /* ! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com */
+} /* ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com */
 ::after,
 ::before,
 text,
@@ -1532,6 +1532,13 @@ object {
   -webkit-appearance: button;
   background-color: transparent;
   background-image: none;
+}
+.h5-button,
+.h5-input,
+.h5-select,
+.h5-textarea,
+optgroup {
+  color: inherit;
 }
 .h5-button,
 .h5-select {
