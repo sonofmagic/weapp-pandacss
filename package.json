@@ -144,7 +144,7 @@
     "@babel/types": "^7.23.0",
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@csstools/postcss-is-pseudo-class": "^4.0.3",
-    "@pandacss/config": "^0.17.0",
+    "@pandacss/config": "^0.18.0",
     "@weapp-core/escape": "2.0.0",
     "c12": "^1.5.1",
     "cac": "^6.7.14",
