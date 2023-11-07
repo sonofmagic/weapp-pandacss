@@ -86,7 +86,7 @@
   },
   "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
   "devDependencies": {
-    "@pandacss/dev": "^0.17.0",
+    "@pandacss/dev": "^0.18.0",
     "@pnpm/lockfile-file": "^8.1.3",
     "@rollup/plugin-alias": "^5.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
