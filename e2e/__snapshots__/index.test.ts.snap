@@ -45,18 +45,9 @@ view {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-::before,
-::after {
-  --tw-content: '';
-}
 ::after,
-::before,
-view {
+::before {
   --tw-content: '';
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor;
 }
 .h5-html {
   -webkit-text-size-adjust: 100%;
@@ -287,10 +278,6 @@ object {
   color: #cc3b3b;
   text-decoration: none;
 }
-::before,
-::after {
-  --tw-content: '';
-}
 ::after,
 ::before,
 text,
@@ -342,10 +329,6 @@ view {
   --tw-backdrop-opacity: ;
   --tw-backdrop-saturate: ;
   --tw-backdrop-sepia: ;
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor;
 }
 ::-webkit-backdrop {
   --tw-border-spacing-x: 0;
@@ -1210,21 +1193,30 @@ view::before {
 .bg_blued500 {
   background: var(--colors-blue-500);
 }
+.hovercfocuscbg_redd700:hover:focus,
+.hovercfocuscbg_redd700[data-focus]:hover,
 .hovercfocuscbg_redd700[data-hover]:focus,
 .hovercfocuscbg_redd700[data-hover][data-focus] {
   background: var(--colors-red-700);
 }
+.hovercbg_yellowd400:hover,
 .hovercbg_yellowd400[data-hover] {
   background: var(--colors-yellow-400);
 }
+.hovercbg_redd700:hover,
 .hovercbg_redd700[data-hover] {
   background: var(--colors-red-700);
 }
+.group:hover .groupHovercbg_redd500,
 .group[data-hover] .groupHovercbg_redd500 {
   background: var(--colors-red-500);
 }
+.peer:hover + .peerHovercbg_redd500,
 .peer[data-hover] + .peerHovercbg_redd500 {
   background: var(--colors-red-500);
+}
+._nchover_cbg_oranged400:hover {
+  background: var(--colors-orange-400);
 }
 .activecbg_redd900:active {
   background: var(--colors-red-900);
@@ -1617,7 +1609,7 @@ optgroup {
 .h5-samp {
   --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New';
-  font-family: var(--global-font-mono, var(--font-fallback));
+  font-family: var(--global-font-mono, var(--font-mono-fallback));
   font-size: 1em;
 }
 .h5-input[type='email'],
