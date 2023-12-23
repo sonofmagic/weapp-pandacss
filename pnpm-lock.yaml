@@ -24,8 +24,8 @@ dependencies:
     specifier: ^4.0.3
     version: 4.0.3(postcss@8.4.31)
   '@pandacss/config':
-    specifier: ^0.19.0
-    version: 0.19.0
+    specifier: ^0.23.0
+    version: 0.23.0
   '@weapp-core/escape':
     specifier: 2.0.0
     version: 2.0.0
@@ -1342,6 +1342,23 @@ packages:
       jiti: 1.21.0
       merge-anything: 5.1.7
       typescript: 5.3.2
+    dev: true
+
+  /@pandacss/config@0.23.0:
+    resolution: {integrity: sha512-6UNMGXfVKGGzAqTVVcFJfbq+gEBjRytd2N6UwdGn/mer4hgmtodVWtBkD1GJm2E7FCW1hgf3p0pgbWGqaeEUzQ==}
+    dependencies:
+      '@pandacss/error': 0.23.0
+      '@pandacss/logger': 0.23.0
+      '@pandacss/preset-base': 0.23.0
+      '@pandacss/preset-panda': 0.23.0
+      '@pandacss/shared': 0.23.0
+      '@pandacss/types': 0.23.0
+      bundle-n-require: 1.0.1
+      escalade: 3.1.1
+      jiti: 1.21.0
+      merge-anything: 5.1.7
+      typescript: 5.3.3
+    dev: false
 
   /@pandacss/core@0.19.0:
     resolution: {integrity: sha512-uk70OdFck9L9Sw4na/vf1hUpl3zYRQcCwyzFZMOLfeRAzGChgO7aRCKyV5uk5AWIK8XbW1ZEQCgDIeLF3+0Z5w==}
@@ -1389,6 +1406,11 @@ packages:
 
   /@pandacss/error@0.19.0:
     resolution: {integrity: sha512-chqhq5h/wjEayqLcHUxaAucYX7BN88/qNoR9kggahJcFxzWP1dpEeKh9wvBrhYX7U0sHvTSu7rVHd4hW5xxaMA==}
+    dev: true
+
+  /@pandacss/error@0.23.0:
+    resolution: {integrity: sha512-f0k4yeYOvMSd3fZUAp6dWqe4lsknm0BFy5q2DFL42yb/OSbWQ/0voEBJOChYBM3QZTAlE4rVdh+A9q/0hXMXVA==}
+    dev: false
 
   /@pandacss/extractor@0.19.0(typescript@5.3.2):
     resolution: {integrity: sha512-2VKpUGRP+caRXNT/yb4oWRHsbz8UtyL7I3xN0H8fzbMJFRgw3iYGe52E+LSAVzGpM/0b2JOjm4CdVgdb8MbJwg==}
@@ -1426,6 +1448,14 @@ packages:
     dependencies:
       kleur: 4.1.5
       lil-fp: 1.4.5
+    dev: true
+
+  /@pandacss/logger@0.23.0:
+    resolution: {integrity: sha512-dKD92th96fHQJ3jPEmOyE/cfZ+f3tq9aCO8eMcWM1kig5vt3/JfZ00cQc2ObJBcb0f0/lCKRGPWVnzfmZBBrLg==}
+    dependencies:
+      kleur: 4.1.5
+      lil-fp: 1.4.5
+    dev: false
 
   /@pandacss/node@0.19.0(typescript@5.3.2):
     resolution: {integrity: sha512-STsWn0KxItlhlNWZZk4se9AW7brDuAoi3pPEhFW4NF1LyAK7jLlB3YiAI4WOWC0ZRr+aqoVkcFG35z3JQlKSkQ==}
@@ -1500,15 +1530,33 @@ packages:
     resolution: {integrity: sha512-xEDoVv0ilMsQFMrz12Tlt3Bfur9L0cyKzrMttBj3kkobDiawEa57fyNrByHXJpt6HFPD19XWsMEJeCOraUB+ow==}
     dependencies:
       '@pandacss/types': 0.19.0
+    dev: true
+
+  /@pandacss/preset-base@0.23.0:
+    resolution: {integrity: sha512-I9iqO87pMWRplJC3jAXcCcBqBG5lajyCUsgOodZydtPIP3hXqMO7VSG3y8xLkdY09QNLB+t5oyu3jd4xxdt8Lw==}
+    dependencies:
+      '@pandacss/types': 0.23.0
+    dev: false
 
   /@pandacss/preset-panda@0.19.0:
     resolution: {integrity: sha512-2gOtKFySP5sdduR/xvtksUuf5asQEE9AxUVA+le0+ZwjI8DQBKPhYTtSFD+x7SOfmlIidtA6z0yeL4r/5B7b+Q==}
     dependencies:
       '@pandacss/types': 0.19.0
+    dev: true
+
+  /@pandacss/preset-panda@0.23.0:
+    resolution: {integrity: sha512-VdzjaL/fdbAvSjWjXRePHoTlNUd/IJNQpWEvdslCpb50UhKKyOjs5M788FQ8o4wwiVH+WK0GihmAwyyxTw+yDA==}
+    dependencies:
+      '@pandacss/types': 0.23.0
+    dev: false
 
   /@pandacss/shared@0.19.0:
     resolution: {integrity: sha512-KTEcQUXgk3vh1Ozn5JpRfUpBJlwuv+wNRIow6zzvwFuAGngFArWtxEdHbhXfU58i4gYaHPawWejT9W3UWodXsQ==}
     dev: true
+
+  /@pandacss/shared@0.23.0:
+    resolution: {integrity: sha512-YuF+E1zN2MixH1JCtqSYldDewG7Pd+DDHwn3PyVaKc4W+4ISR1jz5ce3q69QNuD+J6SyJ575Ih7rk8JYdDqOyQ==}
+    dev: false
 
   /@pandacss/token-dictionary@0.19.0:
     resolution: {integrity: sha512-YZsEIlczF4iJAl4Oz9S0KATJ7VSyPzpCX5AKb0am9HjL5j66/BJDMR8nZGVHUylnMBfDlAvgJ6YSMUfeL7pNsA==}
@@ -1520,6 +1568,11 @@ packages:
 
   /@pandacss/types@0.19.0:
     resolution: {integrity: sha512-wq+PeF9KJLqaOyILZjfS21fY5Ns4Auem6NhDbFoJEpFODehtSaWU08wUIazvJmM4T9ip1KBCecbFzpltpZM9aQ==}
+    dev: true
+
+  /@pandacss/types@0.23.0:
+    resolution: {integrity: sha512-Y5UQMTsWh5wxYBtRX3zpf5xZkRcwtqequt+F3vKeZa2eXIu5l/4pDeQ+BT/ldFNS38XIYgQpDcnkrGejWXJF1w==}
+    dev: false
 
   /@pkgr/utils@2.4.2:
     resolution: {integrity: sha512-POgTXhjrTfbTV63DiFXav4lBHiICLKKwDeaKn9Nphwj7WH6m0hMMCaJkMyRWjgtPFyRKRVoMXXjczsTQRDEhYw==}
@@ -7009,6 +7062,13 @@ packages:
     resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
+
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: false
 
   /ufo@1.3.1:
     resolution: {integrity: sha512-uY/99gMLIOlJPwATcMVYfqDSxUR9//AUcgZMzwfSTJPDKzA1S8mX4VLqa+fiAtveraQUBCz4FFcwVZBGbwBXIw==}
