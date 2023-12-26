@@ -38,7 +38,7 @@ exports[`postcss > default 1`] = `
       transform: none;
     }
   }page:not(n) {
-    --made-with-panda: \\"🐼\\";
+    --made-with-panda: "🐼";
   }:not(n)::-webkit-backdrop {
     --blur: ;
     --brightness: ;
@@ -135,10 +135,10 @@ page:not(n):not(n) {
     --line-heights-normal: 1.5;
     --line-heights-relaxed: 1.625;
     --line-heights-loose: 2;
-    --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\",
-      Arial, \\"Noto Sans\\", sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\", \\"Noto Color Emoji\\";
-    --fonts-serif: ui-serif, Georgia, Cambria, \\"Times New Roman\\", Times, serif;
-    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace;
+    --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --letter-spacings-tighter: -0.05em;
     --letter-spacings-tight: -0.025em;
     --letter-spacings-normal: 0em;
@@ -594,7 +594,7 @@ exports[`postcss > default removeNegationPseudoClass true 1`] = `
       transform: none;
     }
   }page {
-    --made-with-panda: \\"🐼\\";
+    --made-with-panda: "🐼";
   }::-webkit-backdrop {
     --blur: ;
     --brightness: ;
@@ -691,10 +691,10 @@ page {
     --line-heights-normal: 1.5;
     --line-heights-relaxed: 1.625;
     --line-heights-loose: 2;
-    --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\",
-      Arial, \\"Noto Sans\\", sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\", \\"Noto Color Emoji\\";
-    --fonts-serif: ui-serif, Georgia, Cambria, \\"Times New Roman\\", Times, serif;
-    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace;
+    --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --letter-spacings-tighter: -0.05em;
     --letter-spacings-tight: -0.025em;
     --letter-spacings-normal: 0em;
@@ -1154,7 +1154,7 @@ exports[`postcss > default without layer 1`] = `
   }
 }
 page {
-  --made-with-panda: \\"🐼\\";
+  --made-with-panda: "🐼";
 }
 :not(n)::-webkit-backdrop {
   --blur:   ;
@@ -1253,10 +1253,10 @@ page {
   --line-heights-normal: 1.5;
   --line-heights-relaxed: 1.625;
   --line-heights-loose: 2;
-  --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", Arial,
-    \\"Noto Sans\\", sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\", \\"Noto Color Emoji\\";
-  --fonts-serif: ui-serif, Georgia, Cambria, \\"Times New Roman\\", Times, serif;
-  --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace;
+  --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --letter-spacings-tighter: -0.05em;
   --letter-spacings-tight: -0.025em;
   --letter-spacings-normal: 0em;
@@ -1717,7 +1717,7 @@ exports[`postcss > default without layer removeNegationPseudoClass true 1`] = `
   }
 }
 page {
-  --made-with-panda: \\"🐼\\";
+  --made-with-panda: "🐼";
 }
 ::-webkit-backdrop {
   --blur:   ;
@@ -1816,10 +1816,10 @@ page {
   --line-heights-normal: 1.5;
   --line-heights-relaxed: 1.625;
   --line-heights-loose: 2;
-  --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", Arial,
-    \\"Noto Sans\\", sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\", \\"Noto Color Emoji\\";
-  --fonts-serif: ui-serif, Georgia, Cambria, \\"Times New Roman\\", Times, serif;
-  --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace;
+  --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --letter-spacings-tighter: -0.05em;
   --letter-spacings-tight: -0.025em;
   --letter-spacings-normal: 0em;
