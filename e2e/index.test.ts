@@ -80,7 +80,8 @@ describe('e2e', () => {
           let wxmlRes: string
           try {
             wxmlRes = await formatWxml(wxml)
-          } catch {
+          } catch (error) {
+            console.warn(error)
             wxmlRes = wxml
           }
 

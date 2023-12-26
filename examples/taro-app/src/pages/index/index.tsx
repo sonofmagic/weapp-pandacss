@@ -202,7 +202,7 @@ export default function Index() {
         className={css({
           _placeholder: { color: 'green.700' }
         })}
-      />
+      ></Input>
       <View
         className={css({
           _motionReduce: { transition: 'none' },

@@ -15,9 +15,9 @@
     "@pandacss/dev": "^0.19.0",
     "cross-env": "^7.0.3",
     "postcss-rem-to-responsive-pixel": "^6.0.1",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.4.0",
     "weapp-ide-cli": "^1.0.1",
-    "weapp-tailwindcss": "^3.0.3"
+    "weapp-tailwindcss": "^3.0.4"
   },
   "dependencies": {
     "weapp-pandacss": "link:.."
