@@ -18,8 +18,8 @@ dependencies:
     specifier: ^7.23.6
     version: 7.23.6
   '@csstools/postcss-cascade-layers':
-    specifier: 4.0.1
-    version: 4.0.1(postcss@8.4.32)
+    specifier: 4.0.2
+    version: 4.0.2(postcss@8.4.32)
   '@csstools/postcss-is-pseudo-class':
     specifier: 4.0.3
     version: 4.0.3(postcss@8.4.32)
@@ -343,8 +343,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@csstools/postcss-cascade-layers@4.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-UYFuFL9GgVnftg9v7tBvVEBRLaBeAD66euD+yYy5fYCUld9ZIWTJNCE30hm6STMEdt6FL5xzeVw1lAZ1tpvUEg==}
+  /@csstools/postcss-cascade-layers@4.0.2(postcss@8.4.32):
+    resolution: {integrity: sha512-PqM+jvg5T2tB4FHX+akrMGNWAygLupD4FNUjcv4PSvtVuWZ6ISxuo37m4jFGU7Jg3rCfloGzKd0+xfr5Ec3vZQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
