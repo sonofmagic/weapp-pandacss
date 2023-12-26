@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.0.1
     version: 4.0.1(postcss@8.4.32)
   '@csstools/postcss-is-pseudo-class':
-    specifier: 4.0.3
-    version: 4.0.3(postcss@8.4.32)
+    specifier: 4.0.4
+    version: 4.0.4(postcss@8.4.32)
   '@pandacss/config':
     specifier: ^0.23.0
     version: 0.23.0
@@ -354,8 +354,8 @@ packages:
       postcss-selector-parser: 6.0.14
     dev: false
 
-  /@csstools/postcss-is-pseudo-class@4.0.3(postcss@8.4.32):
-    resolution: {integrity: sha512-/dt5M9Ty/x3Yiq0Nm/5PJJzwkVFchJgdjKVnryBPtoMCb9ohb/nDIJOwr/Wr3hK3FDs1EA1GE6PyRYsUmQPS8Q==}
+  /@csstools/postcss-is-pseudo-class@4.0.4(postcss@8.4.32):
+    resolution: {integrity: sha512-vTVO/uZixpTVAOQt3qZRUFJ/K1L03OfNkeJ8sFNDVNdVy/zW0h1L5WT7HIPMDUkvSrxQkFaCCybTZkUP7UESlQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
