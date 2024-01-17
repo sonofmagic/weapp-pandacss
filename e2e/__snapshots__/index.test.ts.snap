@@ -36,7 +36,7 @@ exports[`e2e > 'taroReact' snapshot > wxss 1`] = `
     -webkit-transform: none;
     transform: none;
   }
-} /* ! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com */
+} /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
 ::after,
 ::before,
 text,
