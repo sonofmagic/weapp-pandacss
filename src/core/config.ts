@@ -1,4 +1,4 @@
-import { loadConfigFile } from '@pandacss/config'
+import { loadConfig as loadConfigFile } from '@pandacss/config'
 import { loadConfig, UserInputConfig, createDefineConfig } from 'c12'
 import { getCreateContextDefaults, getPostcssPluginDefaults } from '@/defaults'
 import { defu } from '@/utils'

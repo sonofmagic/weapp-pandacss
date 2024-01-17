@@ -2122,15 +2122,22 @@ page {
 `;
 
 exports[`e2e > 'uniAppVue3' snapshot > wxml 1`] = `
-"<view class="content">
-  <view class="text-area pb-2">
-    <text class="title bg_redd400 _nchover_cbg_oranged400">Hello</text>
+"<view class="content content">
+  <view class="text-area text-area pb-2 pb-2">
+    <text
+      class="title title bg_redd400 bg_redd400 _nchover_cbg_oranged400 _nchover_cbg_oranged400">
+      Hello
+    </text>
   </view>
-  <view class="fs_2xl pt_10px text_redd300 bg_blued800 font_semibold">aaa</view>
-  <view class="bg_gainsboro rounded_9999px fs_lg p_10px_15px">
+  <view
+    class="fs_2xl fs_2xl pt_10px pt_10px text_redd300 text_redd300 bg_blued800 bg_blued800 font_semibold font_semibold">
+    aaa
+  </view>
+  <view
+    class="bg_gainsboro bg_gainsboro rounded_9999px rounded_9999px fs_lg fs_lg p_10px_15px p_10px_15px">
     <view>Hello World</view>
   </view>
-  <view class="flex justify-around w-full">
+  <view class="flex flex justify-around justify-around w-full w-full">
     <ice-button-tw is="components/ButtonTw">
       <view
         class="font-semibold ButtonTw--font-semibold border ButtonTw--border rounded ButtonTw--rounded bg-blue-500 ButtonTw--bg-blue-500 text-white ButtonTw--text-white border-transparent ButtonTw--border-transparent hovercbg-blue-600 ButtonTw--hovercbg-blue-600 text-base ButtonTw--text-base py-2 ButtonTw--py-2 px-4 ButtonTw--px-4 uppercase ButtonTw--uppercase">

@@ -16,10 +16,12 @@ export async function createContext(
   let pandaConfig: Awaited<ReturnType<typeof getPandacssConfig>>
   try {
     pandaConfig = await getPandacssConfig(opt.pandaConfig)
-  } catch {
-    throw new Error(
-      'Cannot find config file: panda.config.ts or panda.config.js/cjs/mjs. Did you forget to run `panda init`?'
-    )
+  } catch (error) {
+    throw error
+    // console.error(error)
+    // throw new Error(
+    //   'Cannot find config file: panda.config.ts or panda.config.js/cjs/mjs. Did you forget to run `panda init`?'
+    // )
   }
 
   const outdir = pandaConfig.config.outdir
