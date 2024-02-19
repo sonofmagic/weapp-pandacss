@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.0.1
     version: 4.0.1(postcss@8.4.33)
   '@csstools/postcss-is-pseudo-class':
-    specifier: 4.0.3
-    version: 4.0.3(postcss@8.4.33)
+    specifier: 4.0.5
+    version: 4.0.5(postcss@8.4.33)
   '@pandacss/config':
     specifier: ^0.27.1
     version: 0.27.1
@@ -354,19 +354,28 @@ packages:
       postcss-selector-parser: 6.0.15
     dev: false
 
-  /@csstools/postcss-is-pseudo-class@4.0.3(postcss@8.4.33):
-    resolution: {integrity: sha512-/dt5M9Ty/x3Yiq0Nm/5PJJzwkVFchJgdjKVnryBPtoMCb9ohb/nDIJOwr/Wr3hK3FDs1EA1GE6PyRYsUmQPS8Q==}
+  /@csstools/postcss-is-pseudo-class@4.0.5(postcss@8.4.33):
+    resolution: {integrity: sha512-qG3MI7IN3KY9UwdaE9E7G7sFydscVW7nAj5OGwaBP9tQPEEVdxXTGI+l1ZW5EUpZFSj+u3q/22fH5+8HI72+Bg==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/selector-specificity': 3.0.1(postcss-selector-parser@6.0.15)
+      '@csstools/selector-specificity': 3.0.2(postcss-selector-parser@6.0.15)
       postcss: 8.4.33
       postcss-selector-parser: 6.0.15
     dev: false
 
   /@csstools/selector-specificity@3.0.1(postcss-selector-parser@6.0.15):
     resolution: {integrity: sha512-NPljRHkq4a14YzZ3YD406uaxh7s0g6eAq3L9aLOWywoqe8PkYamAvtsh7KNX6c++ihDrJ0RiU+/z7rGnhlZ5ww==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss-selector-parser: ^6.0.13
+    dependencies:
+      postcss-selector-parser: 6.0.15
+    dev: false
+
+  /@csstools/selector-specificity@3.0.2(postcss-selector-parser@6.0.15):
+    resolution: {integrity: sha512-RpHaZ1h9LE7aALeQXmXrJkRG84ZxIsctEN2biEUmFyKpzFM3zZ35eUMcIzZFsw/2olQE6v69+esEqU2f1MKycg==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss-selector-parser: ^6.0.13
