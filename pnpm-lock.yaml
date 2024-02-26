@@ -45,7 +45,7 @@ devDependencies:
     version: 0.27.1(typescript@5.3.3)
   '@pnpm/lockfile-file':
     specifier: ^8.1.6
-    version: 8.1.6(@pnpm/logger@5.0.0)
+    version: 8.1.8(@pnpm/logger@5.0.0)
   '@rollup/plugin-alias':
     specifier: ^5.1.0
     version: 5.1.0(rollup@4.9.5)
@@ -1533,8 +1533,8 @@ packages:
       rfc4648: 1.5.3
     dev: true
 
-  /@pnpm/dependency-path@2.1.7:
-    resolution: {integrity: sha512-/q3xNNgAEKkG0FvU8o/6B06nrBhSl1i34ZMEQDOhHFMDzS0mWqnIogb54seVKySNxfdJdyqfedjNnNIzKrPbkg==}
+  /@pnpm/dependency-path@2.1.8:
+    resolution: {integrity: sha512-ywBaTjy0iSEF7lH3DlF8UXrdL2bw4AQFV2tTOeNeY7wc1W5CE+RHSJhf9MXBYcZPesqGRrPiU7Pimj3l05L9VA==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/crypto.base32-hash': 2.0.0
@@ -1543,8 +1543,8 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@pnpm/error@5.0.2:
-    resolution: {integrity: sha512-0TEm+tWNYm+9uh6DSKyRbv8pv/6b4NL0PastLvMxIoqZbBZ5Zj1cYi332R9xsSUi31ZOsu2wpgn/bC7DA9hrjg==}
+  /@pnpm/error@5.0.3:
+    resolution: {integrity: sha512-ONJU5cUeoeJSy50qOYsMZQHTA/9QKmGgh1ATfEpCLgtbdwqUiwD9MxHNeXUYYI/pocBCz6r1ZCFqiQvO+8SUKA==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/constants': 7.1.1
@@ -1557,15 +1557,15 @@ packages:
       execa: /safe-execa@0.1.2
     dev: true
 
-  /@pnpm/lockfile-file@8.1.6(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-ObCi2cONJ5DXqWu+h5TxlRvHTlGN9E63zGW/kghqiJFG562OxIS1pDndqwtSvqPyCt7DuoKSR/LVd/+XkpZwiw==}
+  /@pnpm/lockfile-file@8.1.8(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-bRadYzGFyFtwiynwp4Mkn7NDNHkgKvJ9xtjsCT5XiE6S8wpzS3W8yx2WzHGk9Mm1J/2wM0F52+NzCWhlz5eIqA==}
     engines: {node: '>=16.14'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
     dependencies:
       '@pnpm/constants': 7.1.1
-      '@pnpm/dependency-path': 2.1.7
-      '@pnpm/error': 5.0.2
+      '@pnpm/dependency-path': 2.1.8
+      '@pnpm/error': 5.0.3
       '@pnpm/git-utils': 1.0.0
       '@pnpm/lockfile-types': 5.1.5
       '@pnpm/logger': 5.0.0
@@ -1594,7 +1594,7 @@ packages:
     resolution: {integrity: sha512-YfcB2QrX+Wx1o6LD1G2Y2fhDhOix/bAY/oAnMpHoNLsKkWIRbt1oKLkIFvxBMzLwAEPqnYWguJrYC+J6i4ywbw==}
     engines: {node: '>=12.17'}
     dependencies:
-      bole: 5.0.10
+      bole: 5.0.11
       ndjson: 2.0.0
     dev: true
 
@@ -2645,8 +2645,8 @@ packages:
     resolution: {integrity: sha512-vHdS19CnY3hwiNdkaqk93DvjVLfbEcI8mys4UjuWrlX1haDmroo8o4xCzh4wD6DGV6HxRCyauwhHRqMTfERtjw==}
     dev: true
 
-  /bole@5.0.10:
-    resolution: {integrity: sha512-5IiUWQ8QRQ8yHf46VPQ7GH3nj0Jy7P4heaENBVmsGfHP1Gtd0wqkvK6C3iHLUMdG3SMFx2DD8FqoIQcnMpdIdQ==}
+  /bole@5.0.11:
+    resolution: {integrity: sha512-KB0Ye0iMAW5BnNbnLfMSQcnI186hKUzE2fpkZWqcxsoTR7eqzlTidSOMYPHJOn/yR7VGH7uSZp37qH9q2Et0zQ==}
     dependencies:
       fast-safe-stringify: 2.1.1
       individual: 3.0.0
