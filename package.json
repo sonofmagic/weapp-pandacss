@@ -85,7 +85,7 @@
   },
   "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
   "devDependencies": {
-    "@pandacss/dev": "^0.27.1",
+    "@pandacss/dev": "^0.39.0",
     "@pnpm/lockfile-file": "^8.1.6",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -143,7 +143,7 @@
     "@babel/types": "^7.23.6",
     "@csstools/postcss-cascade-layers": "4.0.1",
     "@csstools/postcss-is-pseudo-class": "4.0.3",
-    "@pandacss/config": "^0.27.1",
+    "@pandacss/config": "^0.39.0",
     "@weapp-core/escape": "2.0.0",
     "c12": "^1.6.1",
     "cac": "^6.7.14",
