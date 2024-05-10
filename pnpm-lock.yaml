@@ -69,7 +69,7 @@ devDependencies:
     version: 11.1.6(rollup@4.9.5)(tslib@2.6.2)(typescript@5.3.3)
   '@tsconfig/recommended':
     specifier: ^1.0.3
-    version: 1.0.3
+    version: 1.0.6
   '@types/babel__generator':
     specifier: ^7.6.8
     version: 7.6.8
@@ -1594,7 +1594,7 @@ packages:
     resolution: {integrity: sha512-YfcB2QrX+Wx1o6LD1G2Y2fhDhOix/bAY/oAnMpHoNLsKkWIRbt1oKLkIFvxBMzLwAEPqnYWguJrYC+J6i4ywbw==}
     engines: {node: '>=12.17'}
     dependencies:
-      bole: 5.0.10
+      bole: 5.0.12
       ndjson: 2.0.0
     dev: true
 
@@ -2020,8 +2020,8 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@tsconfig/recommended@1.0.3:
-    resolution: {integrity: sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==}
+  /@tsconfig/recommended@1.0.6:
+    resolution: {integrity: sha512-0IKu9GHYF1NGTJiYgfWwqnOQSlnE9V9R7YohHNNf0/fj/SyOZWzdd06JFr0fLpg1Mqw0kGbYg8w5xdkSqLKM9g==}
     dev: true
 
   /@types/babel__generator@7.6.8:
@@ -2645,8 +2645,8 @@ packages:
     resolution: {integrity: sha512-vHdS19CnY3hwiNdkaqk93DvjVLfbEcI8mys4UjuWrlX1haDmroo8o4xCzh4wD6DGV6HxRCyauwhHRqMTfERtjw==}
     dev: true
 
-  /bole@5.0.10:
-    resolution: {integrity: sha512-5IiUWQ8QRQ8yHf46VPQ7GH3nj0Jy7P4heaENBVmsGfHP1Gtd0wqkvK6C3iHLUMdG3SMFx2DD8FqoIQcnMpdIdQ==}
+  /bole@5.0.12:
+    resolution: {integrity: sha512-G5H5siOlUrcyvYr7kVlQyYMWip0dZ8qa+Uiy+d9QxOvBY2eaP/g8YsJVwvf3VIMbXmYxZIAOmmsuN3rL5r6gwQ==}
     dependencies:
       fast-safe-stringify: 2.1.1
       individual: 3.0.0
