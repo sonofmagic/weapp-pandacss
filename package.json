@@ -142,7 +142,7 @@
     "@babel/traverse": "^7.23.7",
     "@babel/types": "^7.23.6",
     "@csstools/postcss-cascade-layers": "4.0.1",
-    "@csstools/postcss-is-pseudo-class": "4.0.3",
+    "@csstools/postcss-is-pseudo-class": "4.0.7",
     "@pandacss/config": "^0.27.1",
     "@weapp-core/escape": "2.0.0",
     "c12": "^1.6.1",
