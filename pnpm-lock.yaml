@@ -18,8 +18,8 @@ dependencies:
     specifier: ^7.23.6
     version: 7.23.6
   '@csstools/postcss-cascade-layers':
-    specifier: 4.0.1
-    version: 4.0.1(postcss@8.4.33)
+    specifier: 4.0.5
+    version: 4.0.5(postcss@8.4.33)
   '@csstools/postcss-is-pseudo-class':
     specifier: 4.0.3
     version: 4.0.3(postcss@8.4.33)
@@ -343,13 +343,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@csstools/postcss-cascade-layers@4.0.1(postcss@8.4.33):
-    resolution: {integrity: sha512-UYFuFL9GgVnftg9v7tBvVEBRLaBeAD66euD+yYy5fYCUld9ZIWTJNCE30hm6STMEdt6FL5xzeVw1lAZ1tpvUEg==}
+  /@csstools/postcss-cascade-layers@4.0.5(postcss@8.4.33):
+    resolution: {integrity: sha512-nAI2ToT2G/E4XEwJitVjCr2V2SluE9Eaiski+xfRbKSGxFmDUtua7SCG1AtMbjteIVqGDRw7uBd7qXqCZq2b1Q==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/selector-specificity': 3.0.1(postcss-selector-parser@6.0.15)
+      '@csstools/selector-specificity': 3.1.0(postcss-selector-parser@6.0.15)
       postcss: 8.4.33
       postcss-selector-parser: 6.0.15
     dev: false
@@ -367,6 +367,15 @@ packages:
 
   /@csstools/selector-specificity@3.0.1(postcss-selector-parser@6.0.15):
     resolution: {integrity: sha512-NPljRHkq4a14YzZ3YD406uaxh7s0g6eAq3L9aLOWywoqe8PkYamAvtsh7KNX6c++ihDrJ0RiU+/z7rGnhlZ5ww==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss-selector-parser: ^6.0.13
+    dependencies:
+      postcss-selector-parser: 6.0.15
+    dev: false
+
+  /@csstools/selector-specificity@3.1.0(postcss-selector-parser@6.0.15):
+    resolution: {integrity: sha512-tGDFEHZ4XJeIt5NF7/nAfLGqPckmDZSnYne5gl67p4agQolE5s4rofdQ3e+VkeukfR91lVtSQ/Jt9DqM1ICiIQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss-selector-parser: ^6.0.13
