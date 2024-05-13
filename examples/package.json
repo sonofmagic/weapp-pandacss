@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@pandacss/dev": "^0.19.0",
+    "@pandacss/dev": "^0.39.1",
     "cross-env": "^7.0.3",
     "postcss-rem-to-responsive-pixel": "^6.0.1",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "weapp-ide-cli": "^1.0.1",
-    "weapp-tailwindcss": "^3.0.7"
+    "weapp-tailwindcss": "^3.2.1"
   },
   "dependencies": {
     "weapp-pandacss": "link:.."

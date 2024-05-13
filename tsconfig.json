@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "Node",
     "module": "ESNext",
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
     "paths": {
       "@/*": [

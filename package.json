@@ -49,7 +49,7 @@
     "e2e:dev": "vitest -c ./vitest.e2e.config.ts",
     "e2e:u": "npm run e2e:build && vitest run -u -c ./vitest.e2e.config.ts"
   },
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@9.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/sonofmagic/weapp-pandacss.git"
@@ -145,6 +145,7 @@
     "@weapp-core/escape": "2.0.0",
     "c12": "^1.10.0",
     "cac": "^6.7.14",
+    "local-pkg": "^0.5.0",
     "postcss-selector-parser": "^6.0.16"
   },
   "peerDependencies": {

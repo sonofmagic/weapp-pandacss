@@ -1,14 +1,15 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { getPackageInfoSync } from 'local-pkg'
 import type { ICreateContextOptions } from '@/types'
 import { dedent, ensureDir } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
-  return path.dirname(require.resolve('@weapp-core/escape'))
+  return getPackageInfoSync('@weapp-core/escape')!.rootPath
 }
 
 export function getPandaVersion() {
-  return require(require.resolve('@pandacss/dev/package.json')).version
+  return getPackageInfoSync('@pandacss/dev')?.version
 }
 
 // dirName: string = 'weapp-panda'
