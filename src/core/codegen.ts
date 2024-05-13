@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { ICreateContextOptions } from '@/types'
-import { ensureDir, dedent } from '@/utils'
+import type { ICreateContextOptions } from '@/types'
+import { dedent, ensureDir } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
   return path.dirname(require.resolve('@weapp-core/escape'))
@@ -32,7 +32,7 @@ export async function copyEscape(destDir: string) {
 
 export async function generateEscapeWrapper(
   destDir: string,
-  options: ICreateContextOptions
+  options: ICreateContextOptions,
 ) {
   await ensureDir(destDir)
   const code = dedent`
@@ -58,6 +58,6 @@ export async function generateEscapeWrapper(
     path.resolve(destDir, 'index.d.ts'),
     dedent`
     export declare function escape(selectors: string): string;`,
-    'utf8'
+    'utf8',
   )
 }

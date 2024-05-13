@@ -1,16 +1,16 @@
-import { resolve, dirname } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import fs from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { getPandacssConfig } from './config'
 import { copyEscape, generateEscapeWrapper } from './codegen'
 import { patch } from './patch'
-import { tick, quote } from './logger'
-import { ICreateContextOptions } from '@/types'
+import { quote, tick } from './logger'
+import type { ICreateContextOptions } from '@/types'
 import { getCreateContextDefaults } from '@/defaults'
 import { dedent, defu } from '@/utils'
 
 export async function createContext(
-  options?: ICreateContextOptions & { configFile?: string }
+  options?: ICreateContextOptions & { configFile?: string },
 ) {
   const opt = defu(options, getCreateContextDefaults())
   const pandaConfig = await getPandacssConfig(opt.pandaConfig)
@@ -23,7 +23,7 @@ export async function createContext(
     const patchHelpersPath = resolve(projectRoot, outdir, 'helpers.mjs')
     if (!existsSync(patchHelpersPath)) {
       throw new Error(
-        `Cannot find runtime file: ${outdir}/helpers.mjs. Did you forget to run \`panda init\`?`
+        `Cannot find runtime file: ${outdir}/helpers.mjs. Did you forget to run \`panda init\`?`,
       )
     }
     await copyEscape(resolve(weappPandaDir, 'lib'))
@@ -34,7 +34,7 @@ export async function createContext(
     if (existsSync(patchHelpersPath)) {
       await fs.copyFile(
         patchHelpersPath,
-        resolve(dirname(patchHelpersPath), '_helpers.backup.mjs')
+        resolve(dirname(patchHelpersPath), '_helpers.backup.mjs'),
       )
     }
 
@@ -42,7 +42,7 @@ export async function createContext(
     words.push(dedent`
     ${tick} ${quote(
       outdir,
-      '/helpers.mjs'
+      '/helpers.mjs',
     )}: inject escape function into helpers
     `)
     if (opt.log) {
@@ -54,12 +54,12 @@ export async function createContext(
     const patchHelpersBackupPath = resolve(
       projectRoot,
       outdir,
-      '_helpers.backup.mjs'
+      '_helpers.backup.mjs',
     )
     if (existsSync(patchHelpersBackupPath)) {
       await fs.copyFile(
         patchHelpersBackupPath,
-        resolve(dirname(patchHelpersBackupPath), 'helpers.mjs')
+        resolve(dirname(patchHelpersBackupPath), 'helpers.mjs'),
       )
     }
   }
@@ -75,7 +75,7 @@ export default defineConfig({
 })
 
       `,
-      'utf8'
+      'utf8',
     )
   }
   return {
@@ -83,6 +83,6 @@ export default defineConfig({
     pandaConfig,
     codegen,
     rollback,
-    init
+    init,
   }
 }

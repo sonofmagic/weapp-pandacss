@@ -5,7 +5,7 @@ import { generate, parse, traverse } from '@/babel'
 
 export function inject(content: string) {
   const root = parse(content, {
-    sourceType: 'unambiguous'
+    sourceType: 'unambiguous',
   })
 
   traverse(root, {
@@ -14,10 +14,10 @@ export function inject(content: string) {
         // import { escape } from './weapp-panda/index.mjs'
         const node = p.node
         const importNodes = node.body.filter(
-          (x) => x.type === 'ImportDeclaration'
+          x => x.type === 'ImportDeclaration',
         ) as t.ImportDeclaration[]
         const myImport = importNodes.find(
-          (x) => x.source.value === './weapp-panda/index.mjs'
+          x => x.source.value === './weapp-panda/index.mjs',
         )
         if (!myImport) {
           node.body.unshift(
@@ -25,37 +25,37 @@ export function inject(content: string) {
               [
                 t.importSpecifier(
                   t.identifier('escape'),
-                  t.identifier('escape')
-                )
+                  t.identifier('escape'),
+                ),
               ],
-              t.stringLiteral('./weapp-panda/index.mjs')
-            )
+              t.stringLiteral('./weapp-panda/index.mjs'),
+            ),
           )
         }
-      }
+      },
     },
     FunctionDeclaration: {
       enter(p) {
         const node = p.node
         if (node.id?.name === 'createCss') {
           const returnFn = node.body.body.find(
-            (x) => x.type === 'ReturnStatement'
+            x => x.type === 'ReturnStatement',
           ) as t.ReturnStatement | undefined
           if (
-            returnFn &&
-            returnFn.argument?.type === 'ArrowFunctionExpression'
+            returnFn
+            && returnFn.argument?.type === 'ArrowFunctionExpression'
           ) {
             const arrowFn = returnFn.argument
             if (arrowFn.body.type === 'BlockStatement') {
               const innerReturn = arrowFn.body.body.find(
-                (x) => x.type === 'ReturnStatement'
+                x => x.type === 'ReturnStatement',
               ) as t.ReturnStatement | undefined
               if (innerReturn) {
                 // import { escape } from '@weapp-core/escape'
                 const originNode = innerReturn.argument as t.CallExpression
                 if (
-                  originNode.callee.type === 'Identifier' &&
-                  originNode.callee.name === 'escape'
+                  originNode.callee.type === 'Identifier'
+                  && originNode.callee.name === 'escape'
                 ) {
                   // has patched
                   return
@@ -63,14 +63,14 @@ export function inject(content: string) {
 
                 innerReturn.argument = t.callExpression(
                   t.identifier('escape'),
-                  [originNode]
+                  [originNode],
                 )
               }
             }
           }
         }
-      }
-    }
+      },
+    },
   })
 
   return generate(root)

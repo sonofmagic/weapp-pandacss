@@ -1,16 +1,19 @@
-import type { PluginCreator, Plugin } from 'postcss'
-import selectorParser, {
-  tag,
-  selector as slt,
+import type { Plugin, PluginCreator } from 'postcss'
+import type {
   Root,
-  Selector
+  Selector,
+} from 'postcss-selector-parser'
+import selectorParser, { selector as slt, tag,
 } from 'postcss-selector-parser'
 import { escape } from '@weapp-core/escape'
+// @ts-ignore
 import createCascadeLayersPlugin from '@csstools/postcss-cascade-layers'
+// @ts-ignore
 import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
 import type { IPostcssPluginOptions } from '@/types'
 import { createContext, getUserConfig } from '@/core'
-import { Ref, normalizeString, ref, merge } from '@/utils'
+import type { Ref } from '@/utils'
+import { merge, normalizeString, ref } from '@/utils'
 import { escapePostcssPlugin, wrapperPostcssPlugin } from '@/constants'
 
 export function useOptions(options?: IPostcssPluginOptions) {
@@ -18,8 +21,8 @@ export function useOptions(options?: IPostcssPluginOptions) {
   const optionsRef = ref(
     merge.recursive(
       true, // getPostcssPluginDefaults(),
-      options
-    ) as Required<IPostcssPluginOptions>
+      options,
+    ) as Required<IPostcssPluginOptions>,
   )
 
   // <Required<IPostcssPluginOptions>, Required<IPostcssPluginOptions>[]>
@@ -38,7 +41,7 @@ export function useOptions(options?: IPostcssPluginOptions) {
   return {
     optionsRef,
     // srRef,
-    mergeOptions
+    mergeOptions,
   }
 }
 
@@ -65,7 +68,7 @@ export const innerPlugin: PluginCreator<
         // ' ', + , > , ~
         // has :not() and ~
         // General sibling combinator
-        // eslint-disable-next-line unicorn/no-lonely-if
+
         if (selector.value === '~' && selector.parent) {
           const idx = selector.parent.nodes.indexOf(selector)
           if (idx > -1) {
@@ -77,8 +80,8 @@ export const innerPlugin: PluginCreator<
         }
       }
       if (
-        selector.type === 'universal' &&
-        selector.parent?.type === 'selector'
+        selector.type === 'universal'
+        && selector.parent?.type === 'selector'
       ) {
         if (Array.isArray(sr.universal)) {
           const parent = selector.parent as Selector
@@ -97,18 +100,19 @@ export const innerPlugin: PluginCreator<
                     return slt({
                       nodes: [
                         tag({
-                          value: x
+                          value: x,
                         }),
-                        ...rests
+                        ...rests,
                       ],
-                      value: ''
+                      value: '',
                     })
-                  })
+                  }),
                 )
               }
             }
           }
-        } else {
+        }
+        else {
           selector.value = sr.universal
         }
       }
@@ -117,19 +121,20 @@ export const innerPlugin: PluginCreator<
         // where case
         if (selector.value === ':where' && selector.parent.parent) {
           // :root,:host
-          const vals = selector.nodes.map((x) => x.toString())
+          const vals = selector.nodes.map(x => x.toString())
           vals.length === 2 && vals[0] === ':root' && vals[1] === ':host'
             ? (selector.parent.parent.nodes = [
                 tag({
-                  value: normalizeString(sr.root)
-                })
+                  value: normalizeString(sr.root),
+                }),
               ])
             : (selector.parent.parent.nodes = selector.nodes)
-        } else if (selector.value === ':root' || selector.value === ':host') {
+        }
+        else if (selector.value === ':root' || selector.value === ':host') {
           selector.parent.nodes = [
             tag({
-              value: normalizeString(sr.root)
-            })
+              value: normalizeString(sr.root),
+            }),
           ]
         }
       }
@@ -143,17 +148,18 @@ export const innerPlugin: PluginCreator<
       if (selector.type === 'pseudo' && selector.value === ':not') {
         for (const x of selector.nodes) {
           if (
-            x.nodes.length === 1 &&
-            x.nodes[0].type === 'id' &&
-            x.nodes[0].value === '#'
+            x.nodes.length === 1
+            && x.nodes[0].type === 'id'
+            && x.nodes[0].value === '#'
           ) {
             if (removeNegationPseudoClass) {
               selector.remove()
-            } else {
+            }
+            else {
               x.nodes = [
                 tag({
-                  value: sr.cascadeLayers
-                })
+                  value: sr.cascadeLayers,
+                }),
               ]
             }
           }
@@ -181,7 +187,7 @@ export const innerPlugin: PluginCreator<
           }
           utilitiesTransformer.transformSync(rule, {
             lossless: false,
-            updateSelector: true
+            updateSelector: true,
           })
         },
         OnceExit(root) {
@@ -191,12 +197,12 @@ export const innerPlugin: PluginCreator<
           root.walkRules(/:not\(#\\#\)/, (rule) => {
             atLayerTransformer.transformSync(rule, {
               lossless: false,
-              updateSelector: true
+              updateSelector: true,
             })
           })
-        }
+        },
       }
-    }
+    },
   }
 }
 
@@ -210,10 +216,10 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
   const { mergeOptions, optionsRef } = useOptions(options)
   // cascadeLayersPluginOptions 和 isPseudoClassPluginOptions
   const cascadeLayersPlugin = createCascadeLayersPlugin(
-    optionsRef?.value.cascadeLayersPluginOptions
+    optionsRef?.value.cascadeLayersPluginOptions,
   ) as Plugin
   const isPseudoClassPlugin = createIsPseudoClassPlugin(
-    optionsRef?.value.isPseudoClassPluginOptions
+    optionsRef?.value.isPseudoClassPluginOptions,
   ) as Plugin
   return {
     postcssPlugin: wrapperPostcssPlugin,
@@ -224,17 +230,18 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
           mergeOptions(config?.postcss)
           const ctx = await createContext({
             configFile,
-            ...config?.context
+            ...config?.context,
           })
           await ctx.codegen()
-        } catch (error) {
+        }
+        catch (error) {
           console.log((<Error>error).message)
         }
       },
       cascadeLayersPlugin,
       isPseudoClassPlugin,
-      innerPlugin(optionsRef)
-    ]
+      innerPlugin(optionsRef),
+    ],
   }
 }
 

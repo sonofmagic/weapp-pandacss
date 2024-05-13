@@ -1,5 +1,5 @@
 import { cac } from 'cac'
-import { getUserConfig, createContext } from './core'
+import { createContext, getUserConfig } from './core'
 
 let ctx: Awaited<ReturnType<typeof createContext>>
 
@@ -11,7 +11,7 @@ async function initCtx() {
   ctx = await createContext({
     configFile,
     ...config?.context,
-    log: true
+    log: true,
   })
   return ctx
 }

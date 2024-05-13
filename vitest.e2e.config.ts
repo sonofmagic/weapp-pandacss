@@ -6,12 +6,12 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: path.resolve(__dirname, './src')
-      }
+        replacement: path.resolve(__dirname, './src'),
+      },
     ],
     include: ['e2e/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     testTimeout: 36_000_000,
-    globals: true
+    globals: true,
     // ...
-  }
+  },
 })

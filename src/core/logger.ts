@@ -1,4 +1,4 @@
-import { bold, green, cyan } from 'colorette'
+import { bold, cyan, green } from 'colorette'
 
 export const tick = bold(green('✔️'))
 
