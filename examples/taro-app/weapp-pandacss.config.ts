@@ -4,6 +4,6 @@ import { defineConfig } from 'weapp-pandacss'
 
 export default defineConfig({
   context: {
-    escapePredicate: `process.env.TARO_ENV !== 'h5' && process.env.TARO_ENV !== 'rn'`
-  }
+    escapePredicate: `process.env.TARO_ENV !== 'h5' && process.env.TARO_ENV !== 'rn'`,
+  },
 })

@@ -5,9 +5,9 @@ import { readWantedLockfile } from '@pnpm/lockfile-file'
 import { appRoot, root } from './util'
 import { getPandacssConfig } from '@/core'
 import {
-  getWeappCoreEscapeDir,
   copyEscape,
-  getPandaVersion
+  getPandaVersion,
+  getWeappCoreEscapeDir,
 } from '@/core/codegen'
 
 describe('codegen', () => {
@@ -18,7 +18,7 @@ describe('codegen', () => {
 
   it('codegen to fixtures app', async () => {
     const { config } = await getPandacssConfig({
-      cwd: appRoot
+      cwd: appRoot,
     })
 
     const target = path.resolve(appRoot, config.outdir, 'weapp-panda')
@@ -33,11 +33,11 @@ describe('codegen', () => {
 
   it('getPandaVersion', async () => {
     const lock = await readWantedLockfile(root, {
-      ignoreIncompatible: true
+      ignoreIncompatible: true,
     })
     expect(lock).toBeDefined()
-    const versionString =
-      lock?.importers['.'].devDependencies?.['@pandacss/dev']
+    const versionString
+      = lock?.importers['.'].devDependencies?.['@pandacss/dev']
 
     expect(versionString).toBeDefined()
     const idx = versionString?.indexOf('(')

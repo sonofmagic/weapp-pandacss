@@ -1,6 +1,5 @@
-import { defineConfig } from "@pandacss/dev"
-
-
+import process from 'node:process'
+import { defineConfig } from '@pandacss/dev'
 // *:not(#\#)
 export default defineConfig({
   // Whether to use css reset
@@ -9,18 +8,18 @@ export default defineConfig({
   preflight: process.env.TARO_ENV === 'h5',
 
   // Where to look for your css declarations
-  include: ["./src/**/*.{js,jsx,ts,tsx}"],
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
 
   // Files to exclude
   exclude: [],
 
   // Useful for theme customization
   theme: {
-    extend: {}
+    extend: {},
   },
 
   // The output directory for your css system
-  outdir: "styled-system",
+  outdir: 'styled-system',
 
   // staticCss: {
   //   css: [
@@ -31,5 +30,5 @@ export default defineConfig({
   //     }
   //   ]
   // },
-  jsxFramework: 'react'
+  jsxFramework: 'react',
 })

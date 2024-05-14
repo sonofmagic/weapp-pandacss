@@ -5,7 +5,8 @@ import type { ICreateContextOptions } from '@/types'
 import { dedent, ensureDir } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
-  return getPackageInfoSync('@weapp-core/escape')!.rootPath
+  const rootPath = getPackageInfoSync('@weapp-core/escape')!.rootPath
+  return path.join(rootPath, 'dist')
 }
 
 export function getPandaVersion() {
