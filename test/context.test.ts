@@ -17,8 +17,8 @@ describe('context', () => {
   it('with config in app', async () => {
     const ctx = await createContext({
       pandaConfig: {
-        cwd: appRoot
-      }
+        cwd: appRoot,
+      },
     })
     expect(ctx).toBeDefined()
     expect(ctx.codegen).toBeDefined()
@@ -32,7 +32,7 @@ describe('context', () => {
     existsSync(src)
     existsSync(backup)
     expect(await readFile(src, 'utf8')).not.toEqual(
-      await readFile(backup, 'utf8')
+      await readFile(backup, 'utf8'),
     )
     await ctx.rollback()
     expect(await readFile(src, 'utf8')).toEqual(await readFile(backup, 'utf8'))
@@ -41,8 +41,8 @@ describe('context', () => {
   it('codegen with wrapper throw error', async () => {
     const ctx = await createContext({
       pandaConfig: {
-        cwd: resolve(fixturesRoot, 'app1')
-      }
+        cwd: resolve(fixturesRoot, 'app1'),
+      },
     })
     await expect(() => {
       return ctx.codegen()
@@ -54,11 +54,28 @@ describe('context', () => {
 
     const ctx = await createContext({
       pandaConfig: {
-        cwd: app0Root
+        cwd: app0Root,
       },
-      log: true
+      log: true,
     })
     const src = resolve(app0Root, ctx.pandaConfig.config.outdir, 'helpers.mjs')
+    await ensureDir(dirname(src))
+    await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
+    await ctx.codegen()
+    expect(existsSync(src)).toBe(true)
+    expect(existsSync(resolve(dirname(src), 'weapp-panda'))).toBe(true)
+  })
+
+  it('codegen with wrapper case 2', async () => {
+    const appRoot = resolve(fixturesRoot, 'app2')
+
+    const ctx = await createContext({
+      pandaConfig: {
+        cwd: appRoot,
+      },
+      log: true,
+    })
+    const src = resolve(appRoot, ctx.pandaConfig.config.outdir, 'helpers.mjs')
     await ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
@@ -69,16 +86,16 @@ describe('context', () => {
   it('init config', async () => {
     const ctx = await createContext({
       pandaConfig: {
-        cwd: appRoot
-      }
+        cwd: appRoot,
+      },
     })
     const userConfigPath = resolve(
       dirname(ctx.pandaConfig.path),
-      'weapp-pandacss.config.ts'
+      'weapp-pandacss.config.ts',
     )
     if (existsSync(userConfigPath)) {
       await deleteAsync([userConfigPath], {
-        onlyFiles: true
+        onlyFiles: true,
       })
     }
 
