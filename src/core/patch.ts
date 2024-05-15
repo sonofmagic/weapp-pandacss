@@ -3,6 +3,30 @@ import * as t from '@babel/types'
 
 import { generate, parse, traverse } from '@/babel'
 
+function injectArrowFn(arrowFn: t.ArrowFunctionExpression) {
+  if (arrowFn.body.type === 'BlockStatement') {
+    const innerReturn = arrowFn.body.body.find(
+      x => x.type === 'ReturnStatement',
+    ) as t.ReturnStatement | undefined
+    if (innerReturn) {
+      // import { escape } from '@weapp-core/escape'
+      const originNode = innerReturn.argument as t.CallExpression
+      if (
+        originNode.callee.type === 'Identifier'
+        && originNode.callee.name === 'escape'
+      ) {
+        // has patched
+        return
+      }
+
+      innerReturn.argument = t.callExpression(
+        t.identifier('escape'),
+        [originNode],
+      )
+    }
+  }
+}
+
 export function inject(content: string) {
   const root = parse(content, {
     sourceType: 'unambiguous',
@@ -43,29 +67,12 @@ export function inject(content: string) {
           ) as t.ReturnStatement | undefined
           if (
             returnFn
-            && returnFn.argument?.type === 'ArrowFunctionExpression'
           ) {
-            const arrowFn = returnFn.argument
-            if (arrowFn.body.type === 'BlockStatement') {
-              const innerReturn = arrowFn.body.body.find(
-                x => x.type === 'ReturnStatement',
-              ) as t.ReturnStatement | undefined
-              if (innerReturn) {
-                // import { escape } from '@weapp-core/escape'
-                const originNode = innerReturn.argument as t.CallExpression
-                if (
-                  originNode.callee.type === 'Identifier'
-                  && originNode.callee.name === 'escape'
-                ) {
-                  // has patched
-                  return
-                }
-
-                innerReturn.argument = t.callExpression(
-                  t.identifier('escape'),
-                  [originNode],
-                )
-              }
+            if (returnFn.argument?.type === 'ArrowFunctionExpression') {
+              injectArrowFn(returnFn.argument)
+            }
+            else if (returnFn.argument?.type === 'CallExpression') {
+              injectArrowFn(returnFn.argument.arguments[0] as t.ArrowFunctionExpression)
             }
           }
         }
