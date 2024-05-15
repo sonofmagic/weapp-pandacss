@@ -1,10 +1,9 @@
 // import 'core-js'
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import { useLaunch } from '@tarojs/taro'
-import './app.scss'
+import './app.css'
 
 function App({ children }: PropsWithChildren<any>) {
-
   useLaunch(() => {
     console.log('App launched.')
     console.log(`[TARO_ENV]:`, process.env.TARO_ENV)

@@ -1,5 +1,5 @@
 @layer reset, base, tokens, recipes, utilities;
-// 打入 reset
+
 @layer reset {
   * {
     box-sizing: border-box;
@@ -38,6 +38,3 @@
   /* ... */
 }
 
-// @import 'tailwindcss/base';
-// @import 'tailwindcss/utilities';
-// @import 'tailwindcss/components';
