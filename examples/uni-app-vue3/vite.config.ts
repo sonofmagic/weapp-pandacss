@@ -9,9 +9,9 @@ export default defineConfig({
     alias: [
       {
         find: 'styled-system',
-        replacement: path.resolve(__dirname, 'styled-system')
-      }
-    ]
+        replacement: path.resolve(__dirname, 'styled-system'),
+      },
+    ],
   },
   css: {
     postcss: {
@@ -25,9 +25,9 @@ export default defineConfig({
           // 默认所有属性都转化
           propList: ['*'],
           // 转化的单位,可以变成 px / rpx
-          transformUnit: 'rpx'
-        })
-      ]
-    }
-  }
+          transformUnit: 'rpx',
+        }),
+      ],
+    },
+  },
 })
