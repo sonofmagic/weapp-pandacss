@@ -85,7 +85,7 @@
   },
   "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
   "devDependencies": {
-    "@icebreakers/eslint-config": "^0.1.0",
+    "@icebreakers/eslint-config": "^0.3.0",
     "@pandacss/dev": "^0.39.1",
     "@pnpm/lockfile-file": "^9.0.5",
     "@rollup/plugin-alias": "^5.1.0",
