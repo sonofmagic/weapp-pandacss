@@ -1,23 +1,50 @@
 {
   "name": "weapp-pandacss",
   "version": "0.0.0",
+  "packageManager": "pnpm@9.1.2",
   "description": "to use pandacss in weapp, 在小程序里使用 pandacss",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "types/index.d.ts",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonofmagic/weapp-pandacss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/weapp-pandacss/issues"
+  },
+  "keywords": [
+    "panda",
+    "pandacss",
+    "css-in-js",
+    "weapp",
+    "wechat",
+    "mini",
+    "miniprogram",
+    "mini app",
+    "taro",
+    "uni-app",
+    "小程序",
+    "vite",
+    "postcss"
+  ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./postcss": {
       "types": "./dist/postcss.d.ts",
-      "require": "./dist/postcss.cjs",
-      "import": "./dist/postcss.mjs"
+      "import": "./dist/postcss.mjs",
+      "require": "./dist/postcss.cjs"
     },
     "./*": "./*"
   },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "types/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
@@ -26,7 +53,11 @@
       ]
     }
   },
-  "sideEffects": false,
+  "files": [
+    "bin",
+    "dist",
+    "types"
+  ],
   "scripts": {
     "dev": "pnpm clean && pnpm dts && cross-env NODE_ENV=development rollup --config rollup.config.ts --configPlugin typescript -w",
     "build": "pnpm clean && pnpm dts && cross-env NODE_ENV=production rollup --config rollup.config.ts --configPlugin typescript",
@@ -49,59 +80,49 @@
     "e2e:dev": "vitest -c ./vitest.e2e.config.ts",
     "e2e:u": "npm run e2e:build && vitest run -u -c ./vitest.e2e.config.ts"
   },
-  "packageManager": "pnpm@9.1.2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sonofmagic/weapp-pandacss.git"
-  },
-  "files": [
-    "dist",
-    "types",
-    "bin"
-  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "keywords": [
-    "panda",
-    "pandacss",
-    "css-in-js",
-    "weapp",
-    "wechat",
-    "mini",
-    "miniprogram",
-    "mini app",
-    "taro",
-    "uni-app",
-    "小程序",
-    "vite",
-    "postcss"
-  ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sonofmagic/weapp-pandacss/issues"
+  "bin": {
+    "weapp-pandacss": "bin/weapp-pandacss.js",
+    "weapp-panda": "bin/weapp-pandacss.js"
   },
-  "homepage": "https://sonofmagic.github.io/weapp-pandacss/",
+  "peerDependencies": {
+    "postcss": "^8.4"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.24.7",
+    "@babel/parser": "^7.24.7",
+    "@babel/traverse": "^7.24.7",
+    "@babel/types": "^7.24.7",
+    "@csstools/postcss-cascade-layers": "4.0.6",
+    "@csstools/postcss-is-pseudo-class": "4.0.8",
+    "@pandacss/config": "^0.41.0",
+    "@weapp-core/escape": "2.0.0",
+    "c12": "^1.11.1",
+    "cac": "^6.7.14",
+    "local-pkg": "^0.5.0",
+    "postcss-selector-parser": "^6.1.0"
+  },
   "devDependencies": {
-    "@icebreakers/eslint-config": "^0.1.0",
-    "@pandacss/dev": "^0.39.1",
-    "@pnpm/lockfile-file": "^9.0.5",
+    "@icebreakers/eslint-config": "^0.3.8",
+    "@pandacss/dev": "^0.41.0",
+    "@pnpm/lockfile-file": "^9.1.1",
     "@rollup/plugin-alias": "^5.1.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@tsconfig/recommended": "^1.0.6",
     "@types/babel__generator": "^7.6.8",
-    "@types/babel__traverse": "^7.20.5",
+    "@types/babel__traverse": "^7.20.6",
     "@types/klaw": "^3.0.6",
-    "@types/lodash": "^4.17.1",
+    "@types/lodash": "^4.17.5",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.5",
     "@types/semantic-release": "^20.0.6",
     "@vitest/coverage-v8": "^1.6.0",
     "colorette": "^2.0.20",
@@ -109,7 +130,7 @@
     "dedent": "^1.5.3",
     "defu": "^6.1.4",
     "del": "^7.1.0",
-    "eslint": "9.2.0",
+    "eslint": "9.5.0",
     "klaw": "^4.1.0",
     "kleur": "^4.1.5",
     "lodash": "^4.17.21",
@@ -119,40 +140,19 @@
     "only-allow": "^1.2.1",
     "outdent": "^0.8.0",
     "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "rollup": "^4.17.2",
+    "prettier": "^3.3.2",
+    "rollup": "^4.18.0",
     "rollup-plugin-visualizer": "^5.12.0",
-    "semantic-release": "^23.1.1",
+    "semantic-release": "^24.0.0",
     "semver": "^7.6.2",
     "ts-node": "^10.9.2",
-    "ts-patch": "^3.1.2",
+    "ts-patch": "^3.2.0",
     "tsconfig-paths": "^4.2.0",
-    "tslib": "^2.6.2",
+    "tslib": "^2.6.3",
     "typedoc": "^0.25.13",
     "typescript": "^5.4.5",
     "typescript-transform-paths": "^3.4.7",
-    "vite": "^5.2.11",
+    "vite": "^5.3.1",
     "vitest": "^1.6.0"
-  },
-  "dependencies": {
-    "@babel/generator": "^7.24.5",
-    "@babel/parser": "^7.24.5",
-    "@babel/traverse": "^7.24.5",
-    "@babel/types": "^7.24.5",
-    "@csstools/postcss-cascade-layers": "4.0.6",
-    "@csstools/postcss-is-pseudo-class": "4.0.8",
-    "@pandacss/config": "^0.39.1",
-    "@weapp-core/escape": "2.0.0",
-    "c12": "^1.10.0",
-    "cac": "^6.7.14",
-    "local-pkg": "^0.5.0",
-    "postcss-selector-parser": "^6.0.16"
-  },
-  "peerDependencies": {
-    "postcss": "^8.4"
-  },
-  "bin": {
-    "weapp-pandacss": "bin/weapp-pandacss.js",
-    "weapp-panda": "bin/weapp-pandacss.js"
   }
 }
