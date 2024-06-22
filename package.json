@@ -149,7 +149,7 @@
     "ts-patch": "^3.2.0",
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.6.3",
-    "typedoc": "^0.25.13",
+    "typedoc": "^0.26.0",
     "typescript": "^5.4.5",
     "typescript-transform-paths": "^3.4.7",
     "vite": "^5.3.1",
