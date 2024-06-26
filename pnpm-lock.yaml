@@ -167,7 +167,7 @@ importers:
         version: 10.9.2(@types/node@20.14.5)(typescript@5.4.5)
       ts-patch:
         specifier: ^3.2.0
-        version: 3.2.0
+        version: 3.2.1
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -2872,10 +2872,6 @@ packages:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
 
-  hasown@2.0.0:
-    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
-    engines: {node: '>= 0.4'}
-
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
@@ -3038,9 +3034,6 @@ packages:
 
   is-core-module@2.13.0:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
-
-  is-core-module@2.13.1:
-    resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
 
   is-core-module@2.14.0:
     resolution: {integrity: sha512-a5dFJih5ZLYlRtDc0dZWP7RiKr6xIKzmn/oAYCDvdLThadVgyJwlaoQPmRtMSpz+rk0OGAgIu+TcM9HUF0fk1A==}
@@ -4984,8 +4977,8 @@ packages:
       '@swc/wasm':
         optional: true
 
-  ts-patch@3.2.0:
-    resolution: {integrity: sha512-fUGMkjGIlD4BFibDM+6pLYLXRguzCUY6fhP1KQzSnFJfAtTDT7DKyX0yHn3CJqfBv4mia/o3ZRte31UVf9Dl1A==}
+  ts-patch@3.2.1:
+    resolution: {integrity: sha512-hlR43v+GUIUy8/ZGFP1DquEqPh7PFKQdDMTAmYt671kCCA6AkDQMoeFaFmZ7ObPLYOmpMgyKUqL1C+coFMf30w==}
     hasBin: true
 
   ts-pattern@5.0.8:
@@ -8532,10 +8525,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.1
 
-  hasown@2.0.0:
-    dependencies:
-      function-bind: 1.1.2
-
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
@@ -8693,10 +8682,6 @@ snapshots:
   is-core-module@2.13.0:
     dependencies:
       has: 1.0.3
-
-  is-core-module@2.13.1:
-    dependencies:
-      hasown: 2.0.0
 
   is-core-module@2.14.0:
     dependencies:
@@ -9618,7 +9603,7 @@ snapshots:
   normalize-package-data@6.0.1:
     dependencies:
       hosted-git-info: 7.0.2
-      is-core-module: 2.13.1
+      is-core-module: 2.14.0
       semver: 7.6.2
       validate-npm-package-license: 3.0.4
 
@@ -10179,7 +10164,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.14.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -10727,7 +10712,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  ts-patch@3.2.0:
+  ts-patch@3.2.1:
     dependencies:
       chalk: 4.1.2
       global-prefix: 3.0.0
