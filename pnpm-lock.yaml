@@ -176,7 +176,7 @@ importers:
         version: 2.6.3
       typedoc:
         specifier: ^0.26.0
-        version: 0.26.2(typescript@5.4.5)
+        version: 0.26.3(typescript@5.4.5)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -5064,8 +5064,8 @@ packages:
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  typedoc@0.26.2:
-    resolution: {integrity: sha512-q/t+M+PZqhN9gPWLBZ3CCvP+KT8O1tyYkSzEYbcQ6mo89avdIrMlBEl3vfo5BgSzwC6Lbmq0W64E8RkY+eVsLA==}
+  typedoc@0.26.3:
+    resolution: {integrity: sha512-6d2Sw9disvvpdk4K7VNjKr5/3hzijtfQVHRthhDqJgnhMHy1wQz4yPMJVKXElvnZhFr0nkzo+GzjXDTRV5yLpg==}
     engines: {node: '>= 18'}
     hasBin: true
     peerDependencies:
@@ -10819,7 +10819,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typedoc@0.26.2(typescript@5.4.5):
+  typedoc@0.26.3(typescript@5.4.5):
     dependencies:
       lunr: 2.3.9
       markdown-it: 14.1.0
