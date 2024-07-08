@@ -1,5 +1,3 @@
-import fs from 'node:fs/promises'
-
 function normalizeString(strs: string | string[], separator = ',') {
   if (Array.isArray(strs)) {
     return strs.join(separator)
@@ -15,26 +13,7 @@ function ref<T>(value: T) {
 
 type Ref<T> = ReturnType<typeof ref<T>>
 
-async function ensureDir(p: string) {
-  try {
-    await fs.access(p)
-  }
-  catch {
-    await fs.mkdir(p, {
-      recursive: true,
-    })
-  }
-}
-
-export { normalizeString, ref, Ref, ensureDir }
-// 懒惰做法
-// function computed<T>(getter: (...args: any[]) => T) {
-//   return {
-//     get value() {
-//       return getter()
-//     }
-//   }
-// }
+export { normalizeString, ref, Ref }
 
 export { default as dedent } from 'dedent'
 

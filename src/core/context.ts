@@ -1,6 +1,5 @@
 import { dirname, resolve } from 'node:path'
-import fs from 'node:fs/promises'
-import { existsSync } from 'node:fs'
+import fs from 'fs-extra'
 import { getPandacssConfig } from './config'
 import { copyEscape, generateEscapeWrapper } from './codegen'
 import { patch } from './patch'
@@ -21,7 +20,7 @@ export async function createContext(
     const words: string[] = []
     const weappPandaDir = resolve(projectRoot, outdir, 'weapp-panda')
     const patchHelpersPath = resolve(projectRoot, outdir, 'helpers.mjs')
-    if (!existsSync(patchHelpersPath)) {
+    if (!await fs.exists(patchHelpersPath)) {
       throw new Error(
         `Cannot find runtime file: ${outdir}/helpers.mjs. Did you forget to run \`panda init\`?`,
       )
@@ -31,7 +30,7 @@ export async function createContext(
     words.push(dedent`
     ${tick} ${quote(outdir, '/weapp-panda')}: the core escape function for weapp
     `)
-    if (existsSync(patchHelpersPath)) {
+    if (await fs.exists(patchHelpersPath)) {
       await fs.copyFile(
         patchHelpersPath,
         resolve(dirname(patchHelpersPath), '_helpers.backup.mjs'),
@@ -56,7 +55,7 @@ export async function createContext(
       outdir,
       '_helpers.backup.mjs',
     )
-    if (existsSync(patchHelpersBackupPath)) {
+    if (await fs.exists(patchHelpersBackupPath)) {
       await fs.copyFile(
         patchHelpersBackupPath,
         resolve(dirname(patchHelpersBackupPath), 'helpers.mjs'),

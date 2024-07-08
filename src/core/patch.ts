@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises'
+import fs from 'fs-extra'
 import * as t from '@babel/types'
 
 import { generate, parse, traverse } from '@/babel'

@@ -2,9 +2,9 @@ import { copyFile, readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { deleteAsync } from 'del'
+import fs from 'fs-extra'
 import { appRoot, fixturesRoot } from './util'
 import { createContext } from '@/core/context'
-import { ensureDir } from '@/utils'
 
 describe('context', () => {
   it('no config', async () => {
@@ -25,7 +25,7 @@ describe('context', () => {
     expect(ctx.pandaConfig).toBeDefined()
     expect(ctx.rollback).toBeDefined()
     const src = resolve(appRoot, 'src/styled-system/helpers.mjs')
-    await ensureDir(dirname(src))
+    await fs.ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
     const backup = resolve(appRoot, 'src/styled-system/_helpers.backup.mjs')
@@ -59,7 +59,7 @@ describe('context', () => {
       log: true,
     })
     const src = resolve(app0Root, ctx.pandaConfig.config.outdir, 'helpers.mjs')
-    await ensureDir(dirname(src))
+    await fs.ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
     expect(existsSync(src)).toBe(true)
@@ -76,7 +76,7 @@ describe('context', () => {
       log: true,
     })
     const src = resolve(appRoot, ctx.pandaConfig.config.outdir, 'helpers.mjs')
-    await ensureDir(dirname(src))
+    await fs.ensureDir(dirname(src))
     await copyFile(resolve(appRoot, 'styled-system/helpers.mjs'), src)
     await ctx.codegen()
     expect(existsSync(src)).toBe(true)

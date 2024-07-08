@@ -1,8 +1,8 @@
-import fs from 'node:fs/promises'
 import path from 'node:path'
+import fs from 'fs-extra'
 import { getPackageInfoSync } from 'local-pkg'
 import type { ICreateContextOptions } from '@/types'
-import { dedent, ensureDir } from '@/utils'
+import { dedent } from '@/utils'
 
 export function getWeappCoreEscapeDir() {
   const rootPath = getPackageInfoSync('@weapp-core/escape')!.rootPath
@@ -18,7 +18,7 @@ export async function copyEscape(destDir: string) {
   const result: string[] = []
   const srcDir = getWeappCoreEscapeDir()
   const filesnames = await fs.readdir(srcDir)
-  await ensureDir(destDir)
+  await fs.ensureDir(destDir)
 
   for (const filesname of filesnames) {
     const src = path.resolve(srcDir, filesname)
@@ -36,7 +36,7 @@ export async function generateEscapeWrapper(
   destDir: string,
   options: ICreateContextOptions,
 ) {
-  await ensureDir(destDir)
+  await fs.ensureDir(destDir)
   const code = dedent`
   import { escape as _escape } from './lib/index.mjs'
 
