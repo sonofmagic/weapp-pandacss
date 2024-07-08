@@ -221,21 +221,25 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
   const isPseudoClassPlugin = createIsPseudoClassPlugin(
     optionsRef?.value.isPseudoClassPluginOptions,
   ) as Plugin
+  let inited = false
   return {
     postcssPlugin: wrapperPostcssPlugin,
     plugins: [
       async function () {
-        try {
-          const { config, configFile } = await getUserConfig()
-          mergeOptions(config?.postcss)
-          const ctx = await createContext({
-            configFile,
-            ...config?.context,
-          })
-          await ctx.codegen()
-        }
-        catch (error) {
-          console.log((<Error>error).message)
+        if (!inited) {
+          try {
+            const { config, configFile } = await getUserConfig()
+            mergeOptions(config?.postcss)
+            const ctx = await createContext({
+              configFile,
+              ...config?.context,
+            })
+            await ctx.codegen()
+            inited = true
+          }
+          catch (error) {
+            console.log((<Error>error).message)
+          }
         }
       },
       cascadeLayersPlugin,
