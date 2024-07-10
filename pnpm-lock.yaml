@@ -185,7 +185,7 @@ importers:
         version: 2.6.3
       typedoc:
         specifier: ^0.26.0
-        version: 0.26.3(typescript@5.5.3)
+        version: 0.26.4(typescript@5.5.3)
       typescript:
         specifier: ^5.4.5
         version: 5.5.3
@@ -1313,8 +1313,8 @@ packages:
     peerDependencies:
       semantic-release: '>=20.1.0'
 
-  '@shikijs/core@1.9.1':
-    resolution: {integrity: sha512-EmUful2MQtY8KgCF1OkBtOuMcvaZEvmdubhW0UHCGXi21O9dRLeADVCj+k6ZS+de7Mz9d2qixOXJ+GLhcK3pXg==}
+  '@shikijs/core@1.10.3':
+    resolution: {integrity: sha512-D45PMaBaeDHxww+EkcDQtDAtzv00Gcsp72ukBtaLSmqRvh0WgGMq3Al0rl1QQBZfuneO75NXMIzEZGFitThWbg==}
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -1764,8 +1764,8 @@ packages:
   bmp-js@0.1.0:
     resolution: {integrity: sha512-vHdS19CnY3hwiNdkaqk93DvjVLfbEcI8mys4UjuWrlX1haDmroo8o4xCzh4wD6DGV6HxRCyauwhHRqMTfERtjw==}
 
-  bole@5.0.13:
-    resolution: {integrity: sha512-JQ3xWh2nYsVUuJx7ZN4fzU3vHpzceWb7CC06LUXWwdY++Hzd7Wola7zN3Ud5XgmOVoH/6KzrdMmJokol/xtejw==}
+  bole@5.0.14:
+    resolution: {integrity: sha512-IFDlSAH1GKiQEp4NUa2Eg8RplcV2oXOFCHD/nfNqVlRNf9RgNRdxtR2g3P+Cz57uP5jAGSrq2bGUqXLQeh/h4w==}
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -2788,6 +2788,10 @@ packages:
   glob@10.4.4:
     resolution: {integrity: sha512-XsOKvHsu38Xe19ZQupE6N/HENeHQBA05o3hV8labZZT2zYDg1+emxWHnc/Bm9AcCMPXfD6jt+QC7zC5JSFyumw==}
     engines: {node: 14 >=14.21 || 16 >=16.20 || 18 || 20 || >=22}
+    hasBin: true
+
+  glob@10.4.5:
+    resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
     hasBin: true
 
   glob@7.2.3:
@@ -4569,8 +4573,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.9.1:
-    resolution: {integrity: sha512-8PDkgb5ja3nfujTjvC4VytL6wGOGCtFAClUb2r3QROevYXxcq+/shVJK5s6gy0HZnjaJgFxd6BpPqpRfqne5rA==}
+  shiki@1.10.3:
+    resolution: {integrity: sha512-eneCLncGuvPdTutJuLyUGS8QNPAVFO5Trvld2wgEq1e002mwctAhJKeMGWtWVXOIEzmlcLRqcgPSorR6AVzOmQ==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -5011,8 +5015,8 @@ packages:
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  typedoc@0.26.3:
-    resolution: {integrity: sha512-6d2Sw9disvvpdk4K7VNjKr5/3hzijtfQVHRthhDqJgnhMHy1wQz4yPMJVKXElvnZhFr0nkzo+GzjXDTRV5yLpg==}
+  typedoc@0.26.4:
+    resolution: {integrity: sha512-FlW6HpvULDKgc3rK04V+nbFyXogPV88hurarDPOjuuB5HAwuAlrCMQ5NeH7Zt68a/ikOKu6Z/0hFXAeC9xPccQ==}
     engines: {node: '>= 18'}
     hasBin: true
     peerDependencies:
@@ -6359,7 +6363,7 @@ snapshots:
 
   '@pnpm/logger@5.0.0':
     dependencies:
-      bole: 5.0.13
+      bole: 5.0.14
       ndjson: 2.0.0
 
   '@pnpm/merge-lockfile-changes@6.0.4':
@@ -6617,7 +6621,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@shikijs/core@1.9.1': {}
+  '@shikijs/core@1.10.3':
+    dependencies:
+      '@types/hast': 3.0.4
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -7132,7 +7138,7 @@ snapshots:
 
   bmp-js@0.1.0: {}
 
-  bole@5.0.13:
+  bole@5.0.14:
     dependencies:
       fast-safe-stringify: 2.1.1
       individual: 3.0.0
@@ -8352,6 +8358,15 @@ snapshots:
       path-scurry: 1.11.1
 
   glob@10.4.4:
+    dependencies:
+      foreground-child: 3.2.1
+      jackspeak: 3.4.2
+      minimatch: 9.0.5
+      minipass: 7.1.2
+      package-json-from-dist: 1.0.0
+      path-scurry: 1.11.1
+
+  glob@10.4.5:
     dependencies:
       foreground-child: 3.2.1
       jackspeak: 3.4.2
@@ -10230,9 +10245,10 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.9.1:
+  shiki@1.10.3:
     dependencies:
-      '@shikijs/core': 1.9.1
+      '@shikijs/core': 1.10.3
+      '@types/hast': 3.0.4
 
   side-channel@1.0.6:
     dependencies:
@@ -10427,7 +10443,7 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       commander: 4.1.1
-      glob: 10.4.4
+      glob: 10.4.5
       lines-and-columns: 1.2.4
       mz: 2.7.0
       pirates: 4.0.6
@@ -10705,12 +10721,12 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typedoc@0.26.3(typescript@5.5.3):
+  typedoc@0.26.4(typescript@5.5.3):
     dependencies:
       lunr: 2.3.9
       markdown-it: 14.1.0
       minimatch: 9.0.5
-      shiki: 1.9.1
+      shiki: 1.10.3
       typescript: 5.5.3
       yaml: 2.4.5
 
