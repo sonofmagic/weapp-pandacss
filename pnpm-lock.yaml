@@ -50,7 +50,7 @@ importers:
     devDependencies:
       '@icebreakers/eslint-config':
         specifier: ^0.3.8
-        version: 0.3.11(@vue/compiler-sfc@3.4.31)(eslint@9.6.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))(typescript@5.5.3)(vitest@2.0.1(@types/node@20.14.10)(lightningcss@1.25.1)(terser@5.31.1))
+        version: 0.3.12(@vue/compiler-sfc@3.4.31)(eslint@9.6.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))(typescript@5.5.3)(vitest@2.0.1(@types/node@20.14.10)(lightningcss@1.25.1)(terser@5.31.1))
       '@pandacss/dev':
         specifier: ^0.42.0
         version: 0.42.0(typescript@5.5.3)
@@ -682,8 +682,8 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
-  '@icebreakers/eslint-config@0.3.11':
-    resolution: {integrity: sha512-dJvOlPC5HZLRqYEYtKgg0fp9XpoLcG2YQDuwi4rxHvimfbBa/Vx18vUwvrSJ2R7MxKHV2qQnKcLeDNssTw/RDQ==}
+  '@icebreakers/eslint-config@0.3.12':
+    resolution: {integrity: sha512-0Vqq2CN8NcLbq7M/uuu86I7bQewwreF5t4Q8zZ05MG1NRgWc+7WyU4fOuiQxltBq0cBsLq4Rj1ydT+bJ5FYsAQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -5878,7 +5878,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.0': {}
 
-  '@icebreakers/eslint-config@0.3.11(@vue/compiler-sfc@3.4.31)(eslint@9.6.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))(typescript@5.5.3)(vitest@2.0.1(@types/node@20.14.10)(lightningcss@1.25.1)(terser@5.31.1))':
+  '@icebreakers/eslint-config@0.3.12(@vue/compiler-sfc@3.4.31)(eslint@9.6.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))(typescript@5.5.3)(vitest@2.0.1(@types/node@20.14.10)(lightningcss@1.25.1)(terser@5.31.1))':
     dependencies:
       '@antfu/eslint-config': 2.21.2(@vue/compiler-sfc@3.4.31)(eslint-plugin-format@0.1.2(eslint@9.6.0))(eslint@9.6.0)(typescript@5.5.3)(vitest@2.0.1(@types/node@20.14.10)(lightningcss@1.25.1)(terser@5.31.1))
       eslint-plugin-format: 0.1.2(eslint@9.6.0)
