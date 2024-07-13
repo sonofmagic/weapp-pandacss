@@ -13,7 +13,7 @@ import createIsPseudoClassPlugin from '@csstools/postcss-is-pseudo-class'
 import type { IPostcssPluginOptions } from '@/types'
 import { createContext, getUserConfig } from '@/core'
 import type { Ref } from '@/utils'
-import { merge, normalizeString, ref } from '@/utils'
+import { createSingleExecutionFunction, merge, normalizeString, ref } from '@/utils'
 import { escapePostcssPlugin, wrapperPostcssPlugin } from '@/constants'
 
 export function useOptions(options?: IPostcssPluginOptions) {
@@ -221,6 +221,19 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
   const isPseudoClassPlugin = createIsPseudoClassPlugin(
     optionsRef?.value.isPseudoClassPluginOptions,
   ) as Plugin
+
+  async function codegen() {
+    const { config, configFile } = await getUserConfig()
+    mergeOptions(config?.postcss)
+    const ctx = await createContext({
+      configFile,
+      ...config?.context,
+    })
+    await ctx.codegen()
+  }
+
+  const codegenOnce = createSingleExecutionFunction(codegen)
+
   let inited = false
   return {
     postcssPlugin: wrapperPostcssPlugin,
@@ -228,13 +241,7 @@ export const creator: PluginCreator<IPostcssPluginOptions> = (options) => {
       async function () {
         if (!inited) {
           try {
-            const { config, configFile } = await getUserConfig()
-            mergeOptions(config?.postcss)
-            const ctx = await createContext({
-              configFile,
-              ...config?.context,
-            })
-            await ctx.codegen()
+            await codegenOnce()
             inited = true
           }
           catch (error) {
