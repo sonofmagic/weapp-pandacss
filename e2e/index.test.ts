@@ -12,7 +12,7 @@ const projectMap = {
     },
     get cssPath() {
       return path.resolve(this.projectPath, 'dist/app.wxss')
-    }
+    },
   },
   taroVue3: {
     name: 'taroVue3',
@@ -22,7 +22,7 @@ const projectMap = {
     },
     get cssPath() {
       return path.resolve(this.projectPath, 'dist/app.wxss')
-    }
+    },
   },
   uniAppVue3: {
     name: 'uniAppVue3',
@@ -32,8 +32,8 @@ const projectMap = {
     },
     get cssPath() {
       return path.resolve(this.projectPath, 'app.wxss')
-    }
-  }
+    },
+  },
 }
 
 function formatWxml(wxml: string) {
@@ -46,7 +46,7 @@ function formatWxml(wxml: string) {
     endOfLine: 'lf',
     trailingComma: 'none',
     bracketSameLine: true,
-    htmlWhitespaceSensitivity: 'ignore'
+    htmlWhitespaceSensitivity: 'ignore',
   })
 }
 
@@ -60,7 +60,7 @@ function formatWxss(wxss: string) {
     endOfLine: 'lf',
     trailingComma: 'none',
     bracketSameLine: true,
-    htmlWhitespaceSensitivity: 'ignore'
+    htmlWhitespaceSensitivity: 'ignore',
   })
 }
 
@@ -70,7 +70,7 @@ describe('e2e', () => {
     async ({ cssPath, projectPath }) => {
       const miniProgram = await automator.launch({
         // cliPath: 'C:\\Program Files (x86)\\Tencent\\微信web开发者工具\\cli.bat',
-        projectPath
+        projectPath,
       })
       const page = await miniProgram.reLaunch('/pages/index/index')
       if (page) {
@@ -79,8 +79,9 @@ describe('e2e', () => {
         if (wxml) {
           let wxmlRes: string
           try {
-            wxmlRes = await formatWxml(wxml)
-          } catch (error) {
+            wxmlRes = wxml // await formatWxml(wxml)
+          }
+          catch (error) {
             console.warn(error)
             wxmlRes = wxml
           }
@@ -95,6 +96,6 @@ describe('e2e', () => {
       await miniProgram.close()
 
       // expect().toMatchSnapshot()
-    }
+    },
   )
 })

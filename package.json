@@ -53,6 +53,10 @@
       ]
     }
   },
+  "bin": {
+    "weapp-pandacss": "bin/weapp-pandacss.js",
+    "weapp-panda": "bin/weapp-pandacss.js"
+  },
   "files": [
     "bin",
     "dist",
@@ -83,10 +87,6 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  },
-  "bin": {
-    "weapp-pandacss": "bin/weapp-pandacss.js",
-    "weapp-panda": "bin/weapp-pandacss.js"
   },
   "peerDependencies": {
     "postcss": "^8.4"
