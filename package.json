@@ -98,7 +98,7 @@
     "@babel/types": "^7.24.8",
     "@csstools/postcss-cascade-layers": "4.0.6",
     "@csstools/postcss-is-pseudo-class": "4.0.8",
-    "@pandacss/config": "^0.42.0",
+    "@pandacss/config": "^0.43.0",
     "@weapp-core/escape": "2.1.0",
     "c12": "^1.11.1",
     "cac": "^6.7.14",
@@ -108,7 +108,7 @@
   },
   "devDependencies": {
     "@icebreakers/eslint-config": "^0.3.8",
-    "@pandacss/dev": "^0.42.0",
+    "@pandacss/dev": "^0.43.0",
     "@pnpm/lockfile-file": "^9.1.2",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^26.0.1",
