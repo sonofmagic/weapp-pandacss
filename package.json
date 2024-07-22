@@ -1,7 +1,7 @@
 {
   "name": "weapp-pandacss",
   "version": "0.0.0",
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "description": "to use pandacss in weapp, 在小程序里使用 pandacss",
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "MIT",
