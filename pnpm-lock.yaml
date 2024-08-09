@@ -191,7 +191,7 @@ importers:
         version: 5.5.4
       typescript-transform-paths:
         specifier: ^3.4.7
-        version: 3.4.7(typescript@5.5.4)
+        version: 3.4.10(typescript@5.5.4)
       vite:
         specifier: ^5.3.1
         version: 5.4.0(@types/node@20.14.12)(lightningcss@1.25.1)(terser@5.31.2)
@@ -5262,8 +5262,8 @@ packages:
     peerDependencies:
       typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
 
-  typescript-transform-paths@3.4.7:
-    resolution: {integrity: sha512-1Us1kdkdfKd2unbkBAOV2HHRmbRBYpSuk9nJ7cLD2hP4QmfToiM/VpxNlhJc1eezVwVqSKSBjNSzZsK/fWR/9A==}
+  typescript-transform-paths@3.4.10:
+    resolution: {integrity: sha512-OPBjXDnwX/B4JzewvRAzEzcNK+hQn/JonCfUN93VARsFQcj/wk//4RJ3FPp/SgzsT1s1EJJhOass5grxy8Y2yA==}
     peerDependencies:
       typescript: '>=3.6.5'
 
@@ -11370,7 +11370,7 @@ snapshots:
       typescript: 5.5.4
       yaml: 2.4.5
 
-  typescript-transform-paths@3.4.7(typescript@5.5.4):
+  typescript-transform-paths@3.4.10(typescript@5.5.4):
     dependencies:
       minimatch: 3.1.2
       typescript: 5.5.4
