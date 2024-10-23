@@ -97,7 +97,7 @@
     "@babel/traverse": "^7.24.8",
     "@babel/types": "^7.24.8",
     "@csstools/postcss-cascade-layers": "4.0.6",
-    "@csstools/postcss-is-pseudo-class": "4.0.8",
+    "@csstools/postcss-is-pseudo-class": "5.0.1",
     "@pandacss/config": "^0.44.0",
     "@weapp-core/escape": "2.1.0",
     "c12": "^1.11.1",
