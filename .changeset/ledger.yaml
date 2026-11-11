@@ -37,3 +37,7 @@ weapp-pandacss@2.3.1:
   intents:
     - clever-bears-trade
     - small-foxes-watch
+weapp-pandacss@2.4.0:
+  dir: packages/weapp-pandacss
+  intents:
+    - happy-maps-taste
