@@ -3,7 +3,7 @@
   "path": "eslint.config.js",
   "source": {
     "package": "@icebreakers/monorepo-templates",
-    "version": "3.0.1",
+    "version": "3.2.4",
     "assetPath": "eslint.config.js",
     "hash": "b5ad5126677987b9a476862ab6231c9e8349faed8aba21f4a4ae83ebc89e9283"
   },

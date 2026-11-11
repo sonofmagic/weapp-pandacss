@@ -2,7 +2,7 @@
 
 <img src="./assets/brand/logo.svg" alt="weapp-pandacss logo" width="128" height="128">
 
-Use Panda CSS 2.2.0 in WeChat and other mini-program runtimes. The adapter accepts stable Panda releases from 2.1.2 onward (`>=2.1.2`); the examples use 2.2.0. Real consumer tests cover 2.1.2 and 2.2.0, and AST checks reject incompatible generated artifacts.
+Use Panda CSS 2.5.0 in WeChat and other mini-program runtimes. The adapter accepts stable Panda releases from 2.1.2 onward (`>=2.1.2`) with no upper version bound; the examples use 2.5.0. Real consumer tests cover 2.1.2 and 2.5.0, and AST checks reject incompatible generated artifacts.
 
 Documentation: [English](https://panda.weapp.dev/) · [简体中文](https://panda.weapp.dev/zh/).
 
@@ -31,7 +31,7 @@ module.exports = {
 
 It expands CSS imports, runs official Panda and adapts mini-program CSS by default. Keep Panda's config, `weappPanda()` and a global `.css` layer entry; H5 uses `{ target: 'web' }`. `imports`, `panda` and `adapter` can be disabled individually; `disabled: true` bypasses all stages. Sass/Less/Stylus are compiled by the framework. Unit conversion is built in and opt-in through `units`, defaulting to `false` for both targets with no inferred ratio. Configure `units: { rules: [{ from: 'rem', to: 'rpx', factor: 32 }] }` on the same plugin when needed; helpers and types come from the root package.
 
-Source `@import` remains supported: the composed plugin expands the local graph before Panda and mini-program ordered compilation. The ordered core uses pinned `@weapp-tailwindcss/css-compat@0.1.2`; unresolved plain, layer-qualified or remote imports fail rather than silently changing precedence. Existing adapter and legacy options remain available. See [CSS compatibility](https://panda.weapp.dev/guides/css-compatibility/) / [CSS 兼容](https://panda.weapp.dev/zh/guides/css-compatibility/) for diagnostics and the source-input boundary.
+Source `@import` remains supported: the composed plugin expands the local graph before Panda and mini-program ordered compilation. The ordered core uses pinned `@weapp-tailwindcss/css-compat@0.1.4`; unresolved plain, layer-qualified or remote imports fail rather than silently changing precedence. Existing adapter and legacy options remain available. See [CSS compatibility](https://panda.weapp.dev/guides/css-compatibility/) / [CSS 兼容](https://panda.weapp.dev/zh/guides/css-compatibility/) for diagnostics and the source-input boundary.
 
 ## Brand assets
 

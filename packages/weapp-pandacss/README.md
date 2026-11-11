@@ -2,16 +2,16 @@
 
 Documentation: [English](https://panda.weapp.dev/) · [简体中文](https://panda.weapp.dev/zh/).
 
-Use [Panda CSS 2.2.0](https://panda-css.com/) in mini-programs and Web with matching, portable class names. The Panda plugin transforms generated runtime artifacts through ASTs before Panda writes them. The PostCSS plugin converts the CSS using the same naming contract.
+Use [Panda CSS 2.5.0](https://panda-css.com/) in mini-programs and Web with matching, portable class names. The Panda plugin transforms generated runtime artifacts through ASTs before Panda writes them. The PostCSS plugin converts the CSS using the same naming contract.
 
-> **Release availability:** Zero-option composition and Panda 2.2.0 support are repository implementations for the upcoming minor release. Until upgrading, keep Panda 2.1.2 and the published package's separate import/Panda/adapter configuration; then use the setup below. Release automation determines the version number.
+> **Release availability:** Zero-option composition and Panda 2.5.0 support are repository implementations for the upcoming minor release. Until upgrading, keep Panda 2.1.2 and the published package's separate import/Panda/adapter configuration; then use the setup below. Release automation determines the version number.
 
 ## Install and configure
 
 Use Node.js 22.18+ or 24.11+.
 
 ```bash
-pnpm add -D @pandacss/dev@2.2.0 @pandacss/preset-base@2.2.0 @pandacss/preset-panda@2.2.0 weapp-pandacss postcss
+pnpm add -D @pandacss/dev@2.5.0 @pandacss/preset-base@2.5.0 @pandacss/preset-panda@2.5.0 weapp-pandacss postcss
 ```
 
 ```ts
@@ -97,13 +97,13 @@ The plugin enables Panda's native `hash.cssVar` and normalizes its variable pref
 
 `weapp-pandacss/panda`, `/postcss` and `/runtime` provide ESM and CJS entries with declarations. The root entry exports `weappPanda`, `postcssPlugin`, `encodeClassName`, `encodeClassList`, `unitPresets`, `composeUnitRules`, and complete option/rule/context/preset types. Version 2 removes the old file-patching/configuration APIs, both adapter CLI names and the PostCSS `naming` option. PostCSS options are passed directly to the plugin.
 
-Stable Panda releases from 2.1.2 onward with `.js` or `.mjs` output are accepted (`>=2.1.2`, with no upper version bound); new installations use 2.2.0. Keep `@pandacss/dev` and both presets at the same supported version. Real offline consumer tests cover 2.1.2 and 2.2.0. Missing Panda, older or prerelease versions and incompatible generated structures fail with a diagnostic; later versions still pass through the AST structure checks. Panda source-transform optimizations that inline raw classes and bypass runtime are outside this release's scope. See the [Chinese guide](./README.zh.md) and [2.0 migration guide](../../docs/panda-plugin-migration.md) for configuration and breaking changes.
+Stable Panda releases from 2.1.2 onward with `.js` or `.mjs` output are accepted (`>=2.1.2`, with no upper version bound); new installations use 2.5.0. Keep `@pandacss/dev` and both presets at the same supported version. Real offline consumer tests cover the minimum 2.1.2 and current stable 2.5.0. Missing Panda, older or prerelease versions and incompatible generated structures fail with a diagnostic; later versions still pass through the AST structure checks. Panda source-transform optimizations that inline raw classes and bypass runtime are outside this release's scope. See the [Chinese guide](./README.zh.md) and [2.0 migration guide](../../docs/panda-plugin-migration.md) for configuration and breaking changes.
 
 The repository includes [Taro React, Taro Vue, Uni-app Vue, React Web and Weapp Vite + Wevu](../../examples/). The Wevu example runs `wv prepare` before Panda codegen on a clean checkout.
 
 ## Cascade layer compatibility
 
-Mini-programs default to `cascadeLayers: { mode: 'ordered', onConflict: 'warning' }`. Ordered compilation uses the pinned `@weapp-tailwindcss/css-compat@0.1.2` core behind the adapter; applications do not need to import that package directly. The compiler registers layer names in first-declaration order, flattens nested/anonymous/repeated layers, and emits ordinary selectors without generated `:not(n)` specificity placeholders. Normal declarations follow layer order, then unlayered declarations. Important declarations use the reverse order, with unlayered important declarations first. Source order inside each layer is preserved.
+Mini-programs default to `cascadeLayers: { mode: 'ordered', onConflict: 'warning' }`. Ordered compilation uses the pinned `@weapp-tailwindcss/css-compat@0.1.4` core behind the adapter; applications do not need to import that package directly. The compiler registers layer names in first-declaration order, flattens nested/anonymous/repeated layers, and emits ordinary selectors without generated `:not(n)` specificity placeholders. Normal declarations follow layer order, then unlayered declarations. Important declarations use the reverse order, with unlayered important declarations first. Source order inside each layer is preserved.
 
 This provides **order compatibility**, not a complete native-layer polyfill. In WXSS, a lower-priority layer with a more specific selector can still override a higher-priority layer. The adapter reports potential conflicts through PostCSS warnings, with layer names, selectors, properties and source positions. Shorthands, logical properties and unknown functional selectors are analyzed conservatively; a warning does not prove that both selectors match a real element. Set `onConflict: 'error'` to fail the build on these diagnostics.
 

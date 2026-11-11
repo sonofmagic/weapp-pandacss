@@ -5,16 +5,16 @@ sidebar:
   order: 1
 ---
 
-> **发布状态：** 本页对应即将发布的 minor 与仓库实现，Panda 2.2.0 支持与新的 PostCSS 默认行为需要该 minor。升级前继续使用 Panda 2.1.2 和当前已发布包所需的独立 import/Panda/adapter 流水线；升级后按[迁移步骤](/zh/migration/#升级到零选项-postcss-流水线)改为三合一。
+> **发布状态：** 本页对应即将发布的 minor 与仓库实现，Panda 2.5.0 支持与新的 PostCSS 默认行为需要该 minor。升级前继续使用 Panda 2.1.2 和当前已发布包所需的独立 import/Panda/adapter 流水线；升级后按[迁移步骤](/zh/migration/#升级到零选项-postcss-流水线)改为三合一。
 
 ## 环境要求
 
-发布的适配器声明 Node.js 范围为 `^22.18.0 || >=24.11.0`，请使用同时满足该范围与应用框架要求的受支持版本。开发本仓库（包括文档站）需要 Node.js `^22.22.3 || ^24.16.0 || >=26.3.0`。仓库 CI 验证 Node 22 与 24 版本线。
+发布的适配器声明 Node.js 范围为 `^22.18.0 || >=24.11.0`，请使用同时满足该范围与应用框架要求的受支持版本。开发本仓库（包括文档站）需要 Node.js `^22.23.4 || ^24.22.1 || >=26.12.1`。仓库 CI 验证 Node 22 与 24 版本线。
 
-适配器接受 Panda **2.1.2** 及后续稳定版本（`>=2.1.2`，不设版本上限），新安装默认使用 **2.2.0**。Panda 与两个 preset 保持同一受支持版本；未安装 Panda、低于最低版本、预发布版本或不兼容的生成结构会报错。真实离线消费者测试覆盖 **2.1.2** 和 **2.2.0**，后续版本仍需通过 AST 结构校验。
+适配器接受 Panda **2.1.2** 及后续稳定版本（`>=2.1.2`，不设版本上限），新安装默认使用 **2.5.0**。Panda 与两个 preset 保持同一受支持版本；未安装 Panda、低于最低版本、预发布版本或不兼容的生成结构会报错。真实离线消费者测试覆盖 **2.1.2** 和 **2.5.0**，后续版本仍需通过 AST 结构校验。
 
 ~~~sh
-pnpm add -D @pandacss/dev@2.2.0 @pandacss/preset-base@2.2.0 @pandacss/preset-panda@2.2.0 weapp-pandacss@^2 postcss
+pnpm add -D @pandacss/dev@2.5.0 @pandacss/preset-base@2.5.0 @pandacss/preset-panda@2.5.0 weapp-pandacss@^2 postcss
 ~~~
 
 Panda 2 需要显式安装并注册 preset。仅当业务代码需要编码手写 class 时，再安装独立 runtime：

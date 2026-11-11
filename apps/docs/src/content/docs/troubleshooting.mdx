@@ -25,7 +25,7 @@ Follow the chain: source style → Panda extraction → generated runtime → Po
 
 **Cause:** The version gate requires a stable Panda release >=2.1.2. The plugin also checks the generated AST structure; unsupported extensions, changed runtime structures or incomplete generation cannot be safely adapted.
 
-**Fix:** Pin `@pandacss/dev`, `@pandacss/preset-base` and `@pandacss/preset-panda` to the same stable version **>=2.1.2**. New installations use **2.2.0**; real consumer tests cover **2.1.2** and **2.2.0**. If a later release fails the AST structure checks, use a tested version and report the incompatible artifacts. Use `outExtension: 'mjs'` and `forceImportExtension: true`, or supported `.js` output. Register `weappPanda()` and regenerate the complete directory. Remove old generated backups/patch hooks through the [migration steps](/migration/).
+**Fix:** Keep `@pandacss/dev`, `@pandacss/preset-base` and `@pandacss/preset-panda` on the same stable version **>=2.1.2**. New installations use **2.5.0**; real consumer tests cover **2.1.2** and **2.5.0**. If a later release fails the AST structure checks, use a tested version and report the incompatible artifacts. Use `outExtension: 'mjs'` and `forceImportExtension: true`, or supported `.js` output. Register `weappPanda()` and regenerate the complete directory. Remove old generated backups/patch hooks through the [migration steps](/migration/).
 
 **Verify:** Repeated codegen succeeds, helpers and slot runtime contain the portable generation marker, and no old helper backup is needed. Do not suppress the diagnostic or patch one generated file while retaining another generation.
 

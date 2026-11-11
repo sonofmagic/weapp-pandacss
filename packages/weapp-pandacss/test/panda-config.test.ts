@@ -45,13 +45,13 @@ it('leaves empty prefix properties and themes without recipes unchanged', async 
   expect(await resolve({ prefix: { className: '', cssVar: '' }, theme: { extend: {} } })).toMatchObject({ prefix: { className: '', cssVar: '' }, theme: { extend: {} } })
 })
 
-it.each(['2.1.2', '2.2.0', '3.0.0'])('retains structural validation for an accepted Panda version: %s', (version) => {
+it.each(['2.1.2', '2.2.0', '2.5.0', '3.0.0'])('retains structural validation for an accepted Panda version: %s', (version) => {
   vi.mocked(getPandaVersion).mockReturnValue(version)
   const hook = weappPanda().hooks!['codegen:prepare'] as PandaHooks['codegen:prepare']
   expect(() => hook({ artifacts: [] } as never)).toThrow('Cannot find Panda helpers')
 })
 
-it.each(['2.1.2', '2.1.2+build.1', '2.1.3', '2.2.0', '2.2.1', '2.10.0', '3.0.0', '10.0.0'])('accepts stable Panda versions at or above the minimum: %s', (version) => {
+it.each(['2.1.2', '2.1.2+build.1', '2.1.3', '2.2.0', '2.2.1', '2.5.0', '2.10.0', '3.0.0', '10.0.0'])('accepts stable Panda versions at or above the minimum: %s', (version) => {
   vi.mocked(getPandaVersion).mockReturnValue(version)
   expect(weappPanda().name).toBe('weapp-pandacss')
 })

@@ -3,7 +3,7 @@
   "path": "lefthook.yml",
   "source": {
     "package": "@icebreakers/monorepo-templates",
-    "version": "3.0.1",
+    "version": "3.2.4",
     "assetPath": "lefthook.yml",
     "hash": "99918e855a9eea4e01284944d6a75ff87ef66e99715cdaa98f0598b61443e638"
   },

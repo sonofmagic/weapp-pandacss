@@ -88,7 +88,7 @@ pnpm lint
 pnpm typecheck
 ```
 
-`check:examples` executes the homepage example with Panda 2.2.0 and checks runtime/CSS
+`check:examples` executes the homepage example with Panda 2.5.0 and checks runtime/CSS
 matching in a temporary fixture; it does not validate every framework or every snippet.
 The adapter build includes its standalone runtime dependency. Root lint/typecheck are also
 the repository's pre-push gates. Browser checks use the built site, run headlessly and own

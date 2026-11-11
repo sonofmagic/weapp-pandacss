@@ -1,5 +1,8 @@
 import { defineConfig } from 'tsdown'
 
+// Panda 2.5's public config types reference these packages transitively.
+const pandaDeclarationDependencies = ['@pandacss/types', 'pkg-types', 'exsolve']
+
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
@@ -10,10 +13,10 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   deps: {
-    onlyBundle: ['@pandacss/types'],
+    onlyBundle: pandaDeclarationDependencies,
     dts: {
       // Keep Panda's public hook contract without exposing its upstream declaration barrel.
-      alwaysBundle: ['@pandacss/types'],
+      alwaysBundle: pandaDeclarationDependencies,
     },
   },
   clean: true,

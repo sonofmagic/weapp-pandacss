@@ -75,13 +75,13 @@ export default {
           dependencies: ['@pandacss/dev-2-1-2', '@pandacss/preset-base-2-1-2', '@pandacss/preset-panda-2-1-2'],
           sections: ['devDependencies'],
           ignore: true,
-          reason: 'Lock Panda 2.1.2 aliases for offline published-consumer compatibility tests; the default cohort is 2.2.0.',
+          reason: 'Lock Panda 2.1.2 aliases for offline published-consumer compatibility tests; the default cohort is 2.5.0.',
         },
         {
           name: 'wevu-vue3',
           workspaces: ['examples/weapp-vite-app'],
           dependencies: ['vue'],
-          reason: 'Pin the integration fixture to the tested Weapp Vite / Wevu 7.5.0 and Vue 3.5.44 cohort.',
+          reason: 'Pin the integration fixture to the tested Weapp Vite / Wevu 7.9.0 and Vue 3.5.45 cohort.',
         },
         {
           name: 'taro-react18',
@@ -94,6 +94,12 @@ export default {
           workspaces: ['examples/taro-app', 'examples/taro-app-vue3'],
           dependencies: ['@babel/core', '@babel/preset-react', '@babel/runtime'],
           reason: 'Taro webpack5 and its Babel preset require Babel 7.',
+        },
+        {
+          name: 'taro-webpack5',
+          workspaces: ['examples/taro-app', 'examples/taro-app-vue3'],
+          dependencies: ['webpack'],
+          reason: 'Webpack 5.112 moved internal entry dependencies still imported by Taro 4.3.2; retain the tested 5.111 patch line.',
         },
         {
           name: 'uni-vue3',

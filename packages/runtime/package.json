@@ -60,7 +60,7 @@
     "pack:check": "pnpm build && pnpm pack --dry-run"
   },
   "devDependencies": {
-    "tsdown": "0.23.1",
+    "tsdown": "0.23.7",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },

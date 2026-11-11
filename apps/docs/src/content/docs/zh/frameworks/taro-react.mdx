@@ -5,14 +5,14 @@ sidebar:
   order: 2
 ---
 
-参考 [Taro React 示例](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/taro-app)使用 **Taro 4.3.0**、**React 18** 与 **Webpack 5**。这是本指南的验证基线，Taro Vite 编译器和 React Native 需要单独验证。
+参考 [Taro React 示例](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/taro-app)使用 **Taro 4.3.2**、**React 18** 与 **Webpack 5**。这是本指南的验证基线，Taro Vite 编译器和 React Native 需要单独验证。
 
 ## 在已有 Taro 项目安装
 
 Taro 依赖组保持匹配版本。adapter 声明 Node `^22.18.0 || >=24.11.0`，推荐 Node 22.18+ 或 24.11+ 的 LTS 版本，在应用目录执行：
 
 ~~~sh
-pnpm add -D @pandacss/dev@2.2.0 @pandacss/preset-base@2.2.0 @pandacss/preset-panda@2.2.0 weapp-pandacss@^2 postcss
+pnpm add -D @pandacss/dev@2.5.0 @pandacss/preset-base@2.5.0 @pandacss/preset-panda@2.5.0 weapp-pandacss@^2 postcss
 ~~~
 
 手写特殊 class 还需要 `pnpm add @weapp-pandacss/runtime`。Panda 和 PostCSS 放在构建依赖中，独立编码器放在应用依赖中。

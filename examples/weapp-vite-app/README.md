@@ -1,6 +1,6 @@
 # Weapp Vite + Wevu + Panda CSS
 
-微信小程序示例，使用 weapp-vite 7.5.0、wevu 7.5.0 和 Panda CSS 2.2.0。
+微信小程序示例，使用 weapp-vite 7.9.0、wevu 7.9.0 和 Panda CSS 2.5.0。
 手写 class 使用 `@weapp-pandacss/runtime`；Panda 与 PostCSS 配置继续使用主包。
 页面展示 `css()`、特殊字符类名、`cva()` 按钮变体及响应式切换。
 
