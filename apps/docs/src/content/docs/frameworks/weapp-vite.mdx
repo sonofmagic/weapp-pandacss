@@ -5,14 +5,14 @@ sidebar:
   order: 1
 ---
 
-This guide follows [examples/weapp-vite-app](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/weapp-vite-app): weapp-vite **7.5.0**, Wevu **7.5.0** and Panda CSS **2.2.0**, targeting WeChat. Add styling to an existing Weapp Vite + Wevu application.
+This guide follows [examples/weapp-vite-app](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/weapp-vite-app): weapp-vite **7.9.0**, Wevu **7.9.0** and Panda CSS **2.5.0**, targeting WeChat. Add styling to an existing Weapp Vite + Wevu application.
 
 ## Install
 
 The adapter engine is `^22.18.0 || >=24.11.0`; Node 22.18+ or 24.11+ on their LTS lines is recommended. In the application directory:
 
 ~~~sh
-pnpm add -D @pandacss/dev@2.2.0 @pandacss/preset-base@2.2.0 @pandacss/preset-panda@2.2.0 weapp-pandacss@^2 postcss
+pnpm add -D @pandacss/dev@2.5.0 @pandacss/preset-base@2.5.0 @pandacss/preset-panda@2.5.0 weapp-pandacss@^2 postcss
 ~~~
 
 Add `@weapp-pandacss/runtime` as an application dependency only when encoding hand-written special class names. Panda-generated classes do not need this extra import.

@@ -32,7 +32,7 @@ export async function runNative(context: {
   const observed: unknown[] = []
   await withCleanup(async () => {
     const packages = await packPackages(root)
-    const fixture = await createNativeConsumerProject({ root: path.join(root, 'consumer'), packages, panda: '2.2.0', node: process.execPath, appid: context.appid, libVersion: context.libVersion })
+    const fixture = await createNativeConsumerProject({ root: path.join(root, 'consumer'), packages, panda: '2.5.0', node: process.execPath, appid: context.appid, libVersion: context.libVersion })
     const consumerEvidence = path.join(evidence, 'installed-consumer')
     await fs.mkdir(consumerEvidence)
     for (const file of ['install.log', 'resolution.json', 'commands.json', 'scenario.json', 'pnpm-lock.yaml', 'output.wxss', 'output.wxss.map']) {

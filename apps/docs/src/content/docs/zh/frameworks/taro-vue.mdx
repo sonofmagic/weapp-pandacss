@@ -5,14 +5,14 @@ sidebar:
   order: 3
 ---
 
-[参考示例](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/taro-app-vue3)使用 **Taro 4.3.0**、**Vue 3.5** 与 **Webpack 5**。除包含 `.vue` 文件外，还需启用 Panda 的 Vue 提取器。Taro Vite 编译器不在本指南的验证基线中。
+[参考示例](https://github.com/weapp-pandacss/weapp-pandacss/tree/main/examples/taro-app-vue3)使用 **Taro 4.3.2**、**Vue 3.5** 与 **Webpack 5**。除包含 `.vue` 文件外，还需启用 Panda 的 Vue 提取器。Taro Vite 编译器不在本指南的验证基线中。
 
 ## 安装依赖
 
 在已有 Taro Vue 应用中，adapter 声明 Node `^22.18.0 || >=24.11.0`，推荐使用 Node 22.18+ 或 24.11+ 的 LTS 版本：
 
 ~~~sh
-pnpm add -D @pandacss/dev@2.2.0 @pandacss/preset-base@2.2.0 @pandacss/preset-panda@2.2.0 weapp-pandacss@^2 postcss
+pnpm add -D @pandacss/dev@2.5.0 @pandacss/preset-base@2.5.0 @pandacss/preset-panda@2.5.0 weapp-pandacss@^2 postcss
 ~~~
 
 Taro 依赖组保持匹配版本。仅在编码原始手写 class 时，才将 `@weapp-pandacss/runtime` 安装为应用依赖。

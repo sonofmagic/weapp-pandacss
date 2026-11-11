@@ -4,9 +4,9 @@ packages:
   - '!examples/taro-app-linaria'
   - apps/*
 catalog:
-  postcss: ^8.5.30
+  postcss: ^8.5.32
   typescript: ~6.0.3
-  vitest: ~5.0.5
+  vitest: ~5.1.0
 minimumReleaseAge: 0
 pmOnFail: error
 packageExtensions:
@@ -68,9 +68,14 @@ overrides:
   mkdirp@0.5.1: ^0.5.6
   # Automator 0.13 pins an older debug patch with a known ReDoS advisory.
   miniprogram-automator@0.13.0>debug: 4.4.3
+  # Uni/Taro archive readers retain CJS APIs in this security release.
+  adm-zip@0.5.16: 0.6.1
+  adm-zip@0.5.18: 0.6.1
+  glob@10.2.6: 10.5.0
+  # devframe's exact agentic peer must move together with its patch release.
+  devframe@1.3.2: 1.3.3
   ws@8.18.0: ^8.21.0
-  postcss-selector-parser: 7.1.6
+  postcss-selector-parser: 7.2.0
 patchedDependencies:
-  '@icebreakers/monorepo@6.0.1': patches/@icebreakers__monorepo@6.0.1.patch
-  '@tarojs/plugin-html@4.3.0': patches/@tarojs__plugin-html@4.3.0.patch
-  '@tarojs/webpack5-prebundle@4.3.0': patches/@tarojs__webpack5-prebundle@4.3.0.patch
+  '@tarojs/plugin-html@4.3.2': patches/@tarojs__plugin-html@4.3.2.patch
+  '@tarojs/webpack5-prebundle@4.3.2': patches/@tarojs__webpack5-prebundle@4.3.2.patch

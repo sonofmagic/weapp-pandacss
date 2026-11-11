@@ -7,7 +7,7 @@ Rule:
 - Load `repoctl.config.*`; rename legacy `monorepo.config.*`, which is no longer loaded.
 - Validate repoctl-owned fields before command side effects with `repo config validate --json`.
 - Native tooling passthrough and callbacks keep their extension boundary. Config modules are trusted executable project code.
-- Use `repo config inspect --command ai --set 'format="json"' --json` for shared defaults/project/CLI provenance. Contexts: ai, clean, create, deps, doctor, init, mirror, release, upgrade. Runtime selection is explained by each command's plan.
+- Use `repo config inspect --command ai --set 'format="json"' --json` for shared defaults/project/CLI provenance. Contexts: ai, clean, create, deps, doctor, docs, init, mirror, release, upgrade. Runtime selection is explained by each command's plan.
 - Reports redact env values and native tool payloads by default; `--redact` additionally hides local paths. For programmatic safe reports use `explainMonorepoConfig` or `validateConfigFile`; runtime config APIs retain callbacks and should not be serialized for sharing.
 - Git hooks use native `lefthook.yml`. Migrate old `tooling.lintStaged` and `tooling.husky` settings into that file.
 - Organization presets use `presets: [{ packageName, version }]` with an exact installed dependency and JSON-only `repoctl.preset.json`. Loading never imports package code, installs or fetches. Parents precede declaring presets, then the project and CLI; arrays replace at preset boundaries. `config inspect` exposes ordered layers and precise package/version sources.
@@ -70,6 +70,9 @@ Key areas:
 - upgrade: overwrite behavior and extra targets
 - init: skip steps for README/package.json/pnpm change intent setup
 - mirror: add or override env mirrors
+- docs: explicit sites with covered `packages`, a root `buildScript`, `preview`/`stable` targets, allowed `patchPaths` and optional per-package `releaseInputs`. Targets choose `{ deployScript, url? }` or `{ provider: 'cloudflare-workers', config, workerName, accountId, environment?, url? }`, never both. Native Cloudflare supports static assets-only JSON/JSONC configurations; freeze the nonsecret account identity, keep credentials in runtime environment secrets, and preserve old script snapshots for retry. See the docs section in `commands.md` for preflight and recovery boundaries.
+
+Both docs target variants accept optional `readiness: { timeoutMs?, requestTimeoutMs? }`. Omission means no public HTTP. `{}` requires an explicit HTTPS target URL without userinfo/query/fragment; probe the fixed origin-root `/.well-known/repoctl-deployment.json`. Positive integer defaults/limits: total 120000 ms / 1–600000, request 10000 ms / 1–30000. Runtime defaults do not alter stored config identity. Saved stable verification retains its original target and policy even if main removes them.
 
 ## `commands.doctor`
 
@@ -129,3 +132,9 @@ The root aggregates selected projects. Only explicit `relations` add compilation
 Existing references remain manually owned. Only newly added entries are recorded in `.repoctl/typescript-references.json`; commit that registry alongside the tsconfigs. Removing or excluding a project removes only entries recorded there. Editing/removing an owned entry blocks synchronization: restore it, or deliberately remove its registry entry to return ownership to the user. JSONC content outside the `references` value, BOM and line endings are preserved. Root aggregation and explicit edges produce stable relative config-file paths.
 
 Saved plans include input fingerprints and exact diffs. Applying a stale or edited plan fails before writes; reapplying an already completed plan is a no-op. A process lock at `.repoctl/typescript-references.lock` covers revalidation, writing, verification, rollback and cleanup. Changes stage together with backups and roll back on failure. If concurrent edits prevent safe rollback, the error names retained recovery files: preserve them, reconcile the business edit with the original backup, restore the ownership registry consistently and generate a new plan. A killed process can also leave `.repoctl-references-*.bak`/`.tmp` files; verify no writer remains, reconcile matching backups and the registry, then remove the stale lock. No recovery action overwrites a concurrent edit automatically.
+
+- upgrade `keep`: reviewed `pnpm-workspace.yaml` override decisions only; each entry has `file`, exact array `path`, nonempty `reason`, `upstreamHash`, `localHash`, and optional inclusive UTC `expires`. Copy fingerprints from `workspacePolicy.findings`; absence and null differ. Re-preview after editing configuration. Upstream/local value changes or expiry require renewed review.
+
+## Documentation channel rendering
+
+Provider target URLs and template origins must agree. `repoctl/docs-context` validates public channel/URL values only; it does not authorize deployments or stamp deployment manifests. Configure the Nimbus or VitePress deployment module with distinct preview/stable origins and keep channel/URL in task-local Turbo `env` hashes. Preview crawler restrictions must not disable local search. Preserve project-owned layouts and user/Nimbus `_headers` rules through the marked merge helper.

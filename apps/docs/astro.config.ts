@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [nimbus(defineNimbusConfig({
     site: documentationDeployment.site,
     title: 'weapp-pandacss',
-    description: 'Panda CSS 2.2.0 for mini-programs and Web. 小程序与 Web 的 Panda CSS 生成期适配。',
+    description: 'Panda CSS 2.5.0 for mini-programs and Web. 小程序与 Web 的 Panda CSS 生成期适配。',
     locale: 'en',
     github: 'https://github.com/weapp-pandacss/weapp-pandacss',
     socialImage: '/avatar.png',

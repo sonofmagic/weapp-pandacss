@@ -9,7 +9,7 @@
    `_helpers.backup.js` / `.mjs` 和 `weapp-panda` 备份/补丁文件）。不要用 rollback
    恢复旧产物再接入新插件。
 2. 固定 `@pandacss/dev`、`@pandacss/preset-base`、`@pandacss/preset-panda` 到
-   `2.2.0` 作为新安装默认版本。最低版本为 `2.1.2`，后续稳定版本不设上限，三个包保持同一版本。
+   `2.5.0` 作为新安装默认版本。最低版本为 `2.1.2`，后续稳定版本不设上限，三个包保持同一版本。
    在 Panda 配置注册 `weappPanda()`，使用 `.js` 或 `.mjs`；建议 `outExtension: 'mjs'` 和 `forceImportExtension: true`。
 3. 把 `panda codegen && weapp-panda codegen` 改为 `panda codegen`。移除
    `execFileSync`、`codegen:done` 适配 hook 和跨平台 rollback。
@@ -70,7 +70,7 @@ prefix 的普通 class 前缀保留，变量前缀规范化；对象 prefix 的�
 | 低于 Panda 2.1.2、预发布或无效版本                      | 版本门禁拒绝                                              |
 | 包入口 ESM / CJS                                        | 支持，包括 `/panda`、`/runtime`、`/postcss`               |
 
-`weappPanda()` 生成 hook 仍使用受控 AST 改写生成内容。真实离线消费者测试覆盖 Panda 2.1.2 / 2.2.0；后续稳定版本通过版本门禁后，生成产物仍须通过 AST 结构校验，不兼容结构会报错。它不执行
+`weappPanda()` 生成 hook 仍使用受控 AST 改写生成内容。真实离线消费者测试覆盖 Panda 2.1.2 / 2.5.0；后续稳定版本通过版本门禁后，生成产物仍须通过 AST 结构校验，不兼容结构会报错。它不执行
 适配子进程、不自行重复加载 Panda 配置、不自行覆盖 helper、不创建 backup。组合 PostCSS 阶段交给官方 Panda 读取配置并生成 CSS。
 
 ## 删除的 v1 接口
@@ -99,7 +99,7 @@ Tailwind PostCSS generator。`panda.css` 通过 Vite 虚拟入口把真实 `pand
 保留原生 layer 和 selector，在后续框架 PostCSS 才执行 Web adapter；过早的 portable 标记会让
 Tailwind 展平 H5 layer。单位转换只在最终框架阶段执行一次；Tailwind 入口使用同一入口的 `{ imports: false, panda: false, adapter: false, units: ... }` 仅转换单位，保留自己的 class 命名。导入与生成依赖加入 Vite watch。
 
-默认 ordered 内核现由 `@weapp-tailwindcss/css-compat@0.1.2` 承担，并记录 minor 发布意图，
+默认 ordered 内核现由 `@weapp-tailwindcss/css-compat@0.1.4` 承担，并记录 minor 发布意图，
 不改变公开配置、命名或原 csstools legacy 路径。源码仍可使用普通 `@import`，
 但进入 ordered 前必须完整展开导入图；所有残留 import（包括普通、带 layer、远程）都会失败。
 不能删掉 import 来绕过检查。三个 `WP_LAYER_*` 文本前缀继续兼容，结构化诊断使用 `LAYER_*`，

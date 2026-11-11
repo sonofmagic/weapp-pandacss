@@ -13,7 +13,7 @@ export const run = promisify(execFile)
 export const adapterRoot = path.resolve(import.meta.dirname, '..')
 export const runtimeRoot = path.resolve(adapterRoot, '../runtime')
 export const workspaceRoot = path.resolve(adapterRoot, '../..')
-export const pandaVersions = ['2.1.2', '2.2.0'] as const
+export const pandaVersions = ['2.1.2', '2.5.0'] as const
 export type PandaVersion = typeof pandaVersions[number]
 export interface PackedPackages {
   runtime: string

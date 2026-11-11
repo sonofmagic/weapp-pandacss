@@ -3,7 +3,7 @@
   "path": ".github/workflows/release-intent-auto.yml",
   "source": {
     "package": "@icebreakers/monorepo-templates",
-    "version": "3.0.1",
+    "version": "3.2.4",
     "assetPath": ".github/workflows/release-intent-auto.yml",
     "hash": "d7f8bb6197667fea5d39a157e8eb9b64e66fd65aa9eed6af8f479bde8e1fff5a"
   },

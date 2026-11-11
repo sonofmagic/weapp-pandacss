@@ -9,7 +9,7 @@
 | 编码契约       | ASCII、Unicode 各平面、代理码元、前导数字/连字符、空白、保留标记、碰撞、独立解码往返                                                                | runtime Vitest                 |
 | 配置与 AST     | 配置不变性、Babel ESM/CJS 互操作、版本诊断、损坏/不完整产物、重复处理、属性描述符、symbol 和 `.raw`                                                 | adapter Vitest                 |
 | CSS            | Web/weapp 目标、变量校验、cascade layer、`:where`、`:not`、选择器上下文、多个替换的组合、disabled 生命周期                                          | adapter Vitest/快照            |
-| 真实 Panda     | 2.1.2 / 2.2.0 的 `.js`/`.mjs`、class hash、codegen/PostCSS 自动生成与配置重载；css/cva/sva、named/slot recipe、compound、pattern、styled、cx、token | Panda 集成测试                 |
+| 真实 Panda     | 2.1.2 / 2.5.0 的 `.js`/`.mjs`、class hash、codegen/PostCSS 自动生成与配置重载；css/cva/sva、named/slot recipe、compound、pattern、styled、cx、token | Panda 集成测试                 |
 | 发布消费       | 两包 tarball、离线隔离安装、ESM/CJS、类型解析、入口函数身份、runtime 无依赖、自包含工厂                                                             | packed-runtime/entrypoints/tsd |
 | 框架产物       | Taro React/Vue、Uni-app 小程序/H5 的最终 WXSS/CSS 与实际生成 runtime 类名匹配                                                                       | taro-artifacts/uni-artifacts   |
 | Taro HTML 钩子 | 已安装 core 的水合及事件钩子、原生 view 的 class 恢复、优化节点别名、click→tap 绑定与移除                                                           | taro-html-hydration            |
@@ -17,13 +17,13 @@
 | 浏览器 E2E     | React **生产构建**，三引擎 computed style、hover、compound/slot 切换、重复交互、reload、窄屏、手写碰撞名、控制台错误                                | Playwright                     |
 | 真实微信验收   | 真实 IDE 的 AppService、样式变化、WXSS 匹配、reLaunch 状态重置和截图                                                                                | 可选 DevTools 入口             |
 
-适配器的 Panda 最低版本为 2.1.2，后续稳定版本不设上限。版本门禁测试覆盖低版本、无效版本、预发布版本和后续稳定版本，AST 校验继续负责拒绝不兼容的生成结构。Panda 兼容 fixture 在隔离消费者中解包适配器，分别使用锁文件固定的 2.1.2 和 2.2.0 包，全程离线；这两个版本是实际测试的 cohort，不代表穷举了整个支持范围。每个消费者解析自己的 Panda 与同版本 preset，不能通过工作区导入偷用默认的 2.2.0 安装。
+适配器的 Panda 最低版本为 2.1.2，后续稳定版本不设上限。版本门禁测试覆盖低版本、无效版本、预发布版本和后续稳定版本，AST 校验继续负责拒绝不兼容的生成结构。Panda 兼容 fixture 在隔离消费者中解包适配器，分别使用锁文件固定的 2.1.2 和 2.5.0 包，全程离线；这两个版本是实际测试的 cohort，不代表穷举了整个支持范围。每个消费者解析自己的 Panda 与同版本 preset，不能通过工作区导入偷用默认的 2.5.0 安装。
 
 小程序逻辑 E2E 使用 1.0.0 的 `@mpcore/weapp-vite` 构建真实应用，再由 `@mpcore/test` 运行 WXML。它不模拟微信 CSS 排版，也不替代真实开发者工具或手机验收。Taro/Uni 的产物测试保证输出匹配，不宣称验证了这些框架的真实点击交互。
 
-`taro-html-hydration.test.ts` 加载已安装的 Taro 4.3.0 core hydrator、事件目标、辅助函数及 HTML 钩子。原生 `<view>` 覆盖 `pure-view`、`static-view`、`click-view`、`view` 和 `catch-view`，要求首次水合、class 更新和恢复均保留相同的 `h5-view` 前缀；另验证 NutUI 覆盖层所需 click→tap 的触发与移除，以及普通 HTML 标签映射。仅 DOM 节点和更新队列使用 fixture，HTML 标签默认值来自已安装插件的构建入口。
+`taro-html-hydration.test.ts` 加载已安装的 Taro 4.3.2 core hydrator、事件目标、辅助函数及 HTML 钩子。原生 `<view>` 覆盖 `pure-view`、`static-view`、`click-view`、`view` 和 `catch-view`，要求首次水合、class 更新和恢复均保留相同的 `h5-view` 前缀；另验证 NutUI 覆盖层所需 click→tap 的触发与移除，以及普通 HTML 标签映射。仅 DOM 节点和更新队列使用 fixture，HTML 标签默认值来自已安装插件的构建入口。
 
-上游 HTML 钩子读取已经优化的水合节点名，7 项测试中有 4 项失败。`@tarojs/plugin-html@4.3.0` 的 pnpm 补丁同时修改源码与分发运行时，改为读取原始 `node.nodeName`；实际安装补丁后 7 项全部通过。保留标准 HTML 插件配置及原生 `<view>` fixture：排除 `view` 会破坏 click→tap 映射。此回归证明运行时钩子的行为；重新构建后仍须单独通过真实 IDE 的 class 恢复与 NutUI 交互验收。
+上游 HTML 钩子读取已经优化的水合节点名，7 项测试中有 4 项失败。`@tarojs/plugin-html@4.3.2` 的 pnpm 补丁同时修改源码与分发运行时，改为读取原始 `node.nodeName`；实际安装补丁后 7 项全部通过。保留标准 HTML 插件配置及原生 `<view>` fixture：排除 `view` 会破坏 click→tap 映射。此回归证明运行时钩子的行为；重新构建后仍须单独通过真实 IDE 的 class 恢复与 NutUI 交互验收。
 
 ## 本地与 CI
 
@@ -54,7 +54,7 @@ CI 保留 Windows/macOS/Linux × Node 22/24 六组完整验证，新增 Linux/No
 
 `pnpm test:acceptance` 串行执行发布候选的完整门禁。先提交候选代码，并保持 tracked 工作区干净。编排器记录 commit/tree，给已有本地 `.env.test` 和 `stats/` 文件计算摘要但不修改它们，拒绝未提交源码及步骤之间的内容变化。持有 `e2e-artifacts/acceptance.lock` 时，不启动其他构建、watch 或 IDE 套件。
 
-预先安装 Playwright 对应版本的三个浏览器，并满足下节的真实 IDE 前置条件。将 `WEAPP_ACCEPTANCE_NODE22`、`WEAPP_ACCEPTANCE_NODE24` 分别设为 Node **22.18.0**、**24.11.0** 可执行文件的绝对路径。这两个运行时验证发布包的支持下限；私有工作区仍使用更严格的开发环境 engines。消费者使用真实打包产物运行 ESM/CJS 和声明检查，包括离线 Panda 2.1.2 / 2.2.0 cohort。
+预先安装 Playwright 对应版本的三个浏览器，并满足下节的真实 IDE 前置条件。将 `WEAPP_ACCEPTANCE_NODE22`、`WEAPP_ACCEPTANCE_NODE24` 分别设为 Node **22.18.0**、**24.11.0** 可执行文件的绝对路径。这两个运行时验证发布包的支持下限；私有工作区仍使用更严格的开发环境 engines。消费者使用真实打包产物运行 ESM/CJS 和声明检查，包括离线 Panda 2.1.2 / 2.5.0 cohort。
 
 文档 `deploy:check` 门禁先构建站点、运行 Wrangler 部署 dry run，再检查生成的发现入口产物。`check:deployment` 校验各路由的 `_headers`、ARD 别名与能力 URL、robots/sitemap 覆盖、UTF-8 文本导出、嵌套 LLM 目录链接和全文导出的页面覆盖，也可直接检查已有产物而不重新构建。此静态检查验证生成的响应头规则，实际 HTTP 响应头行为仍需部署/运行时验证。框架 H5 测试还要求子组件 props 在四次切换和 reload 后具有精确背景色、字号和间距，并验证 Uni-app Panda/Tailwind 的文本大小写状态。
 

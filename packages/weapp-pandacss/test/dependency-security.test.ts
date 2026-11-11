@@ -6,14 +6,14 @@ import { promisify } from 'node:util'
 const run = promisify(execFile)
 const uniRoot = path.resolve(import.meta.dirname, '../../../examples/uni-app-vue3')
 
-async function verifyUniDependency(script: string) {
+async function verifyDependency(script: string, root = uniRoot) {
   const { stdout } = await run(process.execPath, ['--input-type=module', '-e', `
     import assert from 'node:assert/strict';
     import {createRequire} from 'node:module';
     const uniRequire = createRequire(process.argv[1]);
     ${script}
-  `, path.join(uniRoot, 'package.json')], {
-    cwd: uniRoot,
+  `, path.join(root, 'package.json')], {
+    cwd: root,
     // Run hostile inputs outside Vitest so an unpatched regexp cannot block its worker.
     timeout: 10_000,
   })
@@ -21,7 +21,7 @@ async function verifyUniDependency(script: string) {
 }
 
 it('keeps Uni Intlify dotted translations while rejecting prototype pollution through its actual resolver', async () => {
-  const result = await verifyUniDependency(`
+  const result = await verifyDependency(`
     const sharedRequire = createRequire(uniRequire.resolve('@dcloudio/uni-cli-shared/package.json'));
     const core = sharedRequire('@intlify/core-base');
     const coreRequire = createRequire(sharedRequire.resolve('@intlify/core-base'));
@@ -54,7 +54,7 @@ it('keeps Uni Intlify dotted translations while rejecting prototype pollution th
 })
 
 it('keeps Uni Express route matching and rejects long ambiguous parameter inputs within a bounded process', async () => {
-  const result = await verifyUniDependency(`
+  const result = await verifyDependency(`
     const pluginRequire = createRequire(uniRequire.resolve('@dcloudio/vite-plugin-uni/package.json'));
     const expressRequire = createRequire(pluginRequire.resolve('express/package.json'));
     const route = expressRequire('path-to-regexp');
@@ -81,4 +81,51 @@ it('keeps Uni Express route matching and rejects long ambiguous parameter inputs
     console.log(JSON.stringify({parameters: keys.map(key => key.name), longInputRejected: true}));
   `)
   expect(result).toEqual({ parameters: ['from', 'to'], longInputRejected: true })
+})
+
+it.each([
+  ['uni-app-vue3', '@dcloudio/uni-cli-shared/package.json'],
+  ['taro-app', '@tarojs/cli/package.json'],
+  ['taro-app-vue3', '@tarojs/cli/package.json'],
+])('keeps %s ZIP reads and extraction while rejecting symlink escapes and false output sizes', async (workspace, parent) => {
+  const result = await verifyDependency(`
+    import fs from 'node:fs';
+    import os from 'node:os';
+    import path from 'node:path';
+    const parentRequire = createRequire(uniRequire.resolve(${JSON.stringify(parent)}));
+    const AdmZip = parentRequire('adm-zip');
+    const archive = new AdmZip(undefined, {method: 8});
+    const content = 'Panda archive content'.repeat(100);
+    archive.addFile('nested/data.txt', Buffer.from(content));
+    const bytes = archive.toBuffer();
+    const zip = new AdmZip(bytes);
+    assert.equal(zip.readAsText('nested/data.txt'), content);
+    const readAsync = entry => new Promise((resolve, reject) => {
+      entry.getDataAsync((data, error) => error ? reject(error) : resolve(data));
+    });
+    assert.equal((await readAsync(zip.getEntry('nested/data.txt'))).toString(), content);
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'weapp-zip-security-'));
+    try {
+      const destination = path.join(root, 'output');
+      zip.extractAllTo(destination);
+      assert.equal(fs.readFileSync(path.join(destination, 'nested/data.txt'), 'utf8'), content);
+      fs.rmSync(path.join(destination, 'nested'), {recursive: true});
+      const outside = path.join(root, 'outside');
+      fs.mkdirSync(outside);
+      fs.symlinkSync(outside, path.join(destination, 'nested'), process.platform === 'win32' ? 'junction' : 'dir');
+      assert.throws(() => zip.extractAllTo(destination, true), /in the way/i);
+      assert.equal(fs.existsSync(path.join(outside, 'data.txt')), false);
+      const malformed = Buffer.from(bytes);
+      const central = malformed.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+      assert(central >= 0);
+      malformed.writeUInt32LE(0, central + 24);
+      const invalid = new AdmZip(malformed).getEntry('nested/data.txt');
+      assert.throws(() => invalid.getData(), /larger|size|length/i);
+      await assert.rejects(readAsync(invalid), /larger|size|length/i);
+    } finally {
+      fs.rmSync(root, {recursive: true, force: true});
+    }
+    console.log(JSON.stringify({roundTrip: true, symlinkEscapeRejected: true, falseSizeRejected: true}));
+  `, path.resolve(uniRoot, '..', workspace))
+  expect(result).toEqual({ roundTrip: true, symlinkEscapeRejected: true, falseSizeRejected: true })
 })

@@ -140,14 +140,17 @@ assert.deepEqual(inline.variantMap,{tone:['neutral','accent'],active:['true','fa
 assert.deepEqual(inline.splitVariantProps({tone:'accent',active:true,id:'probe'}),[{tone:'accent',active:true},{id:'probe'}]);
 assert.deepEqual(inline.getVariantProps({tone:'accent'}),{tone:'accent',active:false});
 assert.deepEqual([...runtimeBadge.variantKeys].sort(),['active','tone']);
-assert.deepEqual(runtimeBadge.variantMap,{tone:['accent','neutral','ungenerated'],active:['false','true']});
+// Stable Panda releases differ in named recipe option ordering.
+assert.deepEqual(Object.fromEntries(Object.entries(runtimeBadge.variantMap).map(([key,values])=>[key,[...values].sort()])),
+  {tone:['accent','neutral','ungenerated'],active:['false','true']});
 assert.deepEqual(runtimeBadge.splitVariantProps({tone:'accent',id:'probe'}),[{tone:'accent'},{id:'probe'}]);
 assert.equal(runtimeBadge.getVariantProps({tone:'accent'}).active,false);
 // Named recipe raw is a selection object; inline raw is resolved style data.
 assert.equal(runtimeBadge.raw({tone:'accent'}).tone,'accent');
 assert.equal(runtimeCard.getVariantProps({}).tone,'neutral');
 assert.deepEqual(runtimeCard.splitVariantProps({tone:'accent',id:'slot'}),[{tone:'accent'},{id:'slot'}]);
-assert.deepEqual(runtimeCard.variantMap,{tone:['accent','neutral']});
+assert.deepEqual(Object.fromEntries(Object.entries(runtimeCard.variantMap).map(([key,values])=>[key,[...values].sort()])),
+  {tone:['accent','neutral']});
 assert.deepEqual(runtimeCard.raw({tone:'accent'}),{tone:'accent'});
 assert.deepEqual(inlineSlots.getVariantProps({}),{active:false});
 assert.deepEqual(inlineSlots.variantMap,{active:['true','false']});
