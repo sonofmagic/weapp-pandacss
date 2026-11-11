@@ -79,3 +79,4 @@ overrides:
 patchedDependencies:
   '@tarojs/plugin-html@4.3.2': patches/@tarojs__plugin-html@4.3.2.patch
   '@tarojs/webpack5-prebundle@4.3.2': patches/@tarojs__webpack5-prebundle@4.3.2.patch
+  weapp-vite@7.9.0: patches/weapp-vite@7.9.0.patch

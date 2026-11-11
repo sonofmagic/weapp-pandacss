@@ -205,6 +205,7 @@ packageExtensionsChecksum: sha256-lO9cJcYEJiv7X5GwgEM/OgZyE9dzDxPAx69gSbZ+I6w=
 patchedDependencies:
   '@tarojs/plugin-html@4.3.2': eb5b15865c2fd8d2bda5a30c2ce677b909c1a5b0f0562843b55a57e229862c8f
   '@tarojs/webpack5-prebundle@4.3.2': 7c22c86fadfa48c9aa7cc1cbc403a9ccd68120eff62c92b0ed3d5b047a806cea
+  weapp-vite@7.9.0: cb726d9c64dd08597ffed55a4c7d7404d0d0d509de69d2e8100b478ae55ac7ee
 
 importers:
 
@@ -836,7 +837,7 @@ importers:
         version: link:../../packages/weapp-pandacss
       weapp-vite:
         specifier: 7.9.0
-        version: 7.9.0(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+        version: 7.9.0(patch_hash=cb726d9c64dd08597ffed55a4c7d7404d0d0d509de69d2e8100b478ae55ac7ee)(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
 
   packages/runtime:
     devDependencies:
@@ -21236,7 +21237,7 @@ snapshots:
   '@mpcore/weapp-vite@1.1.3(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)':
     dependencies:
       '@mpcore/test': 1.2.3
-      weapp-vite: 7.9.0(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+      weapp-vite: 7.9.0(patch_hash=cb726d9c64dd08597ffed55a4c7d7404d0d0d509de69d2e8100b478ae55ac7ee)(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
     transitivePeerDependencies:
       - '@devframes/agentic'
       - '@mpxjs/webpack-plugin'
@@ -34266,7 +34267,7 @@ snapshots:
       - tsx
       - webpack
 
-  weapp-vite@7.9.0(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1):
+  weapp-vite@7.9.0(patch_hash=cb726d9c64dd08597ffed55a4c7d7404d0d0d509de69d2e8100b478ae55ac7ee)(@devframes/agentic@1.3.3)(@oxc-project/types@0.157.0)(@swc/helpers@0.5.24)(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1(supports-color@10.2.2))(lightningcss@1.33.0)(miniprogram-api-typings@5.3.1)(oxc-resolver@11.24.2)(rollup@4.68.2)(sass@1.108.2)(srvx@1.0.8)(stylus@0.64.0(supports-color@10.2.2))(supports-color@10.2.2)(tailwindcss@4.3.5)(terser@5.51.2)(vitest@5.1.0)(webpack@5.111.1(@swc/core@1.16.22(@swc/helpers@0.5.24))(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(sharp@0.35.5(@types/node@26.6.6))(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1):
     dependencies:
       '@babel/core': 8.1.0
       '@babel/plugin-transform-dynamic-import': 8.0.1(@babel/core@8.1.0)

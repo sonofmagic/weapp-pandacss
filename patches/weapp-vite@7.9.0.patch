@@ -1,0 +1,19 @@
+diff --git a/dist/test.mjs b/dist/test.mjs
+index 7e19c747e069487614cde7f8b57eb9bb8f3b0b5d..e4c22c7c19b78bcab90795ba2aa07c4adb90f8a7 100644
+--- a/dist/test.mjs
++++ b/dist/test.mjs
+@@ -59,7 +59,13 @@ async function fingerprintPaths(paths, excluded = []) {
+ 				if (visited.has(real)) return;
+ 				visited.add(real);
+ 				const entries = await fs.readdir(file, { withFileTypes: true });
+-				for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) if (!excludedDirectories.has(entry.name)) await visit(path.join(file, entry.name));
++				// Resolver watches can include a drive/filesystem root. Track its membership,
++				// while explicit source dependencies retain recursive/content fingerprints.
++				const filesystemRoot = file === path.parse(file).root;
++				for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) if (!excludedDirectories.has(entry.name)) {
++					if (filesystemRoot) hash.update(`${entry.name}\0`);
++					else await visit(path.join(file, entry.name));
++				}
+ 			} else hash.update(await fs.readFile(file));
+ 		} catch (error) {
+ 			if (error.code !== "ENOENT") throw error;
