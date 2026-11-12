@@ -42,7 +42,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.13",
+    "@babel/runtime": "^7.29.14",
     "@nutui/icons-vue-taro": "^0.0.9",
     "@nutui/nutui-taro": "4.3.14",
     "@tarojs/components": "4.3.2",

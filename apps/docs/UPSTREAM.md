@@ -45,3 +45,7 @@ those entries do not require changes. The site owns its domain and retains
 its local bilingual layout, sidebar and search components. Its static collection
 routes are verified by the production build. After this review,
 `nimbus-docs migrate --yes --json` recorded the new baseline.
+
+On 2026-11-12, Astro was upgraded to `7.4.11` within Nimbus `0.19.4`'s
+declared `>=7.2.6 <8` peer range. Nimbus itself remains at the reviewed
+`0.19.4` baseline; no Nimbus source migration is needed for this Astro patch.
