@@ -65,6 +65,7 @@ Uni-app 的 `latest` 标签部分指向旧版或 alpha，不能作为 Vue 3 正�
 | pnpm test:e2e:weapp               | 3 文件、7 项通过，含根目录监听、同长度源码改写与缓存失效回归                                           |
 | pnpm test:e2e:h5                  | Taro React、Taro Vue、Uni：三浏览器共 24 项通过                                                        |
 | pnpm test:e2e:web                 | Chromium / Firefox / WebKit 共 42 项通过                                                               |
+| 文档 stable / preview             | 各 54 页、27 对语言页面；各 139 项三浏览器断言通过，既有 2 项真实剪贴板测试仅 Chromium 执行            |
 | 文档示例 / changeset              | 双语首页可执行示例通过；中文 patch changeset 校验通过                                                  |
 
 消费者矩阵仍执行真实 tarball 安装、ESM/CJS 入口、公开类型、Panda codegen/cssgen/build、运行时和 PostCSS 场景。H5 使用 Chromium、Firefox、WebKit 的后台测试，覆盖实际点击、动态属性、预处理器、Unicode、单位及 Uni Tailwind recipe。测试会话和预览服务器由 Playwright 管理并关闭。
