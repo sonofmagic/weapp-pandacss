@@ -12,7 +12,7 @@ pmOnFail: error
 packageExtensions:
   # Uni-app's independentMain plugin requires this CJS dependency but omits it
   # from its manifest. Bind it locally so Nimbus's ESM v3 cannot satisfy it.
-  '@dcloudio/uni-mp-vite@3.0.0-5020620260917001':
+  '@dcloudio/uni-mp-vite@3.0.0-5030420261029002':
     dependencies:
       estree-walker: 2.0.2
   # Bind NutUI declarations to the consuming app's React types. Without this
@@ -79,4 +79,3 @@ overrides:
 patchedDependencies:
   '@tarojs/plugin-html@4.3.2': patches/@tarojs__plugin-html@4.3.2.patch
   '@tarojs/webpack5-prebundle@4.3.2': patches/@tarojs__webpack5-prebundle@4.3.2.patch
-  weapp-vite@7.9.0: patches/weapp-vite@7.9.0.patch

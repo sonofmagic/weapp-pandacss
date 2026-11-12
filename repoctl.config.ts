@@ -81,7 +81,7 @@ export default {
           name: 'wevu-vue3',
           workspaces: ['examples/weapp-vite-app'],
           dependencies: ['vue'],
-          reason: 'Pin the integration fixture to the tested Weapp Vite / Wevu 7.9.0 and Vue 3.5.45 cohort.',
+          reason: 'Pin the integration fixture to the tested Weapp Vite / Wevu 7.10.0 and Vue 3.5.45 cohort.',
         },
         {
           name: 'taro-react18',

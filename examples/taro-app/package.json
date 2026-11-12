@@ -42,7 +42,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.13",
+    "@babel/runtime": "^7.29.14",
     "@nutui/nutui-react-taro": "3.0.20",
     "@tarojs/components": "4.3.2",
     "@tarojs/helper": "4.3.2",
