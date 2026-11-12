@@ -41,3 +41,7 @@ weapp-pandacss@2.4.0:
   dir: packages/weapp-pandacss
   intents:
     - happy-maps-taste
+weapp-pandacss@2.4.1:
+  dir: packages/weapp-pandacss
+  intents:
+    - lucky-plums-judge
